@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Secrets and local env
+.env
+.env.*
+!.env.example
+
+# Logs and local state
+*.log
+.npm-cache/
+.turbo/
+dist/
+build/
+out/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Optional local continuity (never commit secrets here)
+docs/_private/
