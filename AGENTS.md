@@ -13,6 +13,7 @@ This repository is a long-lived **Chief-of-Staff** system: planning, synthesis, 
 
 - `docs/CONTINUITY.md` — rolling context: north star, open threads, last decisions.
 - `docs/RUNTIME_AND_AGENTS.md` — how we run agent loops; Cursor SDK vs alternatives; links to official docs.
+- `docs/identity-brief.md` — **cloud-safe** identity and working-style context for remote agents and fresh clones. Full detail stays **local-only** in `docs/_private/context-portfolio/` (never committed).
 - `.cursor/agents/` — named subagent definitions for the Cursor agent runtime (consumed by the SDK / Cursor agent per current Cursor documentation).
 
 ## When changing behavior

@@ -15,9 +15,9 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 ## Last session
 
 - **Date:** 2026-05-13
-- **What we did:** Repository scaffold; documented Cursor SDK subagents vs Hermes; initialized git; added `.env.example`. **GitHub:** authenticated `gh`, pushed to `origin` — [VolantTyler/AgentOS](https://github.com/VolantTyler/AgentOS).
+- **What we did:** Repository scaffold; documented Cursor SDK subagents vs Hermes; initialized git; added `.env.example`. **GitHub:** authenticated `gh`, pushed to `origin` — [VolantTyler/AgentOS](https://github.com/VolantTyler/AgentOS). Added **local** Context Portfolio under `docs/_private/context-portfolio/` and committed a **cloud-safe** summary as [`docs/identity-brief.md`](identity-brief.md) (no phone/email/address; family names omitted).
 - **Decisions:** Prefer **Cursor TypeScript SDK** (`@cursor/sdk`) for programmable Cursor agents with first-class **subagents**; evaluate **Hermes** if we need a fully local, non-Cursor orchestration substrate with built-in delegation UX.
-- **Next:** Add `docs/integrations/` as first tools are wired; add a minimal `package.json` + SDK example when we run agents from code (not only from the IDE).
+- **Next:** Add `docs/integrations/` as first tools are wired; add a minimal `package.json` + SDK example when we run agents from code (not only from the IDE). Tighten **identity boundaries** (what may enter git vs `_private` only) as needed.
 
 ## Open questions
 
