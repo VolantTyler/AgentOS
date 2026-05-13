@@ -22,3 +22,24 @@ This repository is a long-lived **Chief-of-Staff** system: planning, synthesis, 
 ## When changing behavior
 
 If you introduce a new integration (calendar, email, CRM), add a short note under `docs/integrations/` (create the folder when needed) and link it from `docs/CONTINUITY.md`.
+
+## Cursor Cloud specific instructions
+
+This is a **documentation-only repository** today — no `package.json`, no build system, no runnable services, and no automated tests. The "application" is the set of Cursor subagent definitions in `.cursor/agents/` and the markdown documentation scaffold.
+
+### What "running" means here
+
+- **Git** is the only required tool. All continuity and agent context lives in committed markdown.
+- The four subagent definitions (`onboarding-guide`, `work-strategist`, `research-brief`, `household-coordinator`) in `.cursor/agents/` are consumed by the Cursor agent runtime — they do not need to be "started" separately.
+- `.env.example` defines a single `CURSOR_API_KEY` for future `@cursor/sdk` programmatic usage; no code uses it yet.
+
+### No build/lint/test steps exist
+
+There is no linter, test runner, or build command configured. If executable code (e.g. a `package.json` with `@cursor/sdk`) is added in the future, update this section with the corresponding install/lint/test/run commands.
+
+### Verifying the environment
+
+To confirm the repo is healthy, check that:
+1. `git status` runs cleanly.
+2. All expected files exist: `AGENTS.md`, `README.md`, `docs/CONTINUITY.md`, `docs/RUNTIME_AND_AGENTS.md`, `docs/BOUNDARIES.md`, `docs/identity-brief.md`, `docs/ONBOARDING_OPEN_QUESTIONS.md`, and the four `.cursor/agents/*.md` files.
+3. `.env` has been created from `.env.example` (never committed).
