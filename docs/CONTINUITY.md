@@ -12,12 +12,12 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [ ] Pick first integrations (calendar, tasks, email) once trust model is clear.
 - [ ] Flesh out `.cursor/agents/` roles to match real recurring workflows.
 
-## Last session (template)
+## Last session
 
 - **Date:** 2026-05-13
-- **What we did:** Repository scaffold; documented Cursor SDK subagents vs Hermes for multi-agent patterns; initialized git.
+- **What we did:** Repository scaffold; documented Cursor SDK subagents vs Hermes; initialized git; added `.env.example`. **GitHub:** authenticated `gh`, pushed to `origin` — [VolantTyler/AgentOS](https://github.com/VolantTyler/AgentOS).
 - **Decisions:** Prefer **Cursor TypeScript SDK** (`@cursor/sdk`) for programmable Cursor agents with first-class **subagents**; evaluate **Hermes** if we need a fully local, non-Cursor orchestration substrate with built-in delegation UX.
-- **Next:** Add `docs/integrations/` entries as you wire tools; add `.env.example` when first scripts land.
+- **Next:** Add `docs/integrations/` as first tools are wired; add a minimal `package.json` + SDK example when we run agents from code (not only from the IDE).
 
 ## Open questions
 

@@ -14,18 +14,17 @@ Start here on every new session:
 
 ## GitHub
 
-After cloning, copy environment templates when they exist (`cp .env.example .env`) and never commit secrets.
+Remote: [github.com/VolantTyler/AgentOS](https://github.com/VolantTyler/AgentOS)
 
-Create the remote from this directory (once):
+On a new machine:
 
 ```bash
-git init
-git add .
-git commit -m "Initial AgentOS scaffold"
-gh repo create AgentOS --private --source=. --remote=origin --push
+git clone https://github.com/VolantTyler/AgentOS.git
+cd AgentOS
+cp .env.example .env   # Windows: copy .env.example .env
 ```
 
-Use `--public` instead of `--private` if you prefer a public repo (avoid committing personal data either way).
+Never commit secrets; keep `.env` local only.
 
 ## Official documentation (verify in browser; APIs evolve)
 
