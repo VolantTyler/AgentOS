@@ -16,7 +16,7 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 ## Last session
 
 - **Date:** 2026-05-13
-- **What we did:** Repository scaffold through `TECH_STACK.md` as previously logged. Added [`docs/career-fit-context.md`](career-fit-context.md) (portable themes from work-anxiety / Gemini handoff); linked from `identity-brief.md`, `AGENTS.md`, `README.md`. Full handoff archived locally at `docs/_private/gemini-handoff-work-anxieties.md` (gitignored).
+- **What we did:** (Cumulative) AgentOS scaffold, GitHub, identity/boundaries/tech stack/career-fit, private portfolio paths. **This update:** **events-research** Cursor project skill (`.cursor/skills/events-research/`) + `docs/research/` for dated event digests.
 - **Decisions:** Prefer **Cursor TypeScript SDK** (`@cursor/sdk`) for programmable Cursor agents with first-class **subagents**; evaluate **Hermes** if we need a fully local, non-Cursor orchestration substrate with built-in delegation UX.
 - **Next:** Add `docs/integrations/` as first tools are wired; add a minimal `package.json` + SDK example when we run agents from code (not only from the IDE). Tighten **identity boundaries** (what may enter git vs `_private` only) as needed.
 

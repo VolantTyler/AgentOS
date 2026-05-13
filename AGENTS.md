@@ -19,6 +19,7 @@ This repository is a long-lived **Chief-of-Staff** system: planning, synthesis, 
 - `docs/career-fit-context.md` — work anxieties, fit profile, and how agents should support career/job tasks (portable).
 - `docs/ONBOARDING_OPEN_QUESTIONS.md` — **deferred** boundary / onboarding checklist; resume in a new chat when ready.
 - `docs/identity-brief.md` — **cloud-safe** identity and working-style context for remote agents and fresh clones. Full detail stays **local-only** in `docs/_private/context-portfolio/` (never committed).
+- `.cursor/skills/events-research/` — **events-research** skill: NYC / northern NJ + online AI agent orchestration events (invoke on demand; see skill `description` in `SKILL.md`).
 - `.cursor/agents/` — named subagent definitions for the Cursor agent runtime (consumed by the SDK / Cursor agent per current Cursor documentation).
 
 ## When changing behavior

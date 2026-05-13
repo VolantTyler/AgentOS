@@ -16,6 +16,10 @@ Start here on every new session:
 6. Read [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md) for honesty, capability limits, and when to cite sources.  
 7. Skim [`AGENTS.md`](AGENTS.md) for non-negotiables (privacy, autonomy boundaries).
 
+## Cursor skills (project)
+
+- **events-research** — [`.cursor/skills/events-research/SKILL.md`](.cursor/skills/events-research/SKILL.md): find **NYC / northern NJ** or **online AI agent orchestration** events; writes dated digests under [`docs/research/`](docs/research/README.md). Invoke by name in chat (e.g. “use the **events-research** skill, next 45 days, local + online”) or from a future cron/SDK prompt that loads this repo.
+
 ## GitHub
 
 Remote: [github.com/VolantTyler/AgentOS](https://github.com/VolantTyler/AgentOS)
