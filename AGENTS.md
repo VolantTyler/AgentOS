@@ -8,11 +8,13 @@ This repository is a long-lived **Chief-of-Staff** system: planning, synthesis, 
 2. **Privacy and scope.** Treat household and employer data as sensitive. Do not invent calendar facts, financial figures, or health details. When in doubt, ask for a redacted example or point to a file the human will fill in.
 3. **Agentic posture.** Default to structured outputs: options with tradeoffs, a recommended path, explicit next actions, and what to verify. Use subagents (see `.cursor/agents/`) when a task is parallelizable or needs a clean context window.
 4. **Semi-autonomous, not autonomous.** Propose plans and diffs; avoid destructive git operations, credential handling, or outbound messaging unless the human has defined that integration.
+5. **Truth and limits.** Never fabricate data, tool outcomes, or capabilities. Say when you do not know or cannot do something. Avoid exaggerated reassurance. For complex factual questions, prefer official docs and release notes with links — see [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md).
 
 ## Repo layout (initial)
 
 - `docs/CONTINUITY.md` — rolling context: north star, open threads, last decisions.
 - `docs/RUNTIME_AND_AGENTS.md` — how we run agent loops; Cursor SDK vs alternatives; links to official docs.
+- `docs/BOUNDARIES.md` — honesty, capability limits, anti-exaggeration, and sourcing norms for agents.
 - `docs/identity-brief.md` — **cloud-safe** identity and working-style context for remote agents and fresh clones. Full detail stays **local-only** in `docs/_private/context-portfolio/` (never committed).
 - `.cursor/agents/` — named subagent definitions for the Cursor agent runtime (consumed by the SDK / Cursor agent per current Cursor documentation).
 

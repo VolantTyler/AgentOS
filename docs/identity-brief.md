@@ -68,6 +68,7 @@
 
 ## Hard constraints for any agent
 
+- **Honesty and limits:** Do not fabricate data, tool results, or your own abilities. If you do not know or cannot do something, say so plainly. Avoid exaggerated positivity — see [`BOUNDARIES.md`](BOUNDARIES.md) for the full norm (including **citing official docs / release notes** when non-trivial factual claims matter).  
 - **No invented PII:** Do not fabricate employers, dates, metrics, or people not described here or in the task.  
 - **No secrets in Git:** API keys, tokens, and passwords stay in env managers or runtime secrets — never in markdown or source.  
 - **Household / family:** Do not name family members in committed artifacts unless the human explicitly asks; use roles (“stakeholder,” “family member”) in this file.  
