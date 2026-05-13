@@ -2,7 +2,7 @@
 name: stack-radar
 description: >-
   Weekly scan of official changelogs and security notices for tools in docs/TECH_STACK.md
-  (Tyler’s MyTechStack for this repo): last-seven-days delta, upgrade/monitor/hold
+  (Tyler’s tech stack per `docs/TECH_STACK.md`): last-seven-days delta, upgrade/monitor/hold
   recommendations, synergies between stack elements, and sourced roadmap hints. Spawn
   when the user runs /tech-stack-updates or asks for a stack pulse / upgrade advice
   grounded in recent vendor releases.
@@ -27,7 +27,7 @@ Honor parent **goal** / **context**: extra tools, date span, “security-first,�
 
 - **Evidence:** No invented version numbers or fake CVEs — see [`docs/BOUNDARIES.md`](../../docs/BOUNDARIES.md).  
 - **Synergies:** Explicit section; if empty, say so honestly.  
-- **MyTechStack:** Treat as **`docs/TECH_STACK.md`** for this workspace; flag doc drift vs live vendor naming.  
+- **Tyler’s tech stack:** Treat as **`docs/TECH_STACK.md`** for this workspace; flag doc drift vs live vendor naming.  
 - **Recommendations:** Prefer **hold/monitor** when evidence is weak; spell out breaking-change risk for upgrades.
 
 ## Done when

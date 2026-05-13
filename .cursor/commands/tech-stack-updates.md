@@ -16,7 +16,7 @@ You are executing the **AgentOS `/tech-stack-updates` slash command**.
 - **Window:** **last 7 days**, ending **today**, **America/New_York**.  
 - **Stack source:** **`docs/TECH_STACK.md`** only, plus any tools Tyler lists in the same message.  
 - **Output file:** `docs/research/tech-stack-updates-YYYY-MM-DD.md` (today’s date in America/New_York).  
-- **Emphasis:** **synergies / integrations** between stack elements, and **official** upcoming-feature news for **MyTechStack** (= documented stack in `TECH_STACK.md`).
+- **Emphasis:** **synergies / integrations** between stack elements, and **official** upcoming-feature news for **Tyler’s tech stack** as listed in `docs/TECH_STACK.md`.
 
 ## After the subagent finishes
 
