@@ -112,4 +112,4 @@ Current evidence in-repo: **capability is present**; **fit, clarity, and structu
 
 ## Changelog
 
-- **2026-05-13:** Initial portable summary from Gemini handoff. Same-day update: stated **formal ADHD diagnosis** in-repo; removed **involuntary job departure** references from this public file; private archive trimmed (meta preamble removed; termination wording generalized).
+- **2026-05-13:** Initial portable summary from Gemini handoff. Same-day update: stated **formal ADHD diagnosis** in-repo; removed **specific employment-termination** references from this public file; private archive trimmed (meta preamble removed; termination wording generalized).
