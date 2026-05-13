@@ -15,13 +15,14 @@ You are executing the **AgentOS `/tech-stack-updates` slash command**.
 
 - **Window:** **last 7 days**, ending **today**, **America/New_York**.  
 - **Stack source:** **`docs/TECH_STACK.md`** only, plus any tools Tyler lists in the same message.  
+- **Core stack:** The **Core stack** table in `TECH_STACK.md` defines names that get **first** research attention and **separate** digest sections from the **non-core** inventory (see **tech-stack-pulse** template).  
 - **Output file:** `docs/research/tech-stack-updates-YYYY-MM-DD.md` (today’s date in America/New_York).  
-- **Emphasis:** **synergies / integrations** between stack elements, and **official** upcoming-feature news for **Tyler’s tech stack** as listed in `docs/TECH_STACK.md`.
+- **Emphasis:** **Core-first** security/releases/roadmaps; then the rest of the checklist. **Synergies / integrations** between stack elements (lead with pairs involving core tools), plus **official** upcoming-feature news for **Tyler’s tech stack** as listed in `docs/TECH_STACK.md`.
 
 ## After the subagent finishes
 
 Reply with:
 
-1. **Five bullets** — highest-impact **upgrade / hold / monitor** decisions.  
+1. **Five bullets** — highest-impact **upgrade / hold / monitor** decisions (**lead with core stack** when those tools moved).  
 2. **Path** to the saved digest.  
 3. **Synergy callout** — one paragraph if anything cross-cutting emerged; otherwise say “no credible cross-stack signals in window.”

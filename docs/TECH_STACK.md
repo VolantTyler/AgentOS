@@ -6,6 +6,22 @@
 
 ---
 
+## Core stack (priority in `/tech-stack-updates` digests)
+
+These tools are the **default core set** for weekly tech-stack research: agents should **research them first**, surface them first in the executive summary when anything is material, and **separate** digest content into **core stack** vs **non-core stack** (everything else this file inventories).
+
+| Name in reports | Where it shows up in this doc |
+|-----------------|-------------------------------|
+| **Cursor** | AI-assisted development; AgentOS tooling. |
+| **Gemini** | Models & inference; Gemini AI Coach when workflow-relevant. |
+| **Hermez** | Portfolio line **Hermes Agent** (exploratory) — treat as the same research target unless a distinct *Hermez* product is documented here later. |
+| **OpenClaw** | Active project — multi-agent WoW auction analytics. |
+| **Anti-Gravity** | Same product as **Antigravity** in AI-assisted development (multi-agent framework + IDE in the OpenClaw setup). |
+
+Tyler may **override** the set for a single run by naming tools in chat; recurring changes belong in this table (git).
+
+---
+
 ## How to read this doc
 
 | Column | Meaning |
@@ -130,4 +146,5 @@ Hybrid routing by task complexity (exact tiers evolve — confirm in Google’s 
 
 ## Changelog
 
+- **2026-05-13:** Documented **core stack** (Cursor, Gemini, Hermez, OpenClaw, Anti-Gravity) for `/tech-stack-updates` digest priority and core vs non-core sectioning in the pulse skill.
 - **2026-05-13:** Initial consolidation from `identity-brief.md` + `_private/context-portfolio` (03, 05, 09).
