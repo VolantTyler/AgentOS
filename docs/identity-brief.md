@@ -19,9 +19,8 @@
 - **Phase:** Career transition — actively studying **AI engineering and agent systems**, building real projects (not tutorial-only).  
 - **Background:** ~6 years professional **front-end web** (React/TypeScript at scale; Laravel/Livewire in a nonprofit setting). Prior paths include counseling (MA-level training and practice), Apple retail/B2B, and anthropology (BA). Describes a **non-linear** career path and a “late bloomer” framing for traditional tech milestones.  
 - **Sole proprietorship:** Occasional **web design / build** work for small clients (stack skews PHP/JS/classic web).  
-- **Daily rhythm (typical):** About **3–4 hours** of deep work on AI/building; remainder split across learning media, tooling experiments, and coordination with an **AI coach** used as a long-running teammate for memory and prioritization.
-
----
+- **Daily rhythm (typical):** About **3–4 hours** of deep work on AI/building; remainder split across learning media, tooling experiments, and coordination with an **AI coach** used as a long-running teammate for memory and prioritization.  
+- **ADHD:** Formal diagnosis — comfortable stating in this repo; work and productivity context in [`career-fit-context.md`](career-fit-context.md).
 
 ## How Tyler wants agents to behave
 
@@ -52,9 +51,9 @@
 
 ## Career fit, anxieties, and professional support
 
-Tyler is actively reflecting on **work history, fit, and confidence** — including employment instability, executive function, and what “success” should mean for him. **Portable detail** (strengths/challenges, environments to seek vs avoid, how agents can help) lives in [`career-fit-context.md`](career-fit-context.md). A **verbatim** Gemini handoff lives only on trusted machines: `docs/_private/gemini-handoff-work-anxieties.md`.
+Tyler is actively reflecting on **work history, fit, and confidence** — including how **ADHD** and executive function interact with role design, and what “success” should mean for him. **Portable detail** (strengths/challenges, environments to seek vs avoid, how agents can help) lives in [`career-fit-context.md`](career-fit-context.md). An **archived** Gemini handoff (with more narrative detail) lives only on trusted machines: `docs/_private/gemini-handoff-work-anxieties.md`.
 
-When helping with **jobs, interviews, or resumes**, use the career-fit doc: prioritize **fit and structure**, not “try harder”; avoid toxic positivity; do not treat the file as a medical diagnosis.
+When helping with **jobs, interviews, or resumes**, use the career-fit doc: prioritize **fit and structure**, not “try harder”; avoid toxic positivity. Tyler has a **formal ADHD diagnosis**; agents still **do not** provide therapy or crisis care.
 
 ---
 

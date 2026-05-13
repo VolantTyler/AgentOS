@@ -1,6 +1,6 @@
 # Career fit, work anxieties, and how to help Tyler (portable)
 
-**Purpose:** Broad themes from Tyler’s reflection on work dissatisfaction and fit (including a structured handoff from a **Gemini** conversation, archived verbatim under `docs/_private/gemini-handoff-work-anxieties.md` on local machines). This file is **safe for Git** and helps agents support **job search, role design, and productivity** without pretending to be therapy.
+**Purpose:** Broad themes from Tyler’s reflection on work dissatisfaction and fit (including a structured handoff from a **Gemini** conversation, archived under `docs/_private/gemini-handoff-work-anxieties.md` on local machines). This file is **safe for Git** and helps agents support **job search, role design, and productivity** without pretending to be therapy. **Public doc omits** specific employment-termination details; those stay in private notes if recorded at all.
 
 **Scope:** Professional identity, environment fit, executive function, confidence — not medical treatment. If Tyler is in crisis, encourage **human** professional support; agents do not replace clinicians.
 
@@ -8,7 +8,7 @@
 
 ## Situation (high level)
 
-Tyler is examining **long-standing dissatisfaction and instability** in work, including **two involuntary job losses** (“fired twice” in the original handoff). Ongoing struggles cluster around:
+Tyler is examining **long-standing dissatisfaction and instability** in work (without detailing specific departures in this public doc). Ongoing struggles cluster around:
 
 - **Memory and executive function** (organization, follow-through, completion)
 - **Consistency** of delivery over time
@@ -18,7 +18,7 @@ Tyler is examining **long-standing dissatisfaction and instability** in work, in
 **Central fear (his words, paraphrased):**  
 *Is there a job or environment that actually fits me — or am I not cut out for “work success” in the conventional sense?*
 
-Working hypothesis from reflection (not a clinical record unless Tyler states otherwise): challenges overlap strongly with **executive-function-heavy** job demands; discussion with Gemini used **ADHD-trait framing** as a **mismatch-with-typical-structures** lens, not as proof of diagnosis.
+Tyler has a **formal ADHD diagnosis** (he is comfortable stating that in this repo). Challenges overlap strongly with **executive-function-heavy** job demands. A useful framing from reflection (including with Gemini) is **mismatch between ADHD-shaped executive function and typical job structures**, not “lack of ability.”
 
 ---
 
@@ -112,4 +112,4 @@ Current evidence in-repo: **capability is present**; **fit, clarity, and structu
 
 ## Changelog
 
-- **2026-05-13:** Initial portable summary derived from private Gemini handoff archive.
+- **2026-05-13:** Initial portable summary from Gemini handoff. Same-day update: stated **formal ADHD diagnosis** in-repo; removed **involuntary job departure** references from this public file; private archive trimmed (meta preamble removed; termination wording generalized).
