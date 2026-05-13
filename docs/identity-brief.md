@@ -52,6 +52,8 @@
 
 ## Active themes (not full project specs)
 
+Detail lives in [`TECH_STACK.md`](TECH_STACK.md). At a glance:
+
 1. **Multi-agent systems** — orchestration, sub-agents, HITL gates, hybrid model routing (learning-oriented builds).  
 2. **Email-driven analyst workflow** — inbound business email → periodic summaries (requirements still evolving; real stakeholder in import/export).  
 3. **Tooling breadth** — intentionally trying multiple stacks (within practical limits of subscriptions and access); **Google/Gemini ecosystem** is a common default when choosing hosted models.

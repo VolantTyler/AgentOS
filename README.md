@@ -11,8 +11,9 @@ Start here on every new session:
 1. Read [`docs/CONTINUITY.md`](docs/CONTINUITY.md) for current priorities and open threads.
 2. Read [`docs/RUNTIME_AND_AGENTS.md`](docs/RUNTIME_AND_AGENTS.md) for runtime choices and agent-loop patterns.
 3. Read [`docs/identity-brief.md`](docs/identity-brief.md) for who Tyler is in a **git-safe** form (cloud agents, new machines). Richer private context lives only under `docs/_private/` on trusted devices.
-4. Read [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md) for honesty, capability limits, and when to cite sources.  
-5. Skim [`AGENTS.md`](AGENTS.md) for non-negotiables (privacy, autonomy boundaries).
+4. Read [`docs/TECH_STACK.md`](docs/TECH_STACK.md) for languages, tools, and project-level stacks.
+5. Read [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md) for honesty, capability limits, and when to cite sources.  
+6. Skim [`AGENTS.md`](AGENTS.md) for non-negotiables (privacy, autonomy boundaries).
 
 ## GitHub
 

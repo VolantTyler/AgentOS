@@ -16,7 +16,7 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 ## Last session
 
 - **Date:** 2026-05-13
-- **What we did:** Repository scaffold; Cursor SDK vs Hermes notes; git + `.env.example`; GitHub remote; local Context Portfolio under `docs/_private/context-portfolio/`; cloud-safe [`docs/identity-brief.md`](identity-brief.md); [`docs/BOUNDARIES.md`](BOUNDARIES.md) + doc links. Added deferred onboarding: [`docs/ONBOARDING_OPEN_QUESTIONS.md`](ONBOARDING_OPEN_QUESTIONS.md) and [`.cursor/agents/onboarding-guide.md`](../.cursor/agents/onboarding-guide.md).
+- **What we did:** Repository scaffold; Cursor SDK vs Hermes notes; git + `.env.example`; GitHub remote; local Context Portfolio under `docs/_private/context-portfolio/`; cloud-safe [`docs/identity-brief.md`](identity-brief.md); [`docs/BOUNDARIES.md`](BOUNDARIES.md); deferred onboarding ([`ONBOARDING_OPEN_QUESTIONS.md`](ONBOARDING_OPEN_QUESTIONS.md), [onboarding-guide](../.cursor/agents/onboarding-guide.md)). Added professional [`docs/TECH_STACK.md`](TECH_STACK.md) and linked it from `AGENTS.md`, `README.md`, `identity-brief.md`.
 - **Decisions:** Prefer **Cursor TypeScript SDK** (`@cursor/sdk`) for programmable Cursor agents with first-class **subagents**; evaluate **Hermes** if we need a fully local, non-Cursor orchestration substrate with built-in delegation UX.
 - **Next:** Add `docs/integrations/` as first tools are wired; add a minimal `package.json` + SDK example when we run agents from code (not only from the IDE). Tighten **identity boundaries** (what may enter git vs `_private` only) as needed.
 
