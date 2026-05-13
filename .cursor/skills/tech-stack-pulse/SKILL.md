@@ -2,7 +2,7 @@
 name: tech-stack-pulse
 description: >-
   Surfaces changes in the last seven days affecting tools and languages listed in
-  docs/TECH_STACK.md (Tyler’s documented “MyTechStack” for this repo): release notes,
+  docs/TECH_STACK.md (Tyler’s tech stack as documented in this repo): release notes,
   security advisories, roadmap items, and cross-tool synergies or integrations.
   Produces upgrade/monitor/hold recommendations with evidence links. Use when the user
   runs /tech-stack-updates, asks for a weekly stack digest, or wants to know whether
@@ -13,7 +13,7 @@ disable-model-invocation: true
 
 # Tech stack pulse — weekly updates & upgrade posture
 
-**“MyTechStack”** in this workflow means **the inventory in [`docs/TECH_STACK.md`](../../../docs/TECH_STACK.md)** for AgentOS — not a third-party product. If Tyler names extra tools in chat, include them for this run only and suggest adding them to `TECH_STACK.md` if they recur.
+**Tyler’s tech stack** in this workflow means **the inventory in [`docs/TECH_STACK.md`](../../../docs/TECH_STACK.md)** for AgentOS (plain-language “my tech stack,” versioned in Git). If Tyler names extra tools in chat, include them for this run only and suggest adding them to `TECH_STACK.md` if they recur.
 
 ## Preconditions
 
@@ -59,7 +59,7 @@ Use this template:
 
 - **Window:** [start ET/UTC] → [end ET/UTC]
 - **Stack source:** docs/TECH_STACK.md (rev as-of [date] if known)
-- **MyTechStack:** documented inventory for this repo (not third-party “MyTechStack” SaaS unless Tyler adds one)
+- **Tech stack source:** `docs/TECH_STACK.md` (Tyler’s documented **my tech stack** for AgentOS)
 
 ## Executive summary
 
