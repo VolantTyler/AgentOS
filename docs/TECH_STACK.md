@@ -2,7 +2,7 @@
 
 **Purpose:** Single place for agents to see **languages, tools, and project stacks** without opening `_private`. Keep this file aligned with reality; when something changes, update here and optionally mirror in `docs/_private/context-portfolio/05-tools-and-systems.md` on trusted machines.
 
-**Note:** Vendor product and model names drift. For **decisions** (pricing, APIs, deprecations), verify against **official docs / release notes** — see [`BOUNDARIES.md`](BOUNDARIES.md).
+**Note:** Vendor product and model names drift. For **decisions** (pricing, APIs, deprecations), verify against **official docs / release notes** — see [`BOUNDARIES.md`](BOUNDARIES.md). For recurring churn, run **`/tech-stack-updates`** (see [`.cursor/commands/tech-stack-updates.md`](../.cursor/commands/tech-stack-updates.md)) to generate a weekly digest via the **`stack-radar`** subagent.
 
 ---
 

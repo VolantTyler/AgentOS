@@ -19,8 +19,10 @@ Start here on every new session:
 ## Cursor skills (project)
 
 - **events-research** — [`.cursor/skills/events-research/SKILL.md`](.cursor/skills/events-research/SKILL.md): find **NYC / northern NJ** or **online AI agent orchestration** events; writes dated digests under [`docs/research/`](docs/research/README.md).  
-- **Slash command:** type **`/events-research`** in chat (loads [`.cursor/commands/events-research.md`](.cursor/commands/events-research.md)). The prompt delegates to the **`events-scout`** subagent ([`.cursor/agents/events-scout.md`](.cursor/agents/events-scout.md)).  
-- **Cron / SDK later:** same workflow — prompt the parent or SDK agent to run **events-scout** with the skill path in context.
+- **Slash:** **`/events-research`** → [`.cursor/commands/events-research.md`](.cursor/commands/events-research.md) → delegates **`events-scout`** ([`.cursor/agents/events-scout.md`](.cursor/agents/events-scout.md)).  
+- **tech-stack-pulse** — [`.cursor/skills/tech-stack-pulse/SKILL.md`](.cursor/skills/tech-stack-pulse/SKILL.md): **last 7 days** of official updates vs [`docs/TECH_STACK.md`](docs/TECH_STACK.md) (“MyTechStack” for this repo), **upgrade/monitor/hold** calls, **synergies** between tools, roadmap hints.  
+- **Slash:** **`/tech-stack-updates`** → [`.cursor/commands/tech-stack-updates.md`](.cursor/commands/tech-stack-updates.md) → delegates **`stack-radar`** ([`.cursor/agents/stack-radar.md`](.cursor/agents/stack-radar.md)).  
+- **Cron / SDK later:** prompt an agent to run **events-scout** or **stack-radar** with the matching skill path in context.
 
 ## GitHub
 

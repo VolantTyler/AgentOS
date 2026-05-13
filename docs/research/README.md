@@ -1,6 +1,13 @@
 # Event research digests
 
-Digests are produced by the **`events-scout`** subagent following the **events-research** skill. Trigger from chat with **`/events-research`** or by asking the agent to run **events-scout**.
+Digests are produced by subagents following project skills:
+
+| Slash | Subagent | Skill | Output (default) |
+|-------|-----------|-------|------------------|
+| **`/events-research`** | `events-scout` | `events-research` | `docs/research/events-YYYY-MM-DD.md` |
+| **`/tech-stack-updates`** | `stack-radar` | `tech-stack-pulse` | `docs/research/tech-stack-updates-YYYY-MM-DD.md` |
+
+Trigger from **`/`** menu or by asking the parent agent to run the subagent by name.
 
 **Naming:** `events-YYYY-MM-DD.md` (one file per research run unless Tyler specifies otherwise).
 
