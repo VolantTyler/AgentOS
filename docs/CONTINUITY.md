@@ -16,7 +16,7 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 ## Last session
 
 - **Date:** 2026-05-13
-- **What we did:** (Cumulative) AgentOS scaffold, GitHub, identity/boundaries/tech stack/career-fit, private portfolio paths. **This update:** **events-research** Cursor project skill (`.cursor/skills/events-research/`) + `docs/research/` for dated event digests.
+- **What we did:** (Cumulative) AgentOS scaffold through career-fit and skills. **This update:** slash command **`/events-research`** (`.cursor/commands/events-research.md`) and **events-scout** subagent (`.cursor/agents/events-scout.md`); docs wired in `README.md` / `AGENTS.md`.
 - **Decisions:** Prefer **Cursor TypeScript SDK** (`@cursor/sdk`) for programmable Cursor agents with first-class **subagents**; evaluate **Hermes** if we need a fully local, non-Cursor orchestration substrate with built-in delegation UX.
 - **Next:** Add `docs/integrations/` as first tools are wired; add a minimal `package.json` + SDK example when we run agents from code (not only from the IDE). Tighten **identity boundaries** (what may enter git vs `_private` only) as needed.
 

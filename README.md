@@ -18,7 +18,9 @@ Start here on every new session:
 
 ## Cursor skills (project)
 
-- **events-research** — [`.cursor/skills/events-research/SKILL.md`](.cursor/skills/events-research/SKILL.md): find **NYC / northern NJ** or **online AI agent orchestration** events; writes dated digests under [`docs/research/`](docs/research/README.md). Invoke by name in chat (e.g. “use the **events-research** skill, next 45 days, local + online”) or from a future cron/SDK prompt that loads this repo.
+- **events-research** — [`.cursor/skills/events-research/SKILL.md`](.cursor/skills/events-research/SKILL.md): find **NYC / northern NJ** or **online AI agent orchestration** events; writes dated digests under [`docs/research/`](docs/research/README.md).  
+- **Slash command:** type **`/events-research`** in chat (loads [`.cursor/commands/events-research.md`](.cursor/commands/events-research.md)). The prompt delegates to the **`events-scout`** subagent ([`.cursor/agents/events-scout.md`](.cursor/agents/events-scout.md)).  
+- **Cron / SDK later:** same workflow — prompt the parent or SDK agent to run **events-scout** with the skill path in context.
 
 ## GitHub
 

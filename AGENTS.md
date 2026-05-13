@@ -20,7 +20,9 @@ This repository is a long-lived **Chief-of-Staff** system: planning, synthesis, 
 - `docs/ONBOARDING_OPEN_QUESTIONS.md` — **deferred** boundary / onboarding checklist; resume in a new chat when ready.
 - `docs/identity-brief.md` — **cloud-safe** identity and working-style context for remote agents and fresh clones. Full detail stays **local-only** in `docs/_private/context-portfolio/` (never committed).
 - `.cursor/skills/events-research/` — **events-research** skill: NYC / northern NJ + online AI agent orchestration events (invoke on demand; see skill `description` in `SKILL.md`).
-- `.cursor/agents/` — named subagent definitions for the Cursor agent runtime (consumed by the SDK / Cursor agent per current Cursor documentation).
+- `.cursor/commands/events-research.md` — slash command **`/events-research`**; instructs parent to delegate to **events-scout**.
+- `.cursor/agents/events-scout.md` — **events-scout** subagent; runs the skill and writes `docs/research/events-*.md`.
+- `.cursor/agents/` — other named subagent definitions (`research-brief`, `work-strategist`, etc.).
 
 ## When changing behavior
 
@@ -33,7 +35,8 @@ This is a **documentation-only repository** today — no `package.json`, no buil
 ### What "running" means here
 
 - **Git** is the only required tool. All continuity and agent context lives in committed markdown.
-- The four subagent definitions (`onboarding-guide`, `work-strategist`, `research-brief`, `household-coordinator`) in `.cursor/agents/` are consumed by the Cursor agent runtime — they do not need to be "started" separately.
+- Subagent definitions in `.cursor/agents/` (including **`events-scout`**, `onboarding-guide`, `work-strategist`, `research-brief`, `household-coordinator`) are consumed by the Cursor agent runtime — they do not need to be "started" separately.
+- Project **skills** live under `.cursor/skills/`; **slash commands** under `.cursor/commands/` (e.g. **`/events-research`**).
 - `.env.example` defines a single `CURSOR_API_KEY` for future `@cursor/sdk` programmatic usage; no code uses it yet.
 
 ### No build/lint/test steps exist
@@ -44,5 +47,5 @@ There is no linter, test runner, or build command configured. If executable code
 
 To confirm the repo is healthy, check that:
 1. `git status` runs cleanly.
-2. All expected files exist: `AGENTS.md`, `README.md`, `docs/CONTINUITY.md`, `docs/RUNTIME_AND_AGENTS.md`, `docs/BOUNDARIES.md`, `docs/identity-brief.md`, `docs/ONBOARDING_OPEN_QUESTIONS.md`, and the four `.cursor/agents/*.md` files.
+2. All expected files exist: `AGENTS.md`, `README.md`, `docs/CONTINUITY.md`, `docs/RUNTIME_AND_AGENTS.md`, `docs/BOUNDARIES.md`, `docs/identity-brief.md`, `docs/ONBOARDING_OPEN_QUESTIONS.md`, `.cursor/commands/events-research.md`, `.cursor/skills/events-research/SKILL.md`, and the `.cursor/agents/*.md` files (including `events-scout.md`).
 3. `.env` has been created from `.env.example` (never committed).

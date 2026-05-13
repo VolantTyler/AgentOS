@@ -96,3 +96,8 @@ This skill is **instructions**, not a scheduler. For a future cron:
 ## Extra reference
 
 Optional deeper source hints: [reference.md](reference.md)
+
+## Invocation
+
+- **Chat:** Type **`/events-research`** (loads `.cursor/commands/events-research.md`) — parent agent should delegate to the **`events-scout`** subagent.  
+- **Direct:** Spawn **`events-scout`** (`.cursor/agents/events-scout.md`) whenever the user asks for this research without the slash.

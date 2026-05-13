@@ -1,6 +1,6 @@
 # Event research digests
 
-Markdown digests produced using the **events-research** Cursor skill (`.cursor/skills/events-research/SKILL.md`).
+Digests are produced by the **`events-scout`** subagent following the **events-research** skill. Trigger from chat with **`/events-research`** or by asking the agent to run **events-scout**.
 
 **Naming:** `events-YYYY-MM-DD.md` (one file per research run unless Tyler specifies otherwise).
 
