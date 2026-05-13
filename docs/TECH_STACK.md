@@ -53,8 +53,8 @@ Hybrid routing by task complexity (exact tiers evolve — confirm in Google’s 
 
 | Tier (as described) | Models (as described in portfolio) |
 |---------------------|--------------------------------------|
-| “Heavier” reasoning | Gemini 3.1 Pro + Gemma 27b |
-| Utility / faster | Gemini 2.5 Flash + Gemma 4b |
+| “Heavier” reasoning | Gemini 3.1 Pro + Gemma 26b |
+| Utility / faster | Gemini 2.5 Flash + Gemma e2b |
 
 **Ecosystem bias:** Portfolio notes **Google / Gemini subscription** as a practical default vs other paid API suites.
 

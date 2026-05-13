@@ -50,6 +50,14 @@
 
 ---
 
+## Career fit, anxieties, and professional support
+
+Tyler is actively reflecting on **work history, fit, and confidence** — including employment instability, executive function, and what “success” should mean for him. **Portable detail** (strengths/challenges, environments to seek vs avoid, how agents can help) lives in [`career-fit-context.md`](career-fit-context.md). A **verbatim** Gemini handoff lives only on trusted machines: `docs/_private/gemini-handoff-work-anxieties.md`.
+
+When helping with **jobs, interviews, or resumes**, use the career-fit doc: prioritize **fit and structure**, not “try harder”; avoid toxic positivity; do not treat the file as a medical diagnosis.
+
+---
+
 ## Active themes (not full project specs)
 
 Detail lives in [`TECH_STACK.md`](TECH_STACK.md). At a glance:
