@@ -22,6 +22,8 @@ Start here on every new session:
 - **Slash:** **`/events-research`** → [`.cursor/commands/events-research.md`](.cursor/commands/events-research.md) → delegates **`events-scout`** ([`.cursor/agents/events-scout.md`](.cursor/agents/events-scout.md)).  
 - **tech-stack-pulse** — [`.cursor/skills/tech-stack-pulse/SKILL.md`](.cursor/skills/tech-stack-pulse/SKILL.md): **last 7 days** of official updates vs [`docs/TECH_STACK.md`](docs/TECH_STACK.md) (Tyler’s **my tech stack**, documented in-repo), **upgrade/monitor/hold** calls, **synergies** between tools, roadmap hints.  
 - **Slash:** **`/tech-stack-updates`** → [`.cursor/commands/tech-stack-updates.md`](.cursor/commands/tech-stack-updates.md) → delegates **`stack-radar`** ([`.cursor/agents/stack-radar.md`](.cursor/agents/stack-radar.md)).  
+- **job-fit workflow** — [`docs/JOB_FIT_WORKFLOW.md`](docs/JOB_FIT_WORKFLOW.md): durable process for comparing job/company descriptions against Tyler's profile, recording verdicts, and learning from outcomes over time.  
+- **Agent:** **`job-fit-analyst`** → [`.cursor/agents/job-fit-analyst.md`](.cursor/agents/job-fit-analyst.md): evaluates fit, red flags, unknowns, and application positioning; can write dated briefs under [`docs/research/`](docs/research/README.md).  
 - **Cron / SDK later:** prompt an agent to run **events-scout** or **stack-radar** with the matching skill path in context.
 
 ## GitHub
