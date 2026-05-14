@@ -15,10 +15,10 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 
 ## Last session
 
-- **Date:** 2026-05-13
-- **What we did:** (Cumulative) AgentOS scaffold through career-fit and skills. **This update:** **`/tech-stack-updates`** slash + **stack-radar** subagent + **tech-stack-pulse** skill for weekly `TECH_STACK.md` churn / synergies / upgrade posture.
-- **Decisions:** Prefer **Cursor TypeScript SDK** (`@cursor/sdk`) for programmable Cursor agents with first-class **subagents**; evaluate **Hermes** if we need a fully local, non-Cursor orchestration substrate with built-in delegation UX.
-- **Next:** Add `docs/integrations/` as first tools are wired; add a minimal `package.json` + SDK example when we run agents from code (not only from the IDE). Tighten **identity boundaries** (what may enter git vs `_private` only) as needed.
+- **Date:** 2026-05-14
+- **What we did:** Added **`feature-testing-agent`** under [`.cursor/agents/feature-testing-agent.md`](../.cursor/agents/feature-testing-agent.md) so parent agents can delegate post-build validation of new features.
+- **Decisions:** The testing agent should judge features against explicit expectations, verify formatting / presentation quality, and call out missing links, references, or wiring instead of giving a vague "looks good."
+- **Next:** If this becomes a frequent workflow, add a dedicated slash command or SDK wrapper that automatically passes changed files plus acceptance criteria into `feature-testing-agent`.
 
 ## Open questions
 

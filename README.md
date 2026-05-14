@@ -24,6 +24,10 @@ Start here on every new session:
 - **Slash:** **`/tech-stack-updates`** → [`.cursor/commands/tech-stack-updates.md`](.cursor/commands/tech-stack-updates.md) → delegates **`stack-radar`** ([`.cursor/agents/stack-radar.md`](.cursor/agents/stack-radar.md)).  
 - **Cron / SDK later:** prompt an agent to run **events-scout** or **stack-radar** with the matching skill path in context.
 
+## Repo-defined subagents
+
+- **feature-testing-agent** — [`.cursor/agents/feature-testing-agent.md`](.cursor/agents/feature-testing-agent.md): validates newly shipped features against expected behavior, checks formatting/presentation, and confirms important links or wiring are still connected before review.
+
 ## GitHub
 
 Remote: [github.com/VolantTyler/AgentOS](https://github.com/VolantTyler/AgentOS)
