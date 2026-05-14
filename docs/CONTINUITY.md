@@ -17,9 +17,9 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 ## Last session
 
 - **Date:** 2026-05-14
-- **What we did:** Added a durable job-fit system: [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) plus the [`job-fit-analyst`](../.cursor/agents/job-fit-analyst.md) subagent for comparing JDs/company descriptions against Tyler's documented strengths, interests, constraints, and preferred environments.
-- **Decisions:** Start with a **workflow + subagent**, not a dedicated skill. Only harden this into a skill or SDK automation after a few real evaluations reveal stable criteria and useful output patterns.
-- **Next:** Use the workflow on live roles, store only high-value dated briefs under `docs/research/`, and capture interview/application outcomes to calibrate future fit judgments.
+- **What we did:** Added a durable job-fit system: [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md), the [`job-fit-analyst`](../.cursor/agents/job-fit-analyst.md) subagent, and the **`/job-fit`** slash command for comparing JDs/company descriptions against Tyler's documented strengths, interests, constraints, and preferred environments.
+- **Decisions:** Start with a **workflow + subagent**, not a dedicated skill. Make the **scorecard-first** summary the default top section so job-fit reports are quick to scan before reading the long-form analysis.
+- **Next:** Use `/job-fit` on live roles, store only high-value dated briefs under `docs/research/`, and capture interview/application outcomes to calibrate future fit judgments.
 
 ## Open questions
 

@@ -43,19 +43,29 @@ Your output should help answer:
 - Be candid about **stretch roles**. "Plausible with support" is different from "good fit now."
 - Avoid generic advice. Tie reasoning to the supplied job/company text and the repo context.
 - When evidence is weak, lower confidence instead of pretending certainty.
+- Put the **scorecard first** so Tyler can decide quickly whether to read the full analysis.
+- Follow the weighting and interpretation guidance in `docs/JOB_FIT_WORKFLOW.md`, but use judgment when a major red flag should override the raw weighted average.
 
 ## Default output shape
 
 Return:
 
-1. **Verdict** — strong fit / conditional fit / stretch but plausible / weak fit / skip
-2. **Confidence** — high / medium / low
-3. **Top evidence for fit**
-4. **Top evidence against fit**
-5. **Unknowns to validate**
-6. **Questions to ask recruiter or hiring manager**
-7. **Positioning angle**
-8. **Recommendation**
+1. **Scorecard**
+   - Overall weighted score (1.0-5.0)
+   - Verdict — strong fit / conditional fit / stretch but plausible / weak fit / skip
+   - Confidence — high / medium / low
+   - One-line call
+   - Capability score + short note
+   - Interest score + short note
+   - Environment score + short note
+   - Execution sustainability score + short note
+   - Narrative score + short note
+2. **Top evidence for fit**
+3. **Top evidence against fit**
+4. **Unknowns to validate**
+5. **Questions to ask recruiter or hiring manager**
+6. **Positioning angle**
+7. **Recommendation**
 
 ## File output
 
@@ -66,6 +76,8 @@ If the parent asks for a saved note and gives no path, write:
 using today's date in America/New_York when possible and a short, readable slug.
 
 Follow the structure in `docs/JOB_FIT_WORKFLOW.md`.
+
+Default to **chat-only** unless the parent explicitly asks to save / archive the result or says the role should become a durable note.
 
 ## Done when
 

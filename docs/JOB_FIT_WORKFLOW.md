@@ -33,17 +33,66 @@ A good fit evaluation is **not** just keyword matching. Check five dimensions:
 4. **Execution-risk match** — Are there role traits likely to trigger recurring pain points: ambiguity, weak management, heavy context switching, vague ownership?
 5. **Narrative match** — Can Tyler tell a coherent story for why *this* role fits his path?
 
+## Scorecard (put this first)
+
+Every job-fit report should begin with a **quick-glance scorecard** before the long-form analysis.
+
+### Scale
+
+- **1** — strong mismatch
+- **2** — weak
+- **3** — mixed / unclear
+- **4** — good
+- **5** — strong
+
+### Dimensions
+
+- **Capability**
+- **Interest**
+- **Environment**
+- **Execution sustainability** — higher means *lower* risk and better odds of steady performance in this role shape.
+- **Narrative**
+
+### Recommended weighting
+
+- **Capability:** 25%
+- **Interest:** 15%
+- **Environment:** 25%
+- **Execution sustainability:** 25%
+- **Narrative:** 10%
+
+Environment and execution sustainability are weighted heavily on purpose. The repo's career-fit docs say those are major predictors of real-world success for Tyler, not secondary considerations.
+
+### Required scorecard output
+
+Include:
+
+1. **Overall weighted score** — 1.0 to 5.0
+2. **Verdict** — `strong fit`, `conditional fit`, `stretch but plausible`, `weak fit`, or `skip`
+3. **Confidence** — `high`, `medium`, or `low`
+4. **One-line call** — short summary of the recommendation
+5. **Per-dimension scores** with a 3-8 word rationale each
+
+### Suggested interpretation
+
+- **4.2-5.0** — strong fit
+- **3.5-4.1** — conditional fit
+- **2.8-3.4** — stretch but plausible
+- **2.0-2.7** — weak fit
+- **below 2.0** — skip
+
+These bands are guidance, not a substitute for judgment. If one dimension is a severe red flag — especially environment or execution sustainability — the final verdict can be lower than the numeric average suggests.
+
 ## Default output shape
 
 Each evaluation should produce:
 
-1. **Verdict** — `strong fit`, `conditional fit`, `stretch but plausible`, `weak fit`, or `skip`.
-2. **Confidence** — `high`, `medium`, or `low`.
-3. **Why it fits** — strongest evidence in favor.
-4. **Why it may not fit** — explicit concerns and red flags.
-5. **Unknowns to validate** — what must be learned before applying or interviewing.
-6. **Positioning angle** — resume/interview story to emphasize.
-7. **Recommendation** — apply now, apply if clarified, archive for later, or skip.
+1. **Scorecard** — weighted overall score, verdict, confidence, one-line call, and dimension scores.
+2. **Why it fits** — strongest evidence in favor.
+3. **Why it may not fit** — explicit concerns and red flags.
+4. **Unknowns to validate** — what must be learned before applying or interviewing.
+5. **Positioning angle** — resume/interview story to emphasize.
+6. **Recommendation** — apply now, apply if clarified, archive for later, or skip.
 
 ## Input template for new requests
 
@@ -79,10 +128,20 @@ That file should include:
 - Source
 - Date evaluated
 
-## Recommendation
+## Scorecard
 
+- Overall weighted score
 - Verdict
 - Confidence
+- One-line call
+- Capability score + note
+- Interest score + note
+- Environment score + note
+- Execution sustainability score + note
+- Narrative score + note
+
+## Recommendation
+
 - Recommended next step
 
 ## Evidence for fit
@@ -149,9 +208,18 @@ Add a small `@cursor/sdk` script that:
 ## Good prompts to use
 
 - "Compare this job and company to my documented strengths, constraints, and interests. Be candid about fit and environment risk."
-- "Give me a verdict, confidence level, top reasons for and against, questions to ask, and whether I should apply."
+- "Give me the scorecard first, then the full analysis: verdict, confidence, top reasons for and against, questions to ask, and whether I should apply."
 - "Use my prior job-fit notes too and tell me whether this resembles roles that seem energizing or draining."
 - "Update the dated job-fit note with what I learned from this recruiter call."
+
+## Slash command
+
+Use **`/job-fit`** for the fastest path.
+
+- Example: `/job-fit https://company.example/job/123 save`
+- Example: `/job-fit compare this role for stability more than compensation`
+
+The slash command should delegate to the `job-fit-analyst` subagent, use the scorecard-first format, and save a dated note only when Tyler explicitly asks to save / archive the result or when the parent decides the role is clearly high-value enough to keep.
 
 ## Current recommendation
 
