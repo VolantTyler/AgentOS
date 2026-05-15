@@ -55,6 +55,14 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
         self.assertIn("Top 3 targets", self.command_text)
         self.assertIn("Human checks", self.command_text)
 
+    def test_command_defaults_keep_non_guessing_selection_and_chat_only_reply(self) -> None:
+        self.assertIn("if there is a real tie, ask Tyler to pick rather than guessing", self.command_text)
+        self.assertIn("or say `chat-only`", self.command_text)
+        self.assertIn(
+            "engineering leads, founders, research or product builders, and technical PMs",
+            self.command_text,
+        )
+
     def test_agent_frontmatter_and_authority_are_present(self) -> None:
         self.assertEqual("lookahead-networker", self.agent_frontmatter.get("name"))
         self.assertEqual("inherit", self.agent_frontmatter.get("model"))
@@ -68,6 +76,12 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
         self.assertIn("adjacent overlap", self.agent_text)
         self.assertIn("best 3 targets or fewer", self.agent_text)
 
+    def test_agent_rules_require_timezone_people_first_and_specificity(self) -> None:
+        self.assertIn("America/New_York", self.agent_text)
+        self.assertIn("Prefer people first", self.agent_text)
+        self.assertIn("Specificity over flattery", self.agent_text)
+        self.assertIn("one-line event-fit summary", self.agent_text)
+
     def test_skill_frontmatter_and_required_io_contract(self) -> None:
         self.assertEqual("lookahead-networker", self.skill_frontmatter.get("name"))
         self.assertEqual("true", self.skill_frontmatter.get("disable-model-invocation"))
@@ -80,6 +94,19 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
         self.assertIn("## Best targets", self.skill_text)
         self.assertIn('**The "Why":**', self.skill_text)
         self.assertIn("## Human check before the event", self.skill_text)
+
+    def test_skill_guardrails_and_workflow_cover_tie_and_source_quality(self) -> None:
+        self.assertIn("Do **not** invent attendance, bios, funding, recent launches", self.skill_text)
+        self.assertIn("Prefer official speaker pages, organizer agendas", self.skill_text)
+        self.assertIn("best company-level targets plus a human-check list", self.skill_text)
+        self.assertIn("ask Tyler to choose instead of pretending certainty", self.skill_text)
+
+    def test_skill_output_template_keeps_key_fields_for_downstream_use(self) -> None:
+        self.assertIn("- **Source digest:** [path]", self.skill_text)
+        self.assertIn("- **Status:** [attending | considering | unknown]", self.skill_text)
+        self.assertIn("- **Focus lens:** [1-2 lines on why this event matches Tyler's goals]", self.skill_text)
+        self.assertIn("- **Digital Outreach Draft:** [Under 300 characters]", self.skill_text)
+        self.assertIn("- **Sources / Confidence:** [What this is based on and any uncertainty]", self.skill_text)
 
     def test_all_layers_keep_legacy_digest_fallback(self) -> None:
         self.assertIn("events-research-YYYY-MM-DD.md", self.command_text)
