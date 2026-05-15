@@ -70,7 +70,7 @@ Rank toward entities that intersect with Tyler's documented strengths and target
    - Draft one specific technical or product question anchored in the target's published work or stated event topic.
 
 5. **Output**
-   - Write a markdown brief to `docs/research/networking-targets-YYYY-MM-DD-<event-slug>.md`.
+   - Write a markdown brief to `docs/research/networking-targets-YYYY-MM-DD-<eventslug>.md`.
    - If Tyler did not ask to save, chat output is acceptable, but preserve the same schema.
 
 ## Output template

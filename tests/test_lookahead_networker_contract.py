@@ -75,6 +75,17 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
         self.assertIn('**The "Why":**', self.skill_text)
         self.assertIn("## Human check before the event", self.skill_text)
 
+    def test_all_layers_keep_legacy_digest_fallback(self) -> None:
+        self.assertIn("events-research-YYYY-MM-DD.md", self.command_text)
+        self.assertIn("events-research-YYYY-MM-DD.md", self.agent_text)
+        self.assertIn("events-research-*.md", self.skill_text)
+
+    def test_default_output_path_pattern_is_consistent_across_workflow(self) -> None:
+        output_pattern = "networking-targets-YYYY-MM-DD-<eventslug>.md"
+        self.assertIn(output_pattern, self.command_text)
+        self.assertIn(output_pattern, self.agent_text)
+        self.assertIn(output_pattern, self.skill_text)
+
     def test_cross_file_linkage_uses_same_subagent_and_skill(self) -> None:
         subagent_name = self.agent_frontmatter.get("name")
         self.assertIsNotNone(subagent_name)
