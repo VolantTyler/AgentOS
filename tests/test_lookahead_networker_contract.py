@@ -7,6 +7,9 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 COMMAND_PATH = REPO_ROOT / ".cursor/commands/lookahead-match.md"
 AGENT_PATH = REPO_ROOT / ".cursor/agents/lookahead-networker.md"
 SKILL_PATH = REPO_ROOT / ".cursor/skills/lookahead-networker/SKILL.md"
+README_PATH = REPO_ROOT / "README.md"
+AGENTS_DOC_PATH = REPO_ROOT / "AGENTS.md"
+RESEARCH_README_PATH = REPO_ROOT / "docs/research/README.md"
 
 
 def read_text(path: Path) -> str:
@@ -33,6 +36,9 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
         cls.command_text = read_text(COMMAND_PATH)
         cls.agent_text = read_text(AGENT_PATH)
         cls.skill_text = read_text(SKILL_PATH)
+        cls.readme_text = read_text(README_PATH)
+        cls.agents_doc_text = read_text(AGENTS_DOC_PATH)
+        cls.research_readme_text = read_text(RESEARCH_README_PATH)
         cls.agent_frontmatter = parse_frontmatter(cls.agent_text)
         cls.skill_frontmatter = parse_frontmatter(cls.skill_text)
 
@@ -85,6 +91,7 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
         self.assertIn(output_pattern, self.command_text)
         self.assertIn(output_pattern, self.agent_text)
         self.assertIn(output_pattern, self.skill_text)
+        self.assertIn(output_pattern, self.research_readme_text)
 
     def test_cross_file_linkage_uses_same_subagent_and_skill(self) -> None:
         subagent_name = self.agent_frontmatter.get("name")
@@ -92,6 +99,24 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
         self.assertIn(f"`{subagent_name}`", self.command_text)
         self.assertIn(".cursor/skills/lookahead-networker/SKILL.md", self.command_text)
         self.assertIn(".cursor/skills/lookahead-networker/SKILL.md", self.agent_text)
+
+    def test_readme_registers_new_skill_and_slash_command(self) -> None:
+        self.assertIn("`/lookahead-match`", self.readme_text)
+        self.assertIn(".cursor/commands/lookahead-match.md", self.readme_text)
+        self.assertIn("`lookahead-networker`", self.readme_text)
+        self.assertIn(".cursor/agents/lookahead-networker.md", self.readme_text)
+
+    def test_agents_doc_lists_lookahead_workflow_assets(self) -> None:
+        self.assertIn(".cursor/skills/lookahead-networker/", self.agents_doc_text)
+        self.assertIn(".cursor/commands/lookahead-match.md", self.agents_doc_text)
+        self.assertIn(".cursor/agents/lookahead-networker.md", self.agents_doc_text)
+        self.assertIn("**`lookahead-networker`**", self.agents_doc_text)
+        self.assertIn("**`/lookahead-match`**", self.agents_doc_text)
+
+    def test_research_index_tracks_lookahead_output_contract(self) -> None:
+        self.assertIn("| **`/lookahead-match`** | `lookahead-networker` | `lookahead-networker` |", self.research_readme_text)
+        self.assertIn("docs/research/networking-targets-YYYY-MM-DD-<eventslug>.md", self.research_readme_text)
+        self.assertIn("events-YYYY-MM-DD.md", self.research_readme_text)
 
 
 if __name__ == "__main__":
