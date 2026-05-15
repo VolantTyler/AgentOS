@@ -63,12 +63,22 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
             self.command_text,
         )
 
+    def test_command_fallback_keeps_career_fit_grounding(self) -> None:
+        self.assertIn("If delegation is unavailable", self.command_text)
+        self.assertIn("ground the result in `docs/career-fit-context.md`", self.command_text)
+
     def test_agent_frontmatter_and_authority_are_present(self) -> None:
         self.assertEqual("lookahead-networker", self.agent_frontmatter.get("name"))
         self.assertEqual("inherit", self.agent_frontmatter.get("model"))
         self.assertIn(".cursor/skills/lookahead-networker/SKILL.md", self.agent_text)
         self.assertIn("docs/career-fit-context.md", self.agent_text)
         self.assertIn("docs/research/networking-targets-YYYY-MM-DD-<eventslug>.md", self.agent_text)
+
+    def test_agent_reads_identity_brief_only_when_parent_requests_it(self) -> None:
+        self.assertIn(
+            "Read `docs/identity-brief.md` only if the parent asks for extra positioning or tone context.",
+            self.agent_text,
+        )
 
     def test_agent_guardrails_include_honesty_and_overlap_clarity(self) -> None:
         self.assertIn("No fabrication", self.agent_text)
@@ -82,6 +92,13 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
         self.assertIn("Specificity over flattery", self.agent_text)
         self.assertIn("one-line event-fit summary", self.agent_text)
 
+    def test_agent_parameters_preserve_user_intent_inputs(self) -> None:
+        self.assertIn("target event name", self.agent_text)
+        self.assertIn("explicit digest path", self.agent_text)
+        self.assertIn("`attending` vs `considering`", self.agent_text)
+        self.assertIn("any company or topic bias", self.agent_text)
+        self.assertIn("whether Tyler wants the output saved", self.agent_text)
+
     def test_skill_frontmatter_and_required_io_contract(self) -> None:
         self.assertEqual("lookahead-networker", self.skill_frontmatter.get("name"))
         self.assertEqual("true", self.skill_frontmatter.get("disable-model-invocation"))
@@ -92,6 +109,7 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
     def test_skill_output_template_keeps_required_sections(self) -> None:
         self.assertIn("# Networking targets — [event title]", self.skill_text)
         self.assertIn("## Best targets", self.skill_text)
+        self.assertIn("## Watchlist / secondary targets", self.skill_text)
         self.assertIn('**The "Why":**', self.skill_text)
         self.assertIn("## Human check before the event", self.skill_text)
 
