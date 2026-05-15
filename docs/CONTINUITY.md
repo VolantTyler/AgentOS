@@ -12,13 +12,14 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [ ] **Deferred:** Work through boundary / operating-model questions in [`docs/ONBOARDING_OPEN_QUESTIONS.md`](ONBOARDING_OPEN_QUESTIONS.md) (new chat or `onboarding-guide` subagent).
 - [ ] Pick first integrations (calendar, tasks, email) once trust model is clear.
 - [ ] Flesh out `.cursor/agents/` roles to match real recurring workflows.
+- [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles, then decide whether it deserves a dedicated skill or SDK automation.
 
 ## Last session
 
-- **Date:** 2026-05-13
-- **What we did:** (Cumulative) AgentOS scaffold through career-fit and skills. **This update:** **`/tech-stack-updates`** slash + **stack-radar** subagent + **tech-stack-pulse** skill for weekly `TECH_STACK.md` churn / synergies / upgrade posture.
-- **Decisions:** Prefer **Cursor TypeScript SDK** (`@cursor/sdk`) for programmable Cursor agents with first-class **subagents**; evaluate **Hermes** if we need a fully local, non-Cursor orchestration substrate with built-in delegation UX.
-- **Next:** Add `docs/integrations/` as first tools are wired; add a minimal `package.json` + SDK example when we run agents from code (not only from the IDE). Tighten **identity boundaries** (what may enter git vs `_private` only) as needed.
+- **Date:** 2026-05-14
+- **What we did:** Added a durable job-fit system: [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md), the [`job-fit-analyst`](../.cursor/agents/job-fit-analyst.md) subagent, and the **`/job-fit`** slash command for comparing JDs/company descriptions against Tyler's documented strengths, interests, constraints, and preferred environments.
+- **Decisions:** Start with a **workflow + subagent**, not a dedicated skill. Make the **scorecard-first** summary the default top section so job-fit reports are quick to scan before reading the long-form analysis.
+- **Next:** Use `/job-fit` on live roles, store only high-value dated briefs under `docs/research/`, and capture interview/application outcomes to calibrate future fit judgments.
 
 ## Open questions
 
