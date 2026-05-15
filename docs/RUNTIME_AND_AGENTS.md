@@ -23,6 +23,21 @@ Use `@cursor/sdk` when you want **Cursor’s agent** (models, tools, cloud/local
 1. **Default path:** Build on **`@cursor/sdk` + repo-defined subagents** so Chief-of-Staff automation aligns with the same agent capabilities you already use in Cursor, with subagent definitions versioned beside the project.
 2. **Add Hermes (or another orchestrator)** if you later need deep local-first multi-agent orchestration independent of Cursor billing/APIs, or Hermes-specific UX (profiles, kanban workers, etc.).
 
+## Evaluation vs testing
+
+For AgentOS quality workflows, keep these concepts separate:
+
+- **Evaluation:** immediate post-build validation that a feature matches its
+  specification or acceptance criteria. In this repo, that role belongs to
+  `feature-evaluator` and `/evaluate-feature`.
+- **Testing:** reusable saved checks that can be rerun later for one feature,
+  impacted features, or broader suites. In this repo, that role belongs to
+  `feature-testing-agent`, `/run-feature-tests`, and the manifests under
+  `docs/testing/`.
+
+That split keeps the "did we build the right thing?" question distinct from the
+"do the saved checks still pass?" question.
+
 ## References (official / upstream)
 
 | Topic | URL |

@@ -15,10 +15,10 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 
 ## Last session
 
-- **Date:** 2026-05-14
-- **What we did:** Added **`feature-testing-agent`** under [`.cursor/agents/feature-testing-agent.md`](../.cursor/agents/feature-testing-agent.md) so parent agents can delegate post-build validation of new features.
-- **Decisions:** The testing agent should judge features against explicit expectations, verify formatting / presentation quality, and call out missing links, references, or wiring instead of giving a vague "looks good."
-- **Next:** If this becomes a frequent workflow, add a dedicated slash command or SDK wrapper that automatically passes changed files plus acceptance criteria into `feature-testing-agent`.
+- **Date:** 2026-05-15
+- **What we did:** Split quality workflows into **evaluation** and **testing**. Added **`feature-evaluator`**, repurposed **`feature-testing-agent`** for manifest-driven regression runs, added `/evaluate-feature` + `/run-feature-tests`, and created `docs/testing/` with manifest and suite scaffolding.
+- **Decisions:** Treat **evaluation** as post-build spec conformance for a new feature, and treat **testing** as reusable saved regression checks that can run one feature, impacted features, or full suites.
+- **Next:** As real features land, add or update a manifest under `docs/testing/features/`, run `/evaluate-feature` first, then `/run-feature-tests` in targeted or suite mode.
 
 ## Open questions
 
