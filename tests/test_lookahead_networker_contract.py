@@ -65,7 +65,20 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
 
     def test_command_fallback_keeps_career_fit_grounding(self) -> None:
         self.assertIn("If delegation is unavailable", self.command_text)
+        self.assertIn("say so once", self.command_text)
         self.assertIn("ground the result in `docs/career-fit-context.md`", self.command_text)
+
+    def test_command_reply_contract_keeps_ordered_three_item_handoff(self) -> None:
+        self.assertRegex(
+            self.command_text,
+            re.compile(
+                r"Reply with:\n\n"
+                r"1\. \*\*Top 3 targets\*\*.*\n"
+                r"2\. \*\*Path\*\*.*\n"
+                r"3\. \*\*Human checks\*\*",
+                re.DOTALL,
+            ),
+        )
 
     def test_agent_frontmatter_and_authority_are_present(self) -> None:
         self.assertEqual("lookahead-networker", self.agent_frontmatter.get("name"))
@@ -99,6 +112,18 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
         self.assertIn("any company or topic bias", self.agent_text)
         self.assertIn("whether Tyler wants the output saved", self.agent_text)
 
+    def test_agent_return_payload_contract_stays_ordered_for_parent(self) -> None:
+        self.assertRegex(
+            self.agent_text,
+            re.compile(
+                r"Return to parent:\n\n"
+                r"1\. \*\*file path\*\* \(or `chat-only`\)\n"
+                r"2\. \*\*top 3 targets\*\*\n"
+                r"3\. \*\*one-line event-fit summary\*\*",
+                re.DOTALL,
+            ),
+        )
+
     def test_skill_frontmatter_and_required_io_contract(self) -> None:
         self.assertEqual("lookahead-networker", self.skill_frontmatter.get("name"))
         self.assertEqual("true", self.skill_frontmatter.get("disable-model-invocation"))
@@ -120,7 +145,9 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
         self.assertIn("ask Tyler to choose instead of pretending certainty", self.skill_text)
 
     def test_skill_output_template_keeps_key_fields_for_downstream_use(self) -> None:
+        self.assertIn("- **Prepared:** [ISO date] (America/New_York)", self.skill_text)
         self.assertIn("- **Source digest:** [path]", self.skill_text)
+        self.assertIn("- **Target event:** [event name]", self.skill_text)
         self.assertIn("- **Status:** [attending | considering | unknown]", self.skill_text)
         self.assertIn("- **Focus lens:** [1-2 lines on why this event matches Tyler's goals]", self.skill_text)
         self.assertIn("- **Digital Outreach Draft:** [Under 300 characters]", self.skill_text)
@@ -162,6 +189,7 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
         self.assertIn("| **`/lookahead-match`** | `lookahead-networker` | `lookahead-networker` |", self.research_readme_text)
         self.assertIn("docs/research/networking-targets-YYYY-MM-DD-<eventslug>.md", self.research_readme_text)
         self.assertIn("events-YYYY-MM-DD.md", self.research_readme_text)
+        self.assertIn("tech-stack-updates-YYYY-MM-DD.md", self.research_readme_text)
 
 
 if __name__ == "__main__":
