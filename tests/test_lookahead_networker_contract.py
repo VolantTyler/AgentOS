@@ -253,6 +253,21 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
         self.assertIn("events-scout.md", self.agents_verification_section)
         self.assertIn("stack-radar.md", self.agents_verification_section)
 
+    def test_agents_verification_section_keeps_core_documentation_baseline_assets(self) -> None:
+        self.assertIn("AGENTS.md", self.agents_verification_section)
+        self.assertIn("README.md", self.agents_verification_section)
+        self.assertIn("docs/CONTINUITY.md", self.agents_verification_section)
+        self.assertIn("docs/RUNTIME_AND_AGENTS.md", self.agents_verification_section)
+        self.assertIn("docs/BOUNDARIES.md", self.agents_verification_section)
+        self.assertIn("docs/identity-brief.md", self.agents_verification_section)
+        self.assertIn("docs/ONBOARDING_OPEN_QUESTIONS.md", self.agents_verification_section)
+        self.assertIn(".cursor/agents/*.md", self.agents_verification_section)
+
+    def test_agents_verification_section_keeps_git_and_env_health_checks(self) -> None:
+        self.assertIn("`git status` runs cleanly", self.agents_verification_section)
+        self.assertIn("`.env` has been created from `.env.example`", self.agents_verification_section)
+        self.assertIn("(never committed)", self.agents_verification_section)
+
     def test_continuity_log_tracks_event_to_networking_loop_next_step(self) -> None:
         self.assertIn("Run the new event-to-networking loop on a real event", self.continuity_text)
         self.assertIn("`/events-research`", self.continuity_text)
