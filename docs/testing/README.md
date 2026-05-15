@@ -50,6 +50,11 @@ Use committed manifests for reusable checks.
    - the changed feature,  
    - impacted related features, or  
    - `suite smoke` / `suite full` as appropriate.
+4. In the final user-facing handoff, include a short **Try it out** section with:
+   - one `/evaluate-feature ...` example,
+   - one `/run-feature-tests feature ...` example,
+   - optionally `suite smoke` or `suite full`, and
+   - one sentence on the expected result.
 
 ### For a risky refactor or integration change
 
@@ -99,3 +104,6 @@ Select the changed feature manifest first, then add manifests whose **Surfaces**
 This repo is documentation-only today, so "tests" are often evidence-driven file
 checks, link/reference checks, command outputs, and subagent/command wiring
 validation rather than package-test commands.
+
+Because chat is the primary interface today, prefer **slash-command examples**
+in the **Try it out** section instead of inventing terminal commands or a CLI.

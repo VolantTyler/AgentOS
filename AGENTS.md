@@ -51,6 +51,20 @@ This is a **documentation-only repository** today — no `package.json`, no buil
 
 There is no linter, test runner, or build command configured. If executable code (e.g. a `package.json` with `@cursor/sdk`) is added in the future, update this section with the corresponding install/lint/test/run commands.
 
+### Feature handoff expectation
+
+After implementing a feature or materially changing one, end your user-facing
+response with a short **Try it out** section.
+
+- Prefer **Cursor slash commands** or other chat-native instructions over
+  proposing a CLI unless the repo already has a real CLI entrypoint.
+- Include at least:
+  1. one immediate **evaluation** step (for example `/evaluate-feature ...`),
+  2. one targeted **testing** step (for example `/run-feature-tests feature ...`), and
+  3. if useful, one broader optional regression step (for example `suite smoke` or `suite full`).
+- State the expected result in one short sentence so Tyler knows what success
+  should look like.
+
 ### Verifying the environment
 
 To confirm the repo is healthy, check that:
