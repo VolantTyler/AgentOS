@@ -245,6 +245,14 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
         self.assertIn(".cursor/skills/lookahead-networker/SKILL.md", self.agents_verification_section)
         self.assertIn("lookahead-networker.md", self.agents_verification_section)
 
+    def test_agents_verification_section_keeps_existing_event_and_stack_assets(self) -> None:
+        self.assertIn(".cursor/commands/events-research.md", self.agents_verification_section)
+        self.assertIn(".cursor/commands/tech-stack-updates.md", self.agents_verification_section)
+        self.assertIn(".cursor/skills/events-research/SKILL.md", self.agents_verification_section)
+        self.assertIn(".cursor/skills/tech-stack-pulse/SKILL.md", self.agents_verification_section)
+        self.assertIn("events-scout.md", self.agents_verification_section)
+        self.assertIn("stack-radar.md", self.agents_verification_section)
+
     def test_continuity_log_tracks_event_to_networking_loop_next_step(self) -> None:
         self.assertIn("Run the new event-to-networking loop on a real event", self.continuity_text)
         self.assertIn("`/events-research`", self.continuity_text)
