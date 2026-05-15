@@ -16,7 +16,7 @@ disable-model-invocation: true
 
 **Tyler’s tech stack** in this workflow means **the inventory in [`docs/TECH_STACK.md`](../../../docs/TECH_STACK.md)** for AgentOS (plain-language “my tech stack,” versioned in Git). If Tyler names extra tools in chat, include them for this run only and suggest adding them to `TECH_STACK.md` if they recur.
 
-**Core stack** means the **default core set** named in `docs/TECH_STACK.md` under **“Core stack (priority in `/tech-stack-updates` digests)”** (currently **Cursor**, **Gemini**, **Hermez**, **OpenClaw**, **Anti-Gravity**, with any **mapping notes** in that table treated as authoritative for what to research). Everything else in the full checklist is **non-core** for sectioning purposes.
+**Core stack** means the **default core set** named in `docs/TECH_STACK.md` under **“Core stack (priority in `/tech-stack-updates` digests)”** (currently **Cursor**, **Gemini**, **Hermes** (Hermes Agent framework), **OpenClaw**, **Antigravity** (Google IDE), with any **mapping notes** in that table treated as authoritative for what to research). Everything else in the full checklist is **non-core** for sectioning purposes.
 
 ## Preconditions
 
@@ -35,7 +35,7 @@ disable-model-invocation: true
 1. **Security / trust:** CVEs, security patches, supply-chain notices for anything in the checklist (even if release is older but **disclosure** landed in the window).  
 2. **Shipped changes:** stable/beta releases, deprecations, breaking API changes, pricing changes **only** if sourced.  
 3. **Roadmaps & previews:** upcoming features **only** with **official** roadmap, conference session, RFC, or changelog “coming soon” lines — label **tentative** with date/source.  
-4. **Synergies & integrations:** cross-stack news (e.g. new **MCP** server for a tool Tyler uses; **Cursor** x **Git** workflow; **Gemini** API changes affecting **Anti-Gravity** / **Antigravity** setups; **Laravel** + **Livewire** joint releases; **React** + **TypeScript** compiler coupling). Dedicate a **section** to this; **lead with rows where at least one side is core stack** (then other pairs); empty is OK if nothing credible turned up.
+4. **Synergies & integrations:** cross-stack news (e.g. new **MCP** server for a tool Tyler uses; **Cursor** x **Git** workflow; **Gemini** API changes affecting **Antigravity** or **Hermes** setups; **Laravel** + **Livewire** joint releases; **React** + **TypeScript** compiler coupling). Dedicate a **section** to this; **lead with rows where at least one side is core stack** (then other pairs); empty is OK if nothing credible turned up.
 
 ## Search strategy
 
