@@ -63,6 +63,22 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
             self.command_text,
         )
 
+    def test_default_digest_priority_orders_current_naming_before_legacy(self) -> None:
+        self.assertRegex(
+            self.command_text,
+            re.compile(
+                r"Input digest:.*events-YYYY-MM-DD\.md.*if none exist, try legacy.*events-research-YYYY-MM-DD\.md",
+                re.DOTALL,
+            ),
+        )
+        self.assertRegex(
+            self.agent_text,
+            re.compile(
+                r"If no digest path was provided, use the latest:.*1\.\s+`docs/research/events-YYYY-MM-DD\.md`, or.*2\.\s+legacy `docs/research/events-research-YYYY-MM-DD\.md`",
+                re.DOTALL,
+            ),
+        )
+
     def test_command_fallback_keeps_career_fit_grounding(self) -> None:
         self.assertIn("If delegation is unavailable", self.command_text)
         self.assertIn("say so once", self.command_text)
@@ -95,6 +111,7 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
 
     def test_agent_guardrails_include_honesty_and_overlap_clarity(self) -> None:
         self.assertIn("No fabrication", self.agent_text)
+        self.assertIn("docs/BOUNDARIES.md", self.agent_text)
         self.assertIn("direct overlap", self.agent_text)
         self.assertIn("adjacent overlap", self.agent_text)
         self.assertIn("best 3 targets or fewer", self.agent_text)
@@ -143,6 +160,13 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
         self.assertIn("Prefer official speaker pages, organizer agendas", self.skill_text)
         self.assertIn("best company-level targets plus a human-check list", self.skill_text)
         self.assertIn("ask Tyler to choose instead of pretending certainty", self.skill_text)
+
+    def test_audience_filter_and_chat_only_contracts_are_consistent(self) -> None:
+        self.assertIn("skip pure marketing or sales contacts", self.command_text)
+        self.assertIn("Skip low-signal marketing or sales contacts", self.agent_text)
+        self.assertIn("Exclude low-signal marketing or sales contacts", self.skill_text)
+        self.assertIn("or say `chat-only`", self.command_text)
+        self.assertIn("chat output is acceptable", self.skill_text)
 
     def test_skill_output_template_keeps_key_fields_for_downstream_use(self) -> None:
         self.assertIn("- **Prepared:** [ISO date] (America/New_York)", self.skill_text)
