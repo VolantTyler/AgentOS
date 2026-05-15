@@ -30,6 +30,17 @@ def parse_frontmatter(markdown_text: str) -> dict[str, str]:
     return frontmatter
 
 
+def get_heading_section(markdown_text: str, heading: str) -> str:
+    match = re.search(
+        rf"^### {re.escape(heading)}\n(.*?)(?=^### |\Z)",
+        markdown_text,
+        re.DOTALL | re.MULTILINE,
+    )
+    if not match:
+        return ""
+    return match.group(1)
+
+
 class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -39,8 +50,10 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
         cls.readme_text = read_text(README_PATH)
         cls.agents_doc_text = read_text(AGENTS_DOC_PATH)
         cls.research_readme_text = read_text(RESEARCH_README_PATH)
+        cls.continuity_text = read_text(REPO_ROOT / "docs/CONTINUITY.md")
         cls.agent_frontmatter = parse_frontmatter(cls.agent_text)
         cls.skill_frontmatter = parse_frontmatter(cls.skill_text)
+        cls.agents_verification_section = get_heading_section(cls.agents_doc_text, "Verifying the environment")
 
     def test_command_requires_delegation_to_repo_subagent(self) -> None:
         self.assertIn("`lookahead-networker`", self.command_text)
@@ -214,6 +227,28 @@ class LookaheadNetworkingWorkflowContractTests(unittest.TestCase):
         self.assertIn("docs/research/networking-targets-YYYY-MM-DD-<eventslug>.md", self.research_readme_text)
         self.assertIn("events-YYYY-MM-DD.md", self.research_readme_text)
         self.assertIn("tech-stack-updates-YYYY-MM-DD.md", self.research_readme_text)
+
+    def test_command_to_agent_preserves_save_or_archive_persistence_intent(self) -> None:
+        self.assertIn("`save` / `archive` instruction", self.command_text)
+        self.assertIn("whether Tyler wants the output saved", self.agent_text)
+        self.assertIn("If Tyler did not ask to save, chat output is acceptable", self.skill_text)
+
+    def test_uncertainty_handling_requires_human_checks_across_all_layers(self) -> None:
+        self.assertIn("Human checks", self.command_text)
+        self.assertIn("human-check list", self.agent_text)
+        self.assertIn("## Human check before the event", self.skill_text)
+        self.assertIn("ask Tyler to choose instead of pretending certainty", self.skill_text)
+
+    def test_agents_verification_section_lists_lookahead_assets(self) -> None:
+        self.assertNotEqual("", self.agents_verification_section.strip())
+        self.assertIn(".cursor/commands/lookahead-match.md", self.agents_verification_section)
+        self.assertIn(".cursor/skills/lookahead-networker/SKILL.md", self.agents_verification_section)
+        self.assertIn("lookahead-networker.md", self.agents_verification_section)
+
+    def test_continuity_log_tracks_event_to_networking_loop_next_step(self) -> None:
+        self.assertIn("Run the new event-to-networking loop on a real event", self.continuity_text)
+        self.assertIn("`/events-research`", self.continuity_text)
+        self.assertIn("`/lookahead-match`", self.continuity_text)
 
 
 if __name__ == "__main__":

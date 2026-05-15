@@ -53,5 +53,5 @@ There is no linter, test runner, or build command configured. If executable code
 
 To confirm the repo is healthy, check that:
 1. `git status` runs cleanly.
-2. All expected files exist: `AGENTS.md`, `README.md`, `docs/CONTINUITY.md`, `docs/RUNTIME_AND_AGENTS.md`, `docs/BOUNDARIES.md`, `docs/identity-brief.md`, `docs/ONBOARDING_OPEN_QUESTIONS.md`, `.cursor/commands/events-research.md`, `.cursor/commands/tech-stack-updates.md`, `.cursor/skills/events-research/SKILL.md`, `.cursor/skills/tech-stack-pulse/SKILL.md`, and the `.cursor/agents/*.md` files (including `events-scout.md` and `stack-radar.md`).
+2. All expected files exist: `AGENTS.md`, `README.md`, `docs/CONTINUITY.md`, `docs/RUNTIME_AND_AGENTS.md`, `docs/BOUNDARIES.md`, `docs/identity-brief.md`, `docs/ONBOARDING_OPEN_QUESTIONS.md`, `.cursor/commands/events-research.md`, `.cursor/commands/lookahead-match.md`, `.cursor/commands/tech-stack-updates.md`, `.cursor/skills/events-research/SKILL.md`, `.cursor/skills/lookahead-networker/SKILL.md`, `.cursor/skills/tech-stack-pulse/SKILL.md`, and the `.cursor/agents/*.md` files (including `events-scout.md`, `lookahead-networker.md`, and `stack-radar.md`).
 3. `.env` has been created from `.env.example` (never committed).
