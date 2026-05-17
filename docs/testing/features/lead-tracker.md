@@ -59,11 +59,19 @@ What should `feature-testing-agent` rerun later?
   - `docs/testing/features/lead-tracker.md`
   - `.env.example`
 - Search for `lead-tracker`, `/lead-tracker`, `LEAD_TRACKER_SPREADSHEET_ID`, and `gws sheets +append` in the repo to confirm discoverability and integration wiring.
+- Confirm `.cursor/commands/lead-tracker.md` still requires delegation to `lead-tracker` and includes the explicit self-run fallback when delegation is unavailable.
+- Confirm output contracts stay aligned across `.cursor/commands/lead-tracker.md` and `.cursor/agents/lead-tracker.md`:
+  - result status stays constrained to `synced`, `prepared-but-not-synced`, or `needs-clarification`,
+  - a structured row/entry is always returned, and
+  - sync claims include evidence while blocked paths include a concrete blocker.
 - Confirm `docs/integrations/google-sheets-lead-tracker.md` still documents:
   - the sheet column layout,
   - the local config variables,
   - the append command, and
   - the read-back command.
+- Confirm append-only write behavior remains the default:
+  - `gws sheets +append` remains the normal write path for contact rows, and
+  - no overwrite-style command is introduced for routine contact logging.
 - Confirm `.cursor/agents/lead-tracker.md` still contains all sync-safety rules:
   - no sync success claims without direct command evidence,
   - explicit `chat-only` / `do not sync` handling,
@@ -72,9 +80,11 @@ What should `feature-testing-agent` rerun later?
 - Confirm `docs/integrations/google-sheets-lead-tracker.md` still uses the range fallback expression `${LEAD_TRACKER_SHEET_RANGE:-Recent Contacts!A:K}` for append and read examples.
 - Confirm `.cursor/agents/lead-tracker.md` still requires a **single-row append** using JSON values (`--json-values`) rather than multi-row writes or overwrite-style update commands.
 - Scenario probes to run during feature-test execution:
+  - If delegation is unavailable, expected path still follows the subagent workflow instructions directly and returns the same four-part output contract.
   - If the note has partial fields but clear contact identity, expected result is `prepared-but-not-synced` or `synced` with missing non-critical fields left blank/`unknown`.
   - If the user says `chat-only` or `do not sync`, expected result is no write attempt and a prepared row in output.
   - If `LEAD_TRACKER_SPREADSHEET_ID` or `gws` is unavailable, expected result is a setup blocker with no sync claim.
+  - If a sync path is attempted and succeeds, expected result `synced` includes command evidence rather than a plain assertion.
   - If `LEAD_TRACKER_SHEET_RANGE` is unset, expected path still references `Recent Contacts!A:K`.
   - If `LEAD_TRACKER_SHEET_RANGE` is set, expected append/read path references the configured override range.
   - If the note lacks contact identity or actionable follow-up context, expected result is `needs-clarification` and no sync attempt.
