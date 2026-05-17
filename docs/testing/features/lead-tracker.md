@@ -38,6 +38,7 @@ List the durable places where this feature shows up.
 - [ ] The workflow returns `needs-clarification` (without sync attempts) when the note cannot identify the contact or useful next action.  
 - [ ] Row append payloads use JSON values so commas/quotes in notes do not corrupt column alignment.  
 - [ ] `Logged at` is populated with current date/time when the source note lacks an explicit timestamp.  
+- [ ] `Logged at` preserves an explicit source-note timestamp when one is provided, instead of overwriting it with "now".  
 - [ ] Valid notes that cannot sync due to missing local tools/config return `prepared-but-not-synced` (not `needs-clarification`).  
 - [ ] `.env.example` keeps `LEAD_TRACKER_SHEET_RANGE=Recent Contacts!A:K` as the default local range value for onboarding consistency.  
 - [ ] The workflow is discoverable from the repo docs.
@@ -67,6 +68,7 @@ What should `feature-testing-agent` rerun later?
 - Confirm output contracts stay aligned across `.cursor/commands/lead-tracker.md` and `.cursor/agents/lead-tracker.md`:
   - result status stays constrained to `synced`, `prepared-but-not-synced`, or `needs-clarification`,
   - a structured row/entry is always returned, and
+  - a short follow-up recommendation is always included, and
   - sync claims include evidence while blocked paths include a concrete blocker.
 - Confirm blocked-path status mapping remains stable:
   - valid note + sync blocker (`gws` missing, spreadsheet ID missing, append error) maps to `prepared-but-not-synced`, and
@@ -110,6 +112,7 @@ What should `feature-testing-agent` rerun later?
   - If the note lacks contact identity or actionable follow-up context, expected result is `needs-clarification` and no sync attempt.
   - If notes contain commas or quotes, expected append payload remains valid JSON and keeps all values in the 11-column order.
   - If the source note lacks a timestamp, expected structured row still includes a generated `Logged at` value.
+  - If the source note includes an explicit timestamp, expected structured row preserves that timestamp in `Logged at` instead of replacing it with runtime "now".
 
 ## Formatting / connection checks
 
