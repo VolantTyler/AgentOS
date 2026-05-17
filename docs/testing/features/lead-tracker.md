@@ -33,11 +33,13 @@ List the durable places where this feature shows up.
 - [ ] The workflow supports `chat-only` / `do not sync` requests by returning a prepared row without attempting a write.  
 - [ ] Missing `gws` or missing sheet config produces an explicit blocker instead of a false success.  
 - [ ] Sheet range fallback remains `Recent Contacts!A:K` when no override is configured.  
+- [ ] `lead-tracker` remains registered in both `docs/testing/suites/smoke.md` and `docs/testing/suites/full.md` so regressions are not silently excluded from suite runs.  
 - [ ] The default row field order in `.cursor/agents/lead-tracker.md` remains aligned with the 11-column `Recent Contacts` layout in `docs/integrations/google-sheets-lead-tracker.md`.  
 - [ ] The workflow returns `needs-clarification` (without sync attempts) when the note cannot identify the contact or useful next action.  
 - [ ] Row append payloads use JSON values so commas/quotes in notes do not corrupt column alignment.  
 - [ ] `Logged at` is populated with current date/time when the source note lacks an explicit timestamp.  
 - [ ] Valid notes that cannot sync due to missing local tools/config return `prepared-but-not-synced` (not `needs-clarification`).  
+- [ ] `.env.example` keeps `LEAD_TRACKER_SHEET_RANGE=Recent Contacts!A:K` as the default local range value for onboarding consistency.  
 - [ ] The workflow is discoverable from the repo docs.
 
 ## Evaluation recipe
@@ -80,6 +82,9 @@ What should `feature-testing-agent` rerun later?
 - Confirm append-only write behavior remains the default:
   - `gws sheets +append` remains the normal write path for contact rows, and
   - no overwrite-style command is introduced for routine contact logging.
+- Confirm suite registration remains intact:
+  - `docs/testing/suites/smoke.md` still includes `lead-tracker`, and
+  - `docs/testing/suites/full.md` still includes `lead-tracker`.
 - Confirm `/lead-tracker` default wiring still sets append-first behavior:
   - `.cursor/commands/lead-tracker.md` keeps `Write mode` as append for normal sync paths, and
   - fallback guidance still returns prepared entries with blockers instead of implied sync.
@@ -89,6 +94,9 @@ What should `feature-testing-agent` rerun later?
   - blocker behavior when `gws` or config is unavailable, and
   - `LEAD_TRACKER_SHEET_RANGE` fallback to `Recent Contacts!A:K`.
 - Confirm `docs/integrations/google-sheets-lead-tracker.md` still uses the range fallback expression `${LEAD_TRACKER_SHEET_RANGE:-Recent Contacts!A:K}` for append and read examples.
+- Confirm `.env.example` still defines:
+  - `LEAD_TRACKER_SPREADSHEET_ID=`, and
+  - `LEAD_TRACKER_SHEET_RANGE=Recent Contacts!A:K`.
 - Confirm `.cursor/agents/lead-tracker.md` still requires a **single-row append** using JSON values (`--json-values`) rather than multi-row writes or overwrite-style update commands.
 - Scenario probes to run during feature-test execution:
   - If delegation is unavailable, expected path still follows the subagent workflow instructions directly and returns the same four-part output contract.
