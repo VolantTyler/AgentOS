@@ -14,6 +14,7 @@ Include:
 ## Current members
 
 - `feature-quality-system`
+- `lead-tracker`
 
 ## Expected use
 
