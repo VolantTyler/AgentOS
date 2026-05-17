@@ -14,9 +14,9 @@ These tools are the **default core set** for weekly tech-stack research: agents 
 |-----------------|-------------------------------|
 | **Cursor** | AI-assisted development; AgentOS tooling. |
 | **Gemini** | Models & inference; Gemini AI Coach when workflow-relevant. |
-| **Hermez** | Portfolio line **Hermes Agent** (exploratory) — treat as the same research target unless a distinct *Hermez* product is documented here later. |
+| **Hermes** | **Hermes Agent** (Nous Research) — open-source agent framework; portfolio line is exploratory. `/tech-stack-updates` research target: [`NousResearch/hermes-agent`](https://github.com/NousResearch/hermes-agent) releases and security notices. |
 | **OpenClaw** | Active project — multi-agent WoW auction analytics. |
-| **Anti-Gravity** | Same product as **Antigravity** in AI-assisted development (multi-agent framework + IDE in the OpenClaw setup). |
+| **Antigravity** | Google’s **Antigravity** IDE (agent-first development). In this doc: AI-assisted development and OpenClaw orchestration (HITL, gateway allowlists) — see **Antigravity** under [AI-assisted development](#ai-assisted-development-today). |
 
 Tyler may **override** the set for a single run by naming tools in chat; recurring changes belong in this table (git).
 
@@ -146,5 +146,6 @@ Hybrid routing by task complexity (exact tiers evolve — confirm in Google’s 
 
 ## Changelog
 
-- **2026-05-13:** Documented **core stack** (Cursor, Gemini, Hermez, OpenClaw, Anti-Gravity) for `/tech-stack-updates` digest priority and core vs non-core sectioning in the pulse skill.
+- **2026-05-14:** Corrected **core stack** names in this table: **Hermes** (was a typo *Hermez*) for the Hermes Agent framework, and **Antigravity** (was a typo *Anti-Gravity*) for Google’s IDE; aligned `.cursor/skills/tech-stack-pulse/SKILL.md` and the `2026-05-14` stack digest wording.
+- **2026-05-13:** Documented **core stack** (Cursor, Gemini, Hermes, OpenClaw, Antigravity) for `/tech-stack-updates` digest priority and core vs non-core sectioning in the pulse skill.
 - **2026-05-13:** Initial consolidation from `identity-brief.md` + `_private/context-portfolio` (03, 05, 09).

@@ -12,6 +12,7 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [ ] **Deferred:** Work through boundary / operating-model questions in [`docs/ONBOARDING_OPEN_QUESTIONS.md`](ONBOARDING_OPEN_QUESTIONS.md) (new chat or `onboarding-guide` subagent).
 - [ ] Pick first integrations (calendar, tasks, email) once trust model is clear.
 - [ ] Flesh out `.cursor/agents/` roles to match real recurring workflows.
+- [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles, then decide whether it deserves a dedicated skill or SDK automation.
 
 ## Last session
 

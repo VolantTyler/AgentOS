@@ -18,7 +18,7 @@ Use only as **starting URLs**; always confirm the latest path on the vendor site
 | Python | `https://www.python.org/downloads/` + release PEPs |
 | SQLite | `https://sqlite.org/changes.html` |
 | Docker | Docker official blog + Engine release notes |
-| Hermes Agent / **Hermez** (core name) | `https://github.com/NousResearch/hermes-agent/releases` (confirm mapping still matches Tyler’s intent) |
+| Hermes (Hermes Agent framework) | `https://github.com/NousResearch/hermes-agent/releases` |
 | Cursor SDK | `https://cursor.com/docs/api/sdk/typescript` |
 
 Security: **GitHub Advisory Database**, **NVD**, vendor security bulletins — only when tied to a dependency Tyler actually uses.
