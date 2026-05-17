@@ -29,6 +29,17 @@ Start here on every new session:
 - **Agent:** **`job-fit-analyst`** → [`.cursor/agents/job-fit-analyst.md`](.cursor/agents/job-fit-analyst.md): evaluates fit, red flags, unknowns, and application positioning; can write dated briefs under [`docs/research/`](docs/research/README.md).  
 - **Cron / SDK later:** prompt an agent to run **events-scout**, **lookahead-networker**, or **stack-radar** with the matching skill path in context.
 
+## Quality workflows
+
+- **Evaluation:** [`.cursor/commands/evaluate-feature.md`](.cursor/commands/evaluate-feature.md) → **`feature-evaluator`** ([`.cursor/agents/feature-evaluator.md`](.cursor/agents/feature-evaluator.md)) for immediate "did we build this feature to spec?" checks.
+- **Testing:** [`.cursor/commands/run-feature-tests.md`](.cursor/commands/run-feature-tests.md) → **`feature-testing-agent`** ([`.cursor/agents/feature-testing-agent.md`](.cursor/agents/feature-testing-agent.md)) for stable manifest-driven checks across one feature, impacted features, or full suites.
+- **Workflow guide:** [`docs/testing/README.md`](docs/testing/README.md) explains the split, manifest contract, and suite semantics.
+
+## Repo-defined subagents
+
+- **feature-evaluator** — [`.cursor/agents/feature-evaluator.md`](.cursor/agents/feature-evaluator.md): evaluates a newly built feature against explicit acceptance criteria before broader regression runs.
+- **feature-testing-agent** — [`.cursor/agents/feature-testing-agent.md`](.cursor/agents/feature-testing-agent.md): runs committed feature manifests and suites for targeted or broad regression coverage.
+
 ## GitHub
 
 Remote: [github.com/VolantTyler/AgentOS](https://github.com/VolantTyler/AgentOS)

@@ -16,6 +16,7 @@ This repository is a long-lived **Chief-of-Staff** system: planning, synthesis, 
 - `docs/RUNTIME_AND_AGENTS.md` — how we run agent loops; Cursor SDK vs alternatives; links to official docs.
 - `docs/BOUNDARIES.md` — honesty, capability limits, anti-exaggeration, and sourcing norms for agents.
 - `docs/TECH_STACK.md` — languages, tools, and per-project stacks (professional; keep current).
+- `docs/testing/README.md` — evaluation vs testing workflow, manifest contract, and suite semantics for durable quality checks.
 - `docs/career-fit-context.md` — work anxieties, fit profile, and how agents should support career/job tasks (portable).
 - `docs/ONBOARDING_OPEN_QUESTIONS.md` — **deferred** boundary / onboarding checklist; resume in a new chat when ready.
 - `docs/identity-brief.md` — **cloud-safe** identity and working-style context for remote agents and fresh clones. Full detail stays **local-only** in `docs/_private/context-portfolio/` (never committed).
@@ -28,6 +29,10 @@ This repository is a long-lived **Chief-of-Staff** system: planning, synthesis, 
 - `.cursor/skills/lookahead-networker/` — **lookahead-networker** skill: turn a saved event digest into a pre-event networking brief with high-value targets, technical icebreakers, and short outreach drafts.
 - `.cursor/commands/lookahead-match.md` — slash command **`/lookahead-match`**; instructs parent to delegate to **lookahead-networker**.
 - `.cursor/agents/lookahead-networker.md` — **lookahead-networker** subagent; writes `docs/research/networking-targets-*.md`.
+- `.cursor/commands/evaluate-feature.md` — slash command **`/evaluate-feature`**; delegates to **feature-evaluator** for post-build spec checks.
+- `.cursor/commands/run-feature-tests.md` — slash command **`/run-feature-tests`**; delegates to **feature-testing-agent** for manifest-driven regression runs.
+- `.cursor/agents/feature-evaluator.md` — **feature-evaluator** subagent; determines whether a just-built feature matches specification and is ready for regression testing.
+- `.cursor/agents/feature-testing-agent.md` — **feature-testing-agent** subagent; runs committed feature manifests and suites for one-feature, impacted-feature, or full regression coverage.
 - `.cursor/agents/` — other named subagent definitions (`research-brief`, `work-strategist`, etc.).
 
 ## When changing behavior
@@ -41,17 +46,31 @@ This is a **documentation-only repository** today — no `package.json`, no buil
 ### What "running" means here
 
 - **Git** is the only required tool. All continuity and agent context lives in committed markdown.
-- Subagent definitions in `.cursor/agents/` (including **`events-scout`**, **`lookahead-networker`**, **`stack-radar`**, `onboarding-guide`, `work-strategist`, `research-brief`, `household-coordinator`) are consumed by the Cursor agent runtime — they do not need to be "started" separately.
-- Project **skills** live under `.cursor/skills/`; **slash commands** under `.cursor/commands/` (e.g. **`/events-research`**, **`/lookahead-match`**).
+- Subagent definitions in `.cursor/agents/` (including **`events-scout`**, **`lookahead-networker`**, **`stack-radar`**, **`feature-evaluator`**, **`feature-testing-agent`**, `onboarding-guide`, `work-strategist`, `research-brief`, `household-coordinator`) are consumed by the Cursor agent runtime — they do not need to be "started" separately.
+- Project **skills** live under `.cursor/skills/`; **slash commands** under `.cursor/commands/` (e.g. **`/events-research`**, **`/lookahead-match`**, **`/evaluate-feature`**, **`/run-feature-tests`**).
 - `.env.example` defines a single `CURSOR_API_KEY` for future `@cursor/sdk` programmatic usage; no code uses it yet.
 
 ### No build/lint/test steps exist
 
 There is no linter, test runner, or build command configured. If executable code (e.g. a `package.json` with `@cursor/sdk`) is added in the future, update this section with the corresponding install/lint/test/run commands.
 
+### Feature handoff expectation
+
+After implementing a feature or materially changing one, end your user-facing
+response with a short **Try it out** section.
+
+- Prefer **Cursor slash commands** or other chat-native instructions over
+  proposing a CLI unless the repo already has a real CLI entrypoint.
+- Include at least:
+  1. one immediate **evaluation** step (for example `/evaluate-feature ...`),
+  2. one targeted **testing** step (for example `/run-feature-tests feature ...`), and
+  3. if useful, one broader optional regression step (for example `suite smoke` or `suite full`).
+- State the expected result in one short sentence so Tyler knows what success
+  should look like.
+
 ### Verifying the environment
 
 To confirm the repo is healthy, check that:
 1. `git status` runs cleanly.
-2. All expected files exist: `AGENTS.md`, `README.md`, `docs/CONTINUITY.md`, `docs/RUNTIME_AND_AGENTS.md`, `docs/BOUNDARIES.md`, `docs/identity-brief.md`, `docs/ONBOARDING_OPEN_QUESTIONS.md`, `.cursor/commands/events-research.md`, `.cursor/commands/tech-stack-updates.md`, `.cursor/skills/events-research/SKILL.md`, `.cursor/skills/tech-stack-pulse/SKILL.md`, and the `.cursor/agents/*.md` files (including `events-scout.md` and `stack-radar.md`).
+2. All expected files exist: `AGENTS.md`, `README.md`, `docs/CONTINUITY.md`, `docs/RUNTIME_AND_AGENTS.md`, `docs/BOUNDARIES.md`, `docs/testing/README.md`, `docs/identity-brief.md`, `docs/ONBOARDING_OPEN_QUESTIONS.md`, `.cursor/commands/events-research.md`, `.cursor/commands/lookahead-match.md`, `.cursor/commands/tech-stack-updates.md`, `.cursor/commands/evaluate-feature.md`, `.cursor/commands/run-feature-tests.md`, `.cursor/skills/events-research/SKILL.md`, `.cursor/skills/lookahead-networker/SKILL.md`, `.cursor/skills/tech-stack-pulse/SKILL.md`, and the `.cursor/agents/*.md` files (including `events-scout.md`, `lookahead-networker.md`, `stack-radar.md`, `feature-evaluator.md`, and `feature-testing-agent.md`).
 3. `.env` has been created from `.env.example` (never committed).
