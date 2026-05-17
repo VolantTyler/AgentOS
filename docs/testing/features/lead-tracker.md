@@ -29,6 +29,10 @@ List the durable places where this feature shows up.
 - [ ] `/lead-tracker` delegates to the matching subagent or follows the same workflow itself when delegation is unavailable.  
 - [ ] The Google Sheets integration doc defines a concrete `gws`-based setup and append path.  
 - [ ] Local configuration for the target spreadsheet is documented in `.env.example`.  
+- [ ] The workflow does not report "synced" unless command evidence exists.  
+- [ ] The workflow supports `chat-only` / `do not sync` requests by returning a prepared row without attempting a write.  
+- [ ] Missing `gws` or missing sheet config produces an explicit blocker instead of a false success.  
+- [ ] Sheet range fallback remains `Recent Contacts!A:K` when no override is configured.  
 - [ ] The workflow is discoverable from the repo docs.
 
 ## Evaluation recipe
@@ -57,6 +61,17 @@ What should `feature-testing-agent` rerun later?
   - the local config variables,
   - the append command, and
   - the read-back command.
+- Confirm `.cursor/agents/lead-tracker.md` still contains all sync-safety rules:
+  - no sync success claims without direct command evidence,
+  - explicit `chat-only` / `do not sync` handling,
+  - blocker behavior when `gws` or config is unavailable, and
+  - `LEAD_TRACKER_SHEET_RANGE` fallback to `Recent Contacts!A:K`.
+- Confirm `docs/integrations/google-sheets-lead-tracker.md` still uses the range fallback expression `${LEAD_TRACKER_SHEET_RANGE:-Recent Contacts!A:K}` for append and read examples.
+- Scenario probes to run during feature-test execution:
+  - If the note has partial fields but clear contact identity, expected result is `prepared-but-not-synced` or `synced` with missing non-critical fields left blank/`unknown`.
+  - If the user says `chat-only` or `do not sync`, expected result is no write attempt and a prepared row in output.
+  - If `LEAD_TRACKER_SPREADSHEET_ID` or `gws` is unavailable, expected result is a setup blocker with no sync claim.
+  - If `LEAD_TRACKER_SHEET_RANGE` is unset, expected path still references `Recent Contacts!A:K`.
 
 ## Formatting / connection checks
 
