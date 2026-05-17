@@ -10,18 +10,20 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 
 - [ ] Confirm domain boundaries: what is in-scope for “household” vs “work” automation vs advisory-only.
 - [ ] **Deferred:** Work through boundary / operating-model questions in [`docs/ONBOARDING_OPEN_QUESTIONS.md`](ONBOARDING_OPEN_QUESTIONS.md) (new chat or `onboarding-guide` subagent).
-- [ ] Pick first integrations (calendar, tasks, email) once trust model is clear.
+- [x] Pick a first low-risk external integration: **lead tracking to Google Sheets via Google Workspace CLI**. Documented in [`docs/integrations/google-sheets-lead-tracker.md`](integrations/google-sheets-lead-tracker.md).
+- [ ] Decide whether the next integrations should be calendar, tasks, email, or a derived "open follow-ups" view from the lead tracker log.
 - [ ] Flesh out `.cursor/agents/` roles to match real recurring workflows.
 - [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles, then decide whether it deserves a dedicated skill or SDK automation.
 
 ## Last session
 
-- **Date:** 2026-05-15
-- **What we did:** Split quality workflows into **evaluation** and **testing**. Added **`feature-evaluator`**, repurposed **`feature-testing-agent`** for manifest-driven regression runs, added `/evaluate-feature` + `/run-feature-tests`, created `docs/testing/` with manifest and suite scaffolding, and documented a standing **Try it out** handoff pattern for future feature work.
-- **Decisions:** Treat **evaluation** as post-build spec conformance for a new feature, treat **testing** as reusable saved regression checks that can run one feature, impacted features, or full suites, and prefer **slash-command** examples over a CLI in user-facing tryout instructions until a real CLI exists.
-- **Next:** As real features land, add or update a manifest under `docs/testing/features/`, run `/evaluate-feature` first, then `/run-feature-tests` in targeted or suite mode.
+- **Date:** 2026-05-17
+- **What we did:** Added a new **`lead-tracker`** workflow with `/lead-tracker`, a dedicated subagent prompt, a Google Sheets integration note under `docs/integrations/`, local `.env` config examples, and a saved feature manifest for regression checks.
+- **Decisions:** Start with an **append-only recent-contacts log** in Google Sheets rather than row-mutation CRM logic, use **Google Workspace CLI** (`gws`) as the low-friction write path, and fall back to chat-only structured rows whenever local config or CLI access is missing.
+- **Next:** Try the lead tracker with real contacts, decide whether a derived **Open Follow-ups** view should be the next increment, and only then consider broader CRM-style integrations.
 
 ## Open questions
 
 - Which workloads must stay 100% local vs OK in Cursor cloud agents?
 - What is the minimum “daily briefing” artifact format (markdown, canvas, email draft)?
+- Should lead tracking remain append-only, or does it eventually need a second deduplicated view for active leads?
