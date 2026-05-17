@@ -16,10 +16,10 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 
 ## Last session
 
-- **Date:** 2026-05-14
-- **What we did:** Added a durable job-fit system: [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md), the [`job-fit-analyst`](../.cursor/agents/job-fit-analyst.md) subagent, and the **`/job-fit`** slash command for comparing JDs/company descriptions against Tyler's documented strengths, interests, constraints, and preferred environments.
-- **Decisions:** Start with a **workflow + subagent**, not a dedicated skill. Make the **scorecard-first** summary the default top section so job-fit reports are quick to scan before reading the long-form analysis.
-- **Next:** Use `/job-fit` on live roles, store only high-value dated briefs under `docs/research/`, and capture interview/application outcomes to calibrate future fit judgments.
+- **Date:** 2026-05-15
+- **What we did:** Split quality workflows into **evaluation** and **testing**. Added **`feature-evaluator`**, repurposed **`feature-testing-agent`** for manifest-driven regression runs, added `/evaluate-feature` + `/run-feature-tests`, created `docs/testing/` with manifest and suite scaffolding, and documented a standing **Try it out** handoff pattern for future feature work.
+- **Decisions:** Treat **evaluation** as post-build spec conformance for a new feature, treat **testing** as reusable saved regression checks that can run one feature, impacted features, or full suites, and prefer **slash-command** examples over a CLI in user-facing tryout instructions until a real CLI exists.
+- **Next:** As real features land, add or update a manifest under `docs/testing/features/`, run `/evaluate-feature` first, then `/run-feature-tests` in targeted or suite mode.
 
 ## Open questions
 
