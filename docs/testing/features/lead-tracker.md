@@ -33,6 +33,9 @@ List the durable places where this feature shows up.
 - [ ] The workflow supports `chat-only` / `do not sync` requests by returning a prepared row without attempting a write.  
 - [ ] Missing `gws` or missing sheet config produces an explicit blocker instead of a false success.  
 - [ ] Sheet range fallback remains `Recent Contacts!A:K` when no override is configured.  
+- [ ] The workflow returns `needs-clarification` (without sync attempts) when the note cannot identify the contact or useful next action.  
+- [ ] Row append payloads use JSON values so commas/quotes in notes do not corrupt column alignment.  
+- [ ] `Logged at` is populated with current date/time when the source note lacks an explicit timestamp.  
 - [ ] The workflow is discoverable from the repo docs.
 
 ## Evaluation recipe
@@ -67,11 +70,17 @@ What should `feature-testing-agent` rerun later?
   - blocker behavior when `gws` or config is unavailable, and
   - `LEAD_TRACKER_SHEET_RANGE` fallback to `Recent Contacts!A:K`.
 - Confirm `docs/integrations/google-sheets-lead-tracker.md` still uses the range fallback expression `${LEAD_TRACKER_SHEET_RANGE:-Recent Contacts!A:K}` for append and read examples.
+- Confirm `.cursor/agents/lead-tracker.md` still requires a **single-row append** using JSON values (`--json-values`) rather than multi-row writes or overwrite-style update commands.
 - Scenario probes to run during feature-test execution:
   - If the note has partial fields but clear contact identity, expected result is `prepared-but-not-synced` or `synced` with missing non-critical fields left blank/`unknown`.
   - If the user says `chat-only` or `do not sync`, expected result is no write attempt and a prepared row in output.
   - If `LEAD_TRACKER_SPREADSHEET_ID` or `gws` is unavailable, expected result is a setup blocker with no sync claim.
   - If `LEAD_TRACKER_SHEET_RANGE` is unset, expected path still references `Recent Contacts!A:K`.
+  - If `LEAD_TRACKER_SHEET_RANGE` is set, expected append/read path references the configured override range.
+  - If the note lacks contact identity or actionable follow-up context, expected result is `needs-clarification` and no sync attempt.
+  - If notes contain commas or quotes, expected append payload remains valid JSON and keeps all values in the 11-column order.
+  - If the source note lacks a timestamp, expected structured row still includes a generated `Logged at` value.
+  - If an append command errors, expected result is blocker reporting with no `synced` claim.
 
 ## Formatting / connection checks
 
