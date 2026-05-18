@@ -20,12 +20,14 @@ Start here on every new session:
 
 - **events-research** — [`.cursor/skills/events-research/SKILL.md`](.cursor/skills/events-research/SKILL.md): find **NYC / northern NJ** or **online AI agent orchestration** events; writes dated digests under [`docs/research/`](docs/research/README.md).  
 - **Slash:** **`/events-research`** → [`.cursor/commands/events-research.md`](.cursor/commands/events-research.md) → delegates **`events-scout`** ([`.cursor/agents/events-scout.md`](.cursor/agents/events-scout.md)).  
+- **lookahead-networker** — [`.cursor/skills/lookahead-networker/SKILL.md`](.cursor/skills/lookahead-networker/SKILL.md): turn a saved event digest into a high-signal networking brief with top targets, concrete icebreakers, and short outreach drafts.
+- **Slash:** **`/lookahead-match`** → [`.cursor/commands/lookahead-match.md`](.cursor/commands/lookahead-match.md) → delegates **`lookahead-networker`** ([`.cursor/agents/lookahead-networker.md`](.cursor/agents/lookahead-networker.md)).
 - **tech-stack-pulse** — [`.cursor/skills/tech-stack-pulse/SKILL.md`](.cursor/skills/tech-stack-pulse/SKILL.md): **last 7 days** of official updates vs [`docs/TECH_STACK.md`](docs/TECH_STACK.md) (Tyler’s **my tech stack**, documented in-repo), **upgrade/monitor/hold** calls, **synergies** between tools, roadmap hints.  
 - **Slash:** **`/tech-stack-updates`** → [`.cursor/commands/tech-stack-updates.md`](.cursor/commands/tech-stack-updates.md) → delegates **`stack-radar`** ([`.cursor/agents/stack-radar.md`](.cursor/agents/stack-radar.md)).  
 - **job-fit workflow** — [`docs/JOB_FIT_WORKFLOW.md`](docs/JOB_FIT_WORKFLOW.md): durable process for comparing job/company descriptions against Tyler's profile, now with a scorecard-first summary for quick scanning and durable learning from outcomes over time.  
 - **Slash:** **`/job-fit`** → [`.cursor/commands/job-fit.md`](.cursor/commands/job-fit.md) → delegates **`job-fit-analyst`** ([`.cursor/agents/job-fit-analyst.md`](.cursor/agents/job-fit-analyst.md)).  
 - **Agent:** **`job-fit-analyst`** → [`.cursor/agents/job-fit-analyst.md`](.cursor/agents/job-fit-analyst.md): evaluates fit, red flags, unknowns, and application positioning; can write dated briefs under [`docs/research/`](docs/research/README.md).  
-- **Cron / SDK later:** prompt an agent to run **events-scout** or **stack-radar** with the matching skill path in context.
+- **Cron / SDK later:** prompt an agent to run **events-scout**, **lookahead-networker**, or **stack-radar** with the matching skill path in context.
 
 ## Quality workflows
 
