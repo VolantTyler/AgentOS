@@ -27,6 +27,9 @@ Start here on every new session:
 - **job-fit workflow** — [`docs/JOB_FIT_WORKFLOW.md`](docs/JOB_FIT_WORKFLOW.md): durable process for comparing job/company descriptions against Tyler's profile, now with a scorecard-first summary for quick scanning and durable learning from outcomes over time.  
 - **Slash:** **`/job-fit`** → [`.cursor/commands/job-fit.md`](.cursor/commands/job-fit.md) → delegates **`job-fit-analyst`** ([`.cursor/agents/job-fit-analyst.md`](.cursor/agents/job-fit-analyst.md)).  
 - **Agent:** **`job-fit-analyst`** → [`.cursor/agents/job-fit-analyst.md`](.cursor/agents/job-fit-analyst.md): evaluates fit, red flags, unknowns, and application positioning; can write dated briefs under [`docs/research/`](docs/research/README.md).  
+- **lead tracking** — [`docs/integrations/google-sheets-lead-tracker.md`](docs/integrations/google-sheets-lead-tracker.md): append-only recent-contact logging to Google Sheets through Google Workspace CLI when local config is present.  
+- **Slash:** **`/lead-tracker`** → [`.cursor/commands/lead-tracker.md`](.cursor/commands/lead-tracker.md) → delegates **`lead-tracker`** ([`.cursor/agents/lead-tracker.md`](.cursor/agents/lead-tracker.md)).  
+- **Agent:** **`lead-tracker`** → [`.cursor/agents/lead-tracker.md`](.cursor/agents/lead-tracker.md): normalizes lead or contact notes into structured rows and syncs them when the Google Sheets target is configured locally.  
 - **Cron / SDK later:** prompt an agent to run **events-scout**, **lookahead-networker**, or **stack-radar** with the matching skill path in context.
 
 ## Quality workflows
@@ -39,6 +42,7 @@ Start here on every new session:
 
 - **feature-evaluator** — [`.cursor/agents/feature-evaluator.md`](.cursor/agents/feature-evaluator.md): evaluates a newly built feature against explicit acceptance criteria before broader regression runs.
 - **feature-testing-agent** — [`.cursor/agents/feature-testing-agent.md`](.cursor/agents/feature-testing-agent.md): runs committed feature manifests and suites for targeted or broad regression coverage.
+- **lead-tracker** — [`.cursor/agents/lead-tracker.md`](.cursor/agents/lead-tracker.md): captures recent contacts and follow-ups, then appends them to the configured Google Sheet when allowed.
 
 ## GitHub
 

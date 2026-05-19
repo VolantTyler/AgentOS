@@ -21,6 +21,8 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 
 - [ ] Design the **weekly synthesis ritual** (which agents/skills feed it, artifact format, where it is written — e.g. `docs/research/` or a dated CoS brief).
 - [ ] **Deferred:** Work through boundary / operating-model questions in [`docs/ONBOARDING_OPEN_QUESTIONS.md`](ONBOARDING_OPEN_QUESTIONS.md) (new chat or `onboarding-guide` subagent).
+- [x] Pick a first low-risk external integration: **lead tracking to Google Sheets via Google Workspace CLI**. Documented in [`docs/integrations/google-sheets-lead-tracker.md`](integrations/google-sheets-lead-tracker.md).
+- [ ] Decide whether the next integrations should be calendar, tasks, email, or a derived "open follow-ups" view from the lead tracker log.
 - [ ] Explore **first external comm integration** when useful (after trust model is clearer); calendar/tasks/email remain candidates.
 - [ ] Flesh out `.cursor/agents/` roles to match real recurring workflows.
 - [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles, then decide whether it deserves a dedicated skill or SDK automation.
@@ -28,6 +30,10 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 
 ## Last session
 
+- **Date:** 2026-05-17
+- **What we did:** Added a new **`lead-tracker`** workflow with `/lead-tracker`, a dedicated subagent prompt, a Google Sheets integration note under `docs/integrations/`, local `.env` config examples, and a saved feature manifest for regression checks.
+- **Decisions:** Start with an **append-only recent-contacts log** in Google Sheets rather than row-mutation CRM logic, use **Google Workspace CLI** (`gws`) as the low-friction write path, and fall back to chat-only structured rows whenever local config or CLI access is missing.
+- **Next:** Try the lead tracker with real contacts, decide whether a derived **Open Follow-ups** view should be the next increment, and only then consider broader CRM-style integrations.
 - **Date:** 2026-05-17
 - **What we did:** Established the **supervisory PM** operating model in this thread (handoff → delegate → return only on issues; draft PRs; PM reads PRs via GitHub; continuity update discretion).
 - **Decisions:** Silence after delegation = success; all implementation output as **draft PRs** for now; weekly **multi-agent synthesis** + serendipitous connections are part of the north-star “done” bar.
@@ -51,3 +57,4 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - Which workloads must stay 100% local vs OK in Cursor cloud agents? *(Tyler: no strong opinion yet.)*
 - What is the minimum **weekly synthesis** artifact format (markdown digest, canvas, email draft)?
 - Which **external communication platform** is worth wiring first (if any)?
+- Should lead tracking remain append-only, or does it eventually need a second deduplicated view for active leads?
