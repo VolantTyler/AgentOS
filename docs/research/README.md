@@ -13,6 +13,7 @@ Trigger from **`/`** menu or by asking the parent agent to run the subagent by n
 ## Other durable briefs
 
 - `job-fit-*.md` or `job-fit-*-gaps-*.md` — job-fit comparisons, role-pattern summaries, and handoffs for follow-on agents (for example certification-program research).
+- `certification-recommendations-YYYY-MM-DD.md` — program picks and learning sequence mapped to job-fit trainable gaps (see [`certification-recommendations-2026-05-20.md`](certification-recommendations-2026-05-20.md)).
 
 **Naming:** `events-YYYY-MM-DD.md` for event discovery runs, `networking-targets-YYYY-MM-DD-<eventslug>.md` for pre-event networking briefs, `tech-stack-updates-YYYY-MM-DD.md` for stack scans, and dated filenames for standalone handoff briefs or snapshots.
 

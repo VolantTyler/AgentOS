@@ -151,6 +151,8 @@ Repeated in OpenAI, Google, Anthropic evangelism, and likely in some advisory ro
 
 This is a **sustainability** question, not just a skill gap.
 
+**Nuance (2026-05-20):** Tyler reports strong **customer focus and brand representation** from **Apple retail and B2B business team** experience (see [`certification-recommendations-2026-05-20.md`](certification-recommendations-2026-05-20.md) — section on customer focus vs evangelist JDs). That is **not the same** as AI-vendor evangelism (stage demos, ecosystem pressure, heavy travel) or **technical solution crafting** under ambiguity. Agents should not treat “evangelist role = skip” as “no customer-facing strengths”; calibrate separately for **KPMG-style guided client work** vs **evangelist SKIPs**.
+
 ### 3. Deep domain specialization
 
 Example: Anthropic Life Sciences.
