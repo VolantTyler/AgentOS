@@ -26,15 +26,15 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [ ] Explore **first external comm integration** when useful (after trust model is clearer); calendar/tasks/email remain candidates.
 - [ ] Flesh out `.cursor/agents/` roles to match real recurring workflows.
 - [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles, then decide whether it deserves a dedicated skill or SDK automation.
-- [ ] Ask another agent to research certification / coursework options using [`docs/research/job-fit-certification-gaps-2026-05-20.md`](research/job-fit-certification-gaps-2026-05-20.md) as the durable handoff.
+- [x] Certification / coursework recommendations saved at [`docs/research/certification-recommendations-2026-05-20.md`](research/certification-recommendations-2026-05-20.md) (mapped to job-fit gaps; Apple customer/brand nuance added).
 - [ ] Run the new event-to-networking loop on a real event: `/events-research` first, then `/lookahead-match` on the event worth attending.
 
 ## Last session
 
 - **Date:** 2026-05-20
-- **What we did:** Converted recent job-fit chat work into a durable handoff brief at [`docs/research/job-fit-certification-gaps-2026-05-20.md`](research/job-fit-certification-gaps-2026-05-20.md), summarizing evaluated roles, strongest near-term targets, recurring trainable gaps, and structural mismatches that certifications will not fix.
-- **Decisions:** Treat **KPMG Associate, AI Engineer** as the strongest recent near-term fit and **Google Cloud Forward Deployed Engineer I, GenAI** as a plausible stretch. Treat the harsher forward-deployed / architect / evangelist roles as mostly poor-fit due to environment, travel, and execution-sustainability concerns rather than missing credentials alone.
-- **Next:** Have another agent research certification programs, structured courses, and project-based alternatives against the gap brief; optimize for roles that are actually good bets, not just the most prestigious stretch targets.
+- **What we did:** Converted recent job-fit chat work into a durable handoff brief at [`docs/research/job-fit-certification-gaps-2026-05-20.md`](research/job-fit-certification-gaps-2026-05-20.md); researched and saved certification recommendations at [`docs/research/certification-recommendations-2026-05-20.md`](research/certification-recommendations-2026-05-20.md), including Apple retail/B2B customer-focus nuance vs evangelist-role SKIPs.
+- **Decisions:** Treat **KPMG Associate, AI Engineer** as the strongest recent near-term fit and **Google Cloud Forward Deployed Engineer I, GenAI** as a plausible stretch. Prioritize **Vertex, Agentic AI, RAG, multi-agent production, and Rutgers workflow cert** over MIT strategy-only paths for gap closure. Treat Apple-era customer/brand strengths as real for guided client-facing roles, distinct from high-travel AI evangelist JDs.
+- **Next:** Tyler may answer calibration questions in the recommendations doc to refine evangelism vs customer-facing positioning; start Agentic AI + Google Vertex labs; confirm Rutgers cohort with admissions.
 - **Date:** 2026-05-17
 - **What we did:** Added a new **`lead-tracker`** workflow with `/lead-tracker`, a dedicated subagent prompt, a Google Sheets integration note under `docs/integrations/`, local `.env` config examples, and a saved feature manifest for regression checks.
 - **Decisions:** Start with an **append-only recent-contacts log** in Google Sheets rather than row-mutation CRM logic, use **Google Workspace CLI** (`gws`) as the low-friction write path, and fall back to chat-only structured rows whenever local config or CLI access is missing.
