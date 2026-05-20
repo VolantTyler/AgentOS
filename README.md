@@ -20,12 +20,29 @@ Start here on every new session:
 
 - **events-research** — [`.cursor/skills/events-research/SKILL.md`](.cursor/skills/events-research/SKILL.md): find **NYC / northern NJ** or **online AI agent orchestration** events; writes dated digests under [`docs/research/`](docs/research/README.md).  
 - **Slash:** **`/events-research`** → [`.cursor/commands/events-research.md`](.cursor/commands/events-research.md) → delegates **`events-scout`** ([`.cursor/agents/events-scout.md`](.cursor/agents/events-scout.md)).  
+- **lookahead-networker** — [`.cursor/skills/lookahead-networker/SKILL.md`](.cursor/skills/lookahead-networker/SKILL.md): turn a saved event digest into a high-signal networking brief with top targets, concrete icebreakers, and short outreach drafts.
+- **Slash:** **`/lookahead-match`** → [`.cursor/commands/lookahead-match.md`](.cursor/commands/lookahead-match.md) → delegates **`lookahead-networker`** ([`.cursor/agents/lookahead-networker.md`](.cursor/agents/lookahead-networker.md)).
 - **tech-stack-pulse** — [`.cursor/skills/tech-stack-pulse/SKILL.md`](.cursor/skills/tech-stack-pulse/SKILL.md): **last 7 days** of official updates vs [`docs/TECH_STACK.md`](docs/TECH_STACK.md) (Tyler’s **my tech stack**, documented in-repo), **upgrade/monitor/hold** calls, **synergies** between tools, roadmap hints.  
 - **Slash:** **`/tech-stack-updates`** → [`.cursor/commands/tech-stack-updates.md`](.cursor/commands/tech-stack-updates.md) → delegates **`stack-radar`** ([`.cursor/agents/stack-radar.md`](.cursor/agents/stack-radar.md)).  
 - **job-fit workflow** — [`docs/JOB_FIT_WORKFLOW.md`](docs/JOB_FIT_WORKFLOW.md): durable process for comparing job/company descriptions against Tyler's profile, now with a scorecard-first summary for quick scanning and durable learning from outcomes over time.  
 - **Slash:** **`/job-fit`** → [`.cursor/commands/job-fit.md`](.cursor/commands/job-fit.md) → delegates **`job-fit-analyst`** ([`.cursor/agents/job-fit-analyst.md`](.cursor/agents/job-fit-analyst.md)).  
 - **Agent:** **`job-fit-analyst`** → [`.cursor/agents/job-fit-analyst.md`](.cursor/agents/job-fit-analyst.md): evaluates fit, red flags, unknowns, and application positioning; can write dated briefs under [`docs/research/`](docs/research/README.md).  
-- **Cron / SDK later:** prompt an agent to run **events-scout** or **stack-radar** with the matching skill path in context.
+- **lead tracking** — [`docs/integrations/google-sheets-lead-tracker.md`](docs/integrations/google-sheets-lead-tracker.md): append-only recent-contact logging to Google Sheets through Google Workspace CLI when local config is present.  
+- **Slash:** **`/lead-tracker`** → [`.cursor/commands/lead-tracker.md`](.cursor/commands/lead-tracker.md) → delegates **`lead-tracker`** ([`.cursor/agents/lead-tracker.md`](.cursor/agents/lead-tracker.md)).  
+- **Agent:** **`lead-tracker`** → [`.cursor/agents/lead-tracker.md`](.cursor/agents/lead-tracker.md): normalizes lead or contact notes into structured rows and syncs them when the Google Sheets target is configured locally.  
+- **Cron / SDK later:** prompt an agent to run **events-scout**, **lookahead-networker**, or **stack-radar** with the matching skill path in context.
+
+## Quality workflows
+
+- **Evaluation:** [`.cursor/commands/evaluate-feature.md`](.cursor/commands/evaluate-feature.md) → **`feature-evaluator`** ([`.cursor/agents/feature-evaluator.md`](.cursor/agents/feature-evaluator.md)) for immediate "did we build this feature to spec?" checks.
+- **Testing:** [`.cursor/commands/run-feature-tests.md`](.cursor/commands/run-feature-tests.md) → **`feature-testing-agent`** ([`.cursor/agents/feature-testing-agent.md`](.cursor/agents/feature-testing-agent.md)) for stable manifest-driven checks across one feature, impacted features, or full suites.
+- **Workflow guide:** [`docs/testing/README.md`](docs/testing/README.md) explains the split, manifest contract, and suite semantics.
+
+## Repo-defined subagents
+
+- **feature-evaluator** — [`.cursor/agents/feature-evaluator.md`](.cursor/agents/feature-evaluator.md): evaluates a newly built feature against explicit acceptance criteria before broader regression runs.
+- **feature-testing-agent** — [`.cursor/agents/feature-testing-agent.md`](.cursor/agents/feature-testing-agent.md): runs committed feature manifests and suites for targeted or broad regression coverage.
+- **lead-tracker** — [`.cursor/agents/lead-tracker.md`](.cursor/agents/lead-tracker.md): captures recent contacts and follow-ups, then appends them to the configured Google Sheet when allowed.
 
 ## GitHub
 

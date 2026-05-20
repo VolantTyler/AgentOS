@@ -23,6 +23,35 @@ Use `@cursor/sdk` when you want **Cursor’s agent** (models, tools, cloud/local
 1. **Default path:** Build on **`@cursor/sdk` + repo-defined subagents** so Chief-of-Staff automation aligns with the same agent capabilities you already use in Cursor, with subagent definitions versioned beside the project.
 2. **Add Hermes (or another orchestrator)** if you later need deep local-first multi-agent orchestration independent of Cursor billing/APIs, or Hermes-specific UX (profiles, kanban workers, etc.).
 
+## Evaluation vs testing
+
+For AgentOS quality workflows, keep these concepts separate:
+
+- **Evaluation:** immediate post-build validation that a feature matches its
+  specification or acceptance criteria. In this repo, that role belongs to
+  `feature-evaluator` and `/evaluate-feature`.
+- **Testing:** reusable saved checks that can be rerun later for one feature,
+  impacted features, or broader suites. In this repo, that role belongs to
+  `feature-testing-agent`, `/run-feature-tests`, and the manifests under
+  `docs/testing/`.
+
+That split keeps the "did we build the right thing?" question distinct from the
+"do the saved checks still pass?" question.
+
+## CLI-backed operational integrations
+
+Before this repo grows a full SDK application, prefer a simple pattern for
+lightweight external-state workflows:
+
+1. a **slash command** as the user-facing entry point,  
+2. a **repo-defined subagent** that normalizes intent and applies workflow rules,  
+3. a **documented local CLI** for the external write path, and  
+4. an **honest fallback** to chat-only output when the CLI, auth, or local config is missing.
+
+When possible, prefer **append-only** writes or other low-risk operations over
+destructive updates. The `lead-tracker` Google Sheets workflow follows this
+pattern with Google Workspace CLI (`gws`).
+
 ## References (official / upstream)
 
 | Topic | URL |
@@ -31,6 +60,7 @@ Use `@cursor/sdk` when you want **Cursor’s agent** (models, tools, cloud/local
 | Cursor cookbook | https://github.com/cursor/cookbook |
 | Hermes delegation | https://hermes-agent.nousresearch.com/docs/user-guide/features/delegation |
 | Hermes releases (feature timeline) | https://github.com/NousResearch/hermes-agent/releases |
+| Google Workspace CLI Sheets commands | https://googleworkspace-cli.mintlify.app/commands/sheets |
 
 ## Security note
 
