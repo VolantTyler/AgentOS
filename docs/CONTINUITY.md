@@ -13,13 +13,14 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [ ] Pick first integrations (calendar, tasks, email) once trust model is clear.
 - [ ] Flesh out `.cursor/agents/` roles to match real recurring workflows.
 - [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles, then decide whether it deserves a dedicated skill or SDK automation.
+- [ ] Ask another agent to research certification / coursework options using [`docs/research/job-fit-certification-gaps-2026-05-20.md`](research/job-fit-certification-gaps-2026-05-20.md) as the durable handoff.
 
 ## Last session
 
-- **Date:** 2026-05-14
-- **What we did:** Added a durable job-fit system: [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md), the [`job-fit-analyst`](../.cursor/agents/job-fit-analyst.md) subagent, and the **`/job-fit`** slash command for comparing JDs/company descriptions against Tyler's documented strengths, interests, constraints, and preferred environments.
-- **Decisions:** Start with a **workflow + subagent**, not a dedicated skill. Make the **scorecard-first** summary the default top section so job-fit reports are quick to scan before reading the long-form analysis.
-- **Next:** Use `/job-fit` on live roles, store only high-value dated briefs under `docs/research/`, and capture interview/application outcomes to calibrate future fit judgments.
+- **Date:** 2026-05-20
+- **What we did:** Converted recent job-fit chat work into a durable handoff brief at [`docs/research/job-fit-certification-gaps-2026-05-20.md`](research/job-fit-certification-gaps-2026-05-20.md), summarizing evaluated roles, strongest near-term targets, recurring trainable gaps, and structural mismatches that certifications will not fix.
+- **Decisions:** Treat **KPMG Associate, AI Engineer** as the strongest recent near-term fit and **Google Cloud Forward Deployed Engineer I, GenAI** as a plausible stretch. Treat the harsher forward-deployed / architect / evangelist roles as mostly poor-fit due to environment, travel, and execution-sustainability concerns rather than missing credentials alone.
+- **Next:** Have another agent research certification programs, structured courses, and project-based alternatives against the gap brief; optimize for roles that are actually good bets, not just the most prestigious stretch targets.
 
 ## Open questions
 
