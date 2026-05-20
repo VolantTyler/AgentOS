@@ -1,6 +1,6 @@
-# Event research digests
+# Research digests
 
-Digests are produced by subagents following project skills:
+Some digests are produced by subagents following project skills; others are durable handoff briefs written by parent agents for future sessions.
 
 | Slash | Subagent | Skill | Output (default) |
 |-------|-----------|-------|------------------|
@@ -10,6 +10,10 @@ Digests are produced by subagents following project skills:
 
 Trigger from **`/`** menu or by asking the parent agent to run the subagent by name.
 
-**Naming:** `events-YYYY-MM-DD.md` for event discovery runs, `networking-targets-YYYY-MM-DD-<eventslug>.md` for pre-event networking briefs, and `tech-stack-updates-YYYY-MM-DD.md` for stack scans.
+## Other durable briefs
+
+- `job-fit-*.md` or `job-fit-*-gaps-*.md` — job-fit comparisons, role-pattern summaries, and handoffs for follow-on agents (for example certification-program research).
+
+**Naming:** `events-YYYY-MM-DD.md` for event discovery runs, `networking-targets-YYYY-MM-DD-<eventslug>.md` for pre-event networking briefs, `tech-stack-updates-YYYY-MM-DD.md` for stack scans, and dated filenames for standalone handoff briefs or snapshots.
 
 **Git:** Safe to commit if digests contain only public links and no private logistics. Move drafts with personal notes to `docs/_private/` if needed.
