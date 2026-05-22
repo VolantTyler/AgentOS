@@ -16,6 +16,7 @@ Include:
 
 - `feature-quality-system`
 - `lead-tracker`
+- `tech-stack-updates`
 
 ## Expected use
 
