@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "scheduled:weekly-tech-stack": "tsx scripts/scheduled/weekly-tech-stack-radar.ts"
+    "scheduled:weekly-tech-stack": "tsx scripts/scheduled/weekly-tech-stack-radar.ts",
+    "test:scheduled": "node --import tsx --test scripts/scheduled/*.test.ts"
   },
   "engines": {
     "node": ">=20"
