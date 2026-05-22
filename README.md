@@ -33,7 +33,8 @@ Start here on every new session:
 - **weekly synthesis** — [`docs/WEEKLY_SYNTHESIS.md`](docs/WEEKLY_SYNTHESIS.md): end-of-week Chief-of-Staff brief that connects digests, continuity, and repo activity.  
 - **Slash:** **`/weekly-synthesis`** → [`.cursor/commands/weekly-synthesis.md`](.cursor/commands/weekly-synthesis.md) → delegates **`cos-synthesizer`** ([`.cursor/agents/cos-synthesizer.md`](.cursor/agents/cos-synthesizer.md)).  
 - **Agent:** **`cos-synthesizer`** → [`.cursor/agents/cos-synthesizer.md`](.cursor/agents/cos-synthesizer.md): writes `docs/research/cos-weekly-YYYY-MM-DD.md` with cross-domain links and sequenced next actions.  
-- **Cron / SDK later:** prompt an agent to run **events-scout**, **lookahead-networker**, **stack-radar**, or **cos-synthesizer** with the matching skill path in context.
+- **Scheduled tech-stack radar:** GitHub Actions every **Monday 11:00 America/New_York** runs `/tech-stack-updates` then quality checks — see [`docs/integrations/scheduled-tech-stack-radar.md`](docs/integrations/scheduled-tech-stack-radar.md). Requires repo secret `CURSOR_API_KEY`.
+- **Cron / SDK later:** add similar schedules for **events-scout**, **lookahead-networker**, or **cos-synthesizer** when needed.
 
 ## Quality workflows
 

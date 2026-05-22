@@ -23,6 +23,9 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [ ] **Habit:** Run **`/weekly-synthesis`** each Monday (or delegate from this PM thread); briefs so far: [`cos-weekly-2026-05-20.md`](research/cos-weekly-2026-05-20.md), [`cos-weekly-2026-05-22.md`](research/cos-weekly-2026-05-22.md).
 - [x] **In progress:** DeepLearning.AI **Agentic AI** (Andrew Ng) — Tyler enrolled; **module 1 complete** (2026-05-22). Next in cert sequence per [`certification-recommendations-2026-05-20.md`](research/certification-recommendations-2026-05-20.md): parallel **Google Vertex labs** when ready.
 - [ ] **Automation:** Merge pending for **`@cursor/sdk`** install + **cron** jobs (another agent); resolve conflicts on open PR **#31** (GitHub Actions weekly `stack-radar`) when ready.
+- [x] Design the **weekly synthesis ritual** — [`docs/WEEKLY_SYNTHESIS.md`](WEEKLY_SYNTHESIS.md), **`/weekly-synthesis`**, **`cos-synthesizer`**, output `docs/research/cos-weekly-YYYY-MM-DD.md` (inaugural: [`cos-weekly-2026-05-20.md`](research/cos-weekly-2026-05-20.md)).
+- [ ] **Habit:** Run **`/weekly-synthesis`** each Monday after upstream digests (stack radar runs automatically at 11:00 ET — see below).
+- [x] **Weekly tech-stack radar** scheduled via GitHub Actions (Monday 11:00 America/New_York): `/tech-stack-updates` + evaluate/test gate — [`docs/integrations/scheduled-tech-stack-radar.md`](integrations/scheduled-tech-stack-radar.md). Requires `CURSOR_API_KEY` repo secret.
 - [ ] **Deferred:** Work through boundary / operating-model questions in [`docs/ONBOARDING_OPEN_QUESTIONS.md`](ONBOARDING_OPEN_QUESTIONS.md) (new chat or `onboarding-guide` subagent).
 - [x] Pick a first low-risk external integration: **lead tracking to Google Sheets via Google Workspace CLI**. Documented in [`docs/integrations/google-sheets-lead-tracker.md`](integrations/google-sheets-lead-tracker.md).
 - [ ] Decide whether the next integrations should be calendar, tasks, email, or a derived "open follow-ups" view from the lead tracker log.
@@ -31,6 +34,13 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles, then decide whether it deserves a dedicated skill or SDK automation.
 - [x] Certification / coursework recommendations saved at [`docs/research/certification-recommendations-2026-05-20.md`](research/certification-recommendations-2026-05-20.md) (mapped to job-fit gaps; Apple customer/brand nuance added).
 - [ ] Run the new event-to-networking loop on a real event: `/events-research` first, then `/lookahead-match` on the event worth attending.
+- [ ] **Employer watch — Jamf:** Re-check [careers](https://www.jamf.com/about/careers/jobs/) (~mid-June 2026) for AI Assistant / agent-engineering or US-remote web/docs roles. No strong fit as of 2026-05-22; append to lead tracker sheet when `gws` + `LEAD_TRACKER_SPREADSHEET_ID` are configured (row prepared in chat 2026-05-22).
+
+## Employer watchlist (lightweight)
+
+| Organization | Status | Revisit | Notes |
+| --- | --- | --- | --- |
+| **Jamf** | Low priority / waiting | ~2026-06-15 | Apple MDM vendor; **Jamf AI Assistant** (copilot, HITL, Bedrock/Claude) is strategic but **no open AI/agent engineering reqs** on Greenhouse (36 roles, mostly sales). Tiny AI Initiatives org; layoffs 2024/2025. Tyler: Apple retail/B2B background relevant; agent-orchestration interest not matched by current postings. |
 
 ## Last session
 
@@ -38,6 +48,10 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - **What we did:** Tyler merged **#29** (weekly synthesis); ran **`/tech-stack-updates`** (digest on `main`: [`tech-stack-updates-2026-05-22.md`](research/tech-stack-updates-2026-05-22.md) via **#35**); started **DeepLearning.AI Agentic AI** (module 1 done); began **SDK + cron** setup via another agent (merge blocked on conflicts — see **#31** for scheduled stack radar).
 - **Decisions:** Treat **Agentic AI** as the active “cert enrollment” from the recommendations brief; do not run duplicate stack digests in the same week unless the window materially changed.
 - **Next:** Resolve **#31** merge conflicts; share SDK PR URL or branch when ready for PM review; `/lookahead-match` on a June event; Monday **`/weekly-synthesis synthesize-only`**.
+- **What we did:** Researched Jamf open roles vs Tyler's AI-agent / front-end fit; confirmed no strong hiring signals for agent work; agreed to treat as employer watch, not active pursuit.
+- **Decisions:** Do not prioritize Jamf applications now; **revisit careers board around mid-June 2026**; log in Google Sheets lead tracker when local `gws` + spreadsheet ID are set (cloud agent could not sync).
+- **Next:** Paste prepared lead-tracker row on Tyler's machine or run `/lead-tracker` after sheet setup; optional `/job-fit` brief if a specific Jamf req appears later.
+
 - **Date:** 2026-05-20
 - **What we did:** Drafted the **weekly synthesis ritual** ([`docs/WEEKLY_SYNTHESIS.md`](WEEKLY_SYNTHESIS.md)): **`/weekly-synthesis`**, **`cos-synthesizer`**, skill, and inaugural brief [`docs/research/cos-weekly-2026-05-20.md`](research/cos-weekly-2026-05-20.md).
 - **Decisions:** Weekly brief at **`docs/research/cos-weekly-YYYY-MM-DD.md`**; default **Monday** anchor (ET), **7-day** lookback; modes `full` / `synthesize-only` / `catch-up`; PM reviews snapshot + connections then approves continuity bullets.
