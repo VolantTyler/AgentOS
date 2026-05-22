@@ -30,6 +30,8 @@ List the durable places where this feature shows up.
 - [ ] The slash-command defaults remain explicit: mode `full`, anchor date in `America/New_York`, and a 7-day lookback.
 - [ ] The output artifact contract remains `docs/research/cos-weekly-YYYY-MM-DD.md` unless chat-only is requested.
 - [ ] The synthesizer keeps safety boundaries intact: synthesis-only behavior, no fabricated personal/work/health/contact facts, and explicit primary-evidence preference.
+- [ ] The workflow preserves privacy controls: weekly briefs are committed only when content is public/safe, with sensitive logistics moved to `docs/_private/`.
+- [ ] The synthesis rubric continues to separate facts from inference and keeps external-data sections explicitly marked as not scanned when data is unavailable.
 - [ ] The feature remains discoverable from root docs and research index docs.
 
 ## Evaluation recipe
@@ -67,10 +69,16 @@ What should `feature-testing-agent` rerun later?
 - Confirm `.cursor/skills/weekly-synthesis/SKILL.md` still includes:
   - required inputs (`docs/CONTINUITY.md`, in-window `docs/research/`, git/PR scan),
   - explicit preconditions including `docs/BOUNDARIES.md`,
+  - the "separate facts vs inference" synthesis rule,
   - mandatory `Connections & surprises` content,
   - `Proposed continuity updates` and `Sources index` output sections,
   - hard output constraints (max 5 recommended actions and required owner field).
 - Confirm `docs/WEEKLY_SYNTHESIS.md` still documents cadence, modes, prep feeds, PM-thread ritual steps, and the "do not block synthesis on missing feeds" rule.
+- Confirm `docs/WEEKLY_SYNTHESIS.md` still contains the privacy gate that only public/safe weekly briefs should be committed and sensitive logistics should move to `docs/_private/`.
+- Confirm `docs/research/cos-weekly-2026-05-20.md` still demonstrates:
+  - explicit `not scanned` handling for unavailable external data,
+  - a populated `Stale or missing feeds` section,
+  - a `Sources index` section that ties claims back to repo evidence.
 
 ## Formatting / connection checks
 
