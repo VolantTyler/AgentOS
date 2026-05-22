@@ -44,7 +44,9 @@
 | Stack item | Change | Upgrade posture | Synergy / integration notes | Link |
 |------------|--------|-------------------|------------------------------|------|
 | **React** | No new GitHub advisory **published** in-window per API slice checked. | monitor | Ecosystem may still be digesting early-May RSC advisories | [Security advisories](https://github.com/facebook/react/security/advisories) |
-| **Claude Code / Google AI Studio / Python / SQLite / Laravel / Livewire / Tailwind / …** | Not verified in-window beyond core dependencies (timeboxed). | not applicable / monitor | — |
+| **Laravel** | **May 19:** framework **`v13.10.0`** (validation/queue test fixes) and **`v13.11.0`** (“Dedicated Cloud Queue”). | monitor / upgrade on app cadence | Pairs with **Livewire** stack in `TECH_STACK.md`; cloud-queue work is infra-adjacent for Tyler’s W2-era Laravel apps | [v13.10.0](https://github.com/laravel/framework/releases/tag/v13.10.0) · [v13.11.0](https://github.com/laravel/framework/releases/tag/v13.11.0) |
+| **Playwright** | **May 18:** **`playwright-python` v1.60.0** — HAR-on-tracing, `locator.drop()`, ARIA snapshot `boxes`, soft assertions, `timedelta` timeouts. | monitor / upgrade when E2E suite ready | Aligns with **Cypress/Playwright/Jest** testing row; `boxes` option noted for AI-assisted page inspection | [playwright-python v1.60.0](https://github.com/microsoft/playwright-python/releases/tag/v1.60.0) |
+| **Claude Code / Google AI Studio / Python / SQLite / Livewire / Tailwind / …** | No additional in-window primary-source items verified beyond rows above (timeboxed). | not applicable / monitor | — |
 
 ## Upcoming features & roadmaps — core stack (official only)
 
@@ -83,5 +85,6 @@
 - Fetched: [`https://ai.google.dev/gemini-api/docs/changelog`](https://ai.google.dev/gemini-api/docs/changelog)  
 - Fetched: [`https://github.com/NousResearch/hermes-agent/releases/tag/v2026.5.16`](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.5.16)  
 - Fetched: [`https://github.com/openclaw/OpenClaw/releases/tag/v2026.5.20`](https://github.com/openclaw/OpenClaw/releases/tag/v2026.5.20)  
+- Fetched: [`https://github.com/laravel/framework/releases/tag/v13.11.0`](https://github.com/laravel/framework/releases/tag/v13.11.0), [`https://github.com/microsoft/playwright-python/releases/tag/v1.60.0`](https://github.com/microsoft/playwright-python/releases/tag/v1.60.0)  
 - GitHub API: `repos/NousResearch/hermes-agent/releases`, `repos/openclaw/OpenClaw/releases`, `repos/facebook/react/security-advisories` (publish dates)  
 - Context (not dated in-window): [Antigravity platform blog](https://developers.googleblog.com/en/build-with-google-antigravity-our-new-agentic-development-platform/)
