@@ -51,11 +51,13 @@ This is a **documentation-only repository** today — no `package.json`, no buil
 - **Git** is the only required tool. All continuity and agent context lives in committed markdown.
 - Subagent definitions in `.cursor/agents/` (including **`events-scout`**, **`lookahead-networker`**, **`stack-radar`**, **`feature-evaluator`**, **`feature-testing-agent`**, **`lead-tracker`**, `onboarding-guide`, `work-strategist`, `research-brief`, `household-coordinator`) are consumed by the Cursor agent runtime — they do not need to be "started" separately.
 - Project **skills** live under `.cursor/skills/`; **slash commands** under `.cursor/commands/` (for example **`/events-research`**, **`/lookahead-match`**, **`/evaluate-feature`**, **`/run-feature-tests`**, and **`/lead-tracker`**).
-- `.env.example` includes `CURSOR_API_KEY` for future `@cursor/sdk` programmatic usage plus optional local config for the lead-tracker Google Sheet target; no committed code reads these vars directly today.
+- `.env.example` includes `CURSOR_API_KEY` for `@cursor/sdk` (scheduled workflows and local scripts under `scripts/scheduled/`) plus optional local config for the lead-tracker Google Sheet target.
 
-### No build/lint/test steps exist
+### Build / scheduled automation
 
-There is no linter, test runner, or build command configured. If executable code (e.g. a `package.json` with `@cursor/sdk`) is added in the future, update this section with the corresponding install/lint/test/run commands.
+- **Install:** `npm ci` (requires Node 20+).
+- **Weekly tech-stack radar (local or CI):** `npm run scheduled:weekly-tech-stack` — needs `CURSOR_API_KEY`; see [`docs/integrations/scheduled-tech-stack-radar.md`](docs/integrations/scheduled-tech-stack-radar.md) and [`.github/workflows/weekly-tech-stack-radar.yml`](.github/workflows/weekly-tech-stack-radar.yml).
+- There is still no linter or unit test runner; feature regression checks are manifest-driven via `/run-feature-tests`.
 
 ### Feature handoff expectation
 

@@ -1,0 +1,19 @@
+{
+  "name": "agentos",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "scheduled:weekly-tech-stack": "tsx scripts/scheduled/weekly-tech-stack-radar.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@cursor/sdk": "^1.0.13"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.8.3"
+  }
+}

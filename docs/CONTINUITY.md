@@ -20,6 +20,7 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 ## Current focus (edit freely)
 
 - [ ] Design the **weekly synthesis ritual** (which agents/skills feed it, artifact format, where it is written — e.g. `docs/research/` or a dated CoS brief).
+- [x] **Weekly tech-stack radar** scheduled via GitHub Actions (Monday 11:00 America/New_York): `/tech-stack-updates` + evaluate/test gate — [`docs/integrations/scheduled-tech-stack-radar.md`](integrations/scheduled-tech-stack-radar.md). Requires `CURSOR_API_KEY` repo secret.
 - [ ] **Deferred:** Work through boundary / operating-model questions in [`docs/ONBOARDING_OPEN_QUESTIONS.md`](ONBOARDING_OPEN_QUESTIONS.md) (new chat or `onboarding-guide` subagent).
 - [x] Pick a first low-risk external integration: **lead tracking to Google Sheets via Google Workspace CLI**. Documented in [`docs/integrations/google-sheets-lead-tracker.md`](integrations/google-sheets-lead-tracker.md).
 - [ ] Decide whether the next integrations should be calendar, tasks, email, or a derived "open follow-ups" view from the lead tracker log.

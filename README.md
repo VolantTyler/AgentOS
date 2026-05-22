@@ -30,7 +30,8 @@ Start here on every new session:
 - **lead tracking** — [`docs/integrations/google-sheets-lead-tracker.md`](docs/integrations/google-sheets-lead-tracker.md): append-only recent-contact logging to Google Sheets through Google Workspace CLI when local config is present.  
 - **Slash:** **`/lead-tracker`** → [`.cursor/commands/lead-tracker.md`](.cursor/commands/lead-tracker.md) → delegates **`lead-tracker`** ([`.cursor/agents/lead-tracker.md`](.cursor/agents/lead-tracker.md)).  
 - **Agent:** **`lead-tracker`** → [`.cursor/agents/lead-tracker.md`](.cursor/agents/lead-tracker.md): normalizes lead or contact notes into structured rows and syncs them when the Google Sheets target is configured locally.  
-- **Cron / SDK later:** prompt an agent to run **events-scout**, **lookahead-networker**, or **stack-radar** with the matching skill path in context.
+- **Scheduled tech-stack radar:** GitHub Actions every **Monday 11:00 America/New_York** runs `/tech-stack-updates` then quality checks — see [`docs/integrations/scheduled-tech-stack-radar.md`](docs/integrations/scheduled-tech-stack-radar.md). Requires repo secret `CURSOR_API_KEY`.
+- **Cron / SDK later:** add similar schedules for **events-scout** or **lookahead-networker** when needed.
 
 ## Quality workflows
 

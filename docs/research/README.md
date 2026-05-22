@@ -6,7 +6,7 @@ Some digests are produced by subagents following project skills; others are dura
 |-------|-----------|-------|------------------|
 | **`/events-research`** | `events-scout` | `events-research` | `docs/research/events-YYYY-MM-DD.md` |
 | **`/lookahead-match`** | `lookahead-networker` | `lookahead-networker` | `docs/research/networking-targets-YYYY-MM-DD-<eventslug>.md` |
-| **`/tech-stack-updates`** | `stack-radar` | `tech-stack-pulse` | `docs/research/tech-stack-updates-YYYY-MM-DD.md` |
+| **`/tech-stack-updates`** | `stack-radar` | `tech-stack-pulse` | `docs/research/tech-stack-updates-YYYY-MM-DD.md` (also **Monday 11:00 ET** via [scheduled workflow](../integrations/scheduled-tech-stack-radar.md)) |
 
 Trigger from **`/`** menu or by asking the parent agent to run the subagent by name.
 
