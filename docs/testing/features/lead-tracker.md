@@ -30,6 +30,7 @@ List the durable places where this feature shows up.
 - [ ] The Google Sheets integration doc defines a concrete `gws`-based setup and append path.  
 - [ ] Local configuration for the target spreadsheet is documented in `.env.example`.  
 - [ ] The workflow is discoverable from the repo docs.
+- [ ] Employer-watch continuity notes keep an explicit lead-tracker handoff with sync status when follow-up rows are pending.
 
 ## Evaluation recipe
 
@@ -37,9 +38,9 @@ How should `feature-evaluator` determine whether the feature currently meets
 specification?
 
 - Inputs needed: the requested lead-tracker behavior, changed files, and the desired Google Sheets connection path  
-- Commands to run: inspect the relevant files, confirm the row schema, and verify the `gws` examples exist in the integration doc  
+- Commands to run: inspect the relevant files, confirm the row schema, verify the `gws` examples exist in the integration doc, and confirm employer-watch continuity notes include lead-tracker sync status when relevant  
 - Manual interactions: none required for the repo itself; live Sheet sync is an external human-check unless local config is available  
-- Expected outcomes: slash command wiring, subagent instructions, documented sheet schema, and local config guidance
+- Expected outcomes: slash command wiring, subagent instructions, documented sheet schema, local config guidance, and continuity handoff cues that prevent employer-watch rows from being lost
 
 ## Regression checks
 
@@ -52,7 +53,7 @@ What should `feature-testing-agent` rerun later?
   - `docs/testing/features/lead-tracker.md`
   - `.env.example`
 - Search for `lead-tracker`, `/lead-tracker`, `LEAD_TRACKER_SPREADSHEET_ID`, and `gws sheets +append` in the repo to confirm discoverability and integration wiring.
-- If `docs/CONTINUITY.md` includes employer-watch updates, verify each entry keeps an explicit lead-tracker handoff note (for example, a pending sync cue that mentions `gws` and `LEAD_TRACKER_SPREADSHEET_ID`).
+- If `docs/CONTINUITY.md` includes `Employer watchlist (lightweight)`, verify each listed organization has an explicit lead-tracker handoff status in Current focus; pending-sync cues should mention both `gws` and `LEAD_TRACKER_SPREADSHEET_ID`.
 - Confirm `docs/integrations/google-sheets-lead-tracker.md` still documents:
   - the sheet column layout,
   - the local config variables,
@@ -67,6 +68,7 @@ Call out the "exists but not fully wired" failure modes.
   - `README.md` should mention the lead-tracker workflow.
   - `AGENTS.md` should list the new agent/command and mention the optional local config.
   - `docs/CONTINUITY.md` should note the integration and next questions.
+  - `docs/CONTINUITY.md` employer-watch entries should preserve explicit lead-tracker handoff/sync status when that section is present.
 - Required imports / exports / registrations: `/lead-tracker` should delegate to `lead-tracker`.
 - Copy / layout / formatting expectations: the integration doc should clearly show setup, append, and read commands without assuming live credentials.
 
