@@ -38,6 +38,11 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 
 ## Last session
 
+- **Date:** 2026-05-22
+- **What we did:** Researched Jamf open roles vs Tyler's AI-agent / front-end fit; confirmed no strong hiring signals for agent work; agreed to treat as employer watch, not active pursuit.
+- **Decisions:** Do not prioritize Jamf applications now; **revisit careers board around mid-June 2026**; log in Google Sheets lead tracker when local `gws` + spreadsheet ID are set (cloud agent could not sync).
+- **Next:** Paste prepared lead-tracker row on Tyler's machine or run `/lead-tracker` after sheet setup; optional `/job-fit` brief if a specific Jamf req appears later.
+
 - **Date:** 2026-05-20
 - **What we did:** Converted recent job-fit chat work into a durable handoff brief at [`docs/research/job-fit-certification-gaps-2026-05-20.md`](research/job-fit-certification-gaps-2026-05-20.md); researched and saved certification recommendations at [`docs/research/certification-recommendations-2026-05-20.md`](research/certification-recommendations-2026-05-20.md), including Apple retail/B2B customer-focus nuance vs evangelist-role SKIPs.
 - **Decisions:** Treat **KPMG Associate, AI Engineer** as the strongest recent near-term fit and **Google Cloud Forward Deployed Engineer I, GenAI** as a plausible stretch. Prioritize **Vertex, Agentic AI, RAG, multi-agent production, and Rutgers workflow cert** over MIT strategy-only paths for gap closure. Treat Apple-era customer/brand strengths as real for guided client-facing roles, distinct from high-travel AI evangelist JDs.
