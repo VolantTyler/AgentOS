@@ -52,6 +52,7 @@ What should `feature-testing-agent` rerun later?
   - `docs/testing/features/lead-tracker.md`
   - `.env.example`
 - Search for `lead-tracker`, `/lead-tracker`, `LEAD_TRACKER_SPREADSHEET_ID`, and `gws sheets +append` in the repo to confirm discoverability and integration wiring.
+- If `docs/CONTINUITY.md` includes employer-watch updates, verify each entry keeps an explicit lead-tracker handoff note (for example, a pending sync cue that mentions `gws` and `LEAD_TRACKER_SPREADSHEET_ID`).
 - Confirm `docs/integrations/google-sheets-lead-tracker.md` still documents:
   - the sheet column layout,
   - the local config variables,
