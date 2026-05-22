@@ -28,6 +28,13 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles, then decide whether it deserves a dedicated skill or SDK automation.
 - [x] Certification / coursework recommendations saved at [`docs/research/certification-recommendations-2026-05-20.md`](research/certification-recommendations-2026-05-20.md) (mapped to job-fit gaps; Apple customer/brand nuance added).
 - [ ] Run the new event-to-networking loop on a real event: `/events-research` first, then `/lookahead-match` on the event worth attending.
+- [ ] **Employer watch — Jamf:** Re-check [careers](https://www.jamf.com/about/careers/jobs/) (~mid-June 2026) for AI Assistant / agent-engineering or US-remote web/docs roles. No strong fit as of 2026-05-22; append to lead tracker sheet when `gws` + `LEAD_TRACKER_SPREADSHEET_ID` are configured (row prepared in chat 2026-05-22).
+
+## Employer watchlist (lightweight)
+
+| Organization | Status | Revisit | Notes |
+| --- | --- | --- | --- |
+| **Jamf** | Low priority / waiting | ~2026-06-15 | Apple MDM vendor; **Jamf AI Assistant** (copilot, HITL, Bedrock/Claude) is strategic but **no open AI/agent engineering reqs** on Greenhouse (36 roles, mostly sales). Tiny AI Initiatives org; layoffs 2024/2025. Tyler: Apple retail/B2B background relevant; agent-orchestration interest not matched by current postings. |
 
 ## Last session
 
