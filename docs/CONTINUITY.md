@@ -13,13 +13,14 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - **PR policy (now):** All agent-delivered work lands as a **draft PR** for Tyler’s quick review. Relax later as familiarity grows.
 - **PR awareness:** PM can **read PRs independently** on `github.com/VolantTyler/AgentOS` via `gh` (list, diff, comments). A PR URL from Tyler or the implementer speeds matching a delegation to its PR; it is not required if the branch follows `cursor/` naming or the PR title references the task.
 - **Continuity:** PM **proposes** updates to this file when major decisions land. Tyler may also say **“remember this”** (or similar) to force a log entry.
-- **Near-term “done” signal:** At least one **weekly ritual** that **synthesizes** outputs from multiple subagents/workflows and surfaces **unexpected wins** and **cross-cutting connections** (not only task completion).
+- **Near-term “done” signal:** Run the **weekly synthesis** ritual on cadence ([`docs/WEEKLY_SYNTHESIS.md`](WEEKLY_SYNTHESIS.md), **`/weekly-synthesis`**) so outputs from multiple subagents/workflows surface **unexpected wins** and **cross-cutting connections** — ritual is designed; habit is the remaining bar.
 - **Comms:** Primary UI remains **Cursor chat** for now. A reliable hook to an **external communication platform** is a future option — not chosen yet.
 - **Priorities:** No fixed stack rank from Tyler yet; PM may recommend sequencing when delegating.
 
 ## Current focus (edit freely)
 
-- [ ] Design the **weekly synthesis ritual** (which agents/skills feed it, artifact format, where it is written — e.g. `docs/research/` or a dated CoS brief).
+- [x] Design the **weekly synthesis ritual** — [`docs/WEEKLY_SYNTHESIS.md`](WEEKLY_SYNTHESIS.md), **`/weekly-synthesis`**, **`cos-synthesizer`**, output `docs/research/cos-weekly-YYYY-MM-DD.md` (inaugural: [`cos-weekly-2026-05-20.md`](research/cos-weekly-2026-05-20.md)).
+- [ ] **Habit:** Run **`/weekly-synthesis`** each Monday (or delegate from this PM thread).
 - [ ] **Deferred:** Work through boundary / operating-model questions in [`docs/ONBOARDING_OPEN_QUESTIONS.md`](ONBOARDING_OPEN_QUESTIONS.md) (new chat or `onboarding-guide` subagent).
 - [x] Pick a first low-risk external integration: **lead tracking to Google Sheets via Google Workspace CLI**. Documented in [`docs/integrations/google-sheets-lead-tracker.md`](integrations/google-sheets-lead-tracker.md).
 - [ ] Decide whether the next integrations should be calendar, tasks, email, or a derived "open follow-ups" view from the lead tracker log.
@@ -31,6 +32,10 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 
 ## Last session
 
+- **Date:** 2026-05-20
+- **What we did:** Drafted the **weekly synthesis ritual** ([`docs/WEEKLY_SYNTHESIS.md`](WEEKLY_SYNTHESIS.md)): **`/weekly-synthesis`**, **`cos-synthesizer`**, skill, and inaugural brief [`docs/research/cos-weekly-2026-05-20.md`](research/cos-weekly-2026-05-20.md).
+- **Decisions:** Weekly brief at **`docs/research/cos-weekly-YYYY-MM-DD.md`**; default **Monday** anchor (ET), **7-day** lookback; modes `full` / `synthesize-only` / `catch-up`; PM reviews snapshot + connections then approves continuity bullets.
+- **Next:** Schedule Monday **`/weekly-synthesis`**; run `/lookahead-match` on a chosen June event; pick one cert enrollment from existing recommendations brief.
 - **Date:** 2026-05-20
 - **What we did:** Converted recent job-fit chat work into a durable handoff brief at [`docs/research/job-fit-certification-gaps-2026-05-20.md`](research/job-fit-certification-gaps-2026-05-20.md); researched and saved certification recommendations at [`docs/research/certification-recommendations-2026-05-20.md`](research/certification-recommendations-2026-05-20.md), including Apple retail/B2B customer-focus nuance vs evangelist-role SKIPs.
 - **Decisions:** Treat **KPMG Associate, AI Engineer** as the strongest recent near-term fit and **Google Cloud Forward Deployed Engineer I, GenAI** as a plausible stretch. Prioritize **Vertex, Agentic AI, RAG, multi-agent production, and Rutgers workflow cert** over MIT strategy-only paths for gap closure. Treat Apple-era customer/brand strengths as real for guided client-facing roles, distinct from high-travel AI evangelist JDs.
@@ -60,6 +65,6 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 ## Open questions
 
 - Which workloads must stay 100% local vs OK in Cursor cloud agents? *(Tyler: no strong opinion yet.)*
-- What is the minimum **weekly synthesis** artifact format (markdown digest, canvas, email draft)?
+- ~~What is the minimum **weekly synthesis** artifact format?~~ **Resolved:** markdown at `docs/research/cos-weekly-YYYY-MM-DD.md` per [`docs/WEEKLY_SYNTHESIS.md`](WEEKLY_SYNTHESIS.md).
 - Which **external communication platform** is worth wiring first (if any)?
 - Should lead tracking remain append-only, or does it eventually need a second deduplicated view for active leads?
