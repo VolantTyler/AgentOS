@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
-import test from "node:test";
+import test, { mock } from "node:test";
+import { Agent } from "@cursor/sdk";
 import {
   buildSteps,
+  main,
   resolveConfig,
   runSteps,
   truncateResult,
@@ -131,4 +133,76 @@ test("runSteps stops immediately when a step returns error", async () => {
 
   assert.equal(success, false);
   assert.equal(sentPrompts.length, 1);
+});
+
+test("runSteps stops immediately when a step returns cancelled", async () => {
+  const { io } = createIOBuffers();
+  const steps = buildSteps();
+  const sentPrompts: string[] = [];
+
+  const agent = {
+    send: async (prompt: string) => {
+      sentPrompts.push(prompt);
+      return createRun([], { status: "cancelled", result: null });
+    },
+  };
+
+  const success = await runSteps(agent, steps, io);
+
+  assert.equal(success, false);
+  assert.equal(sentPrompts.length, 1);
+});
+
+test("main returns 1 and logs error when CURSOR_API_KEY is missing", async () => {
+  const { io, errors } = createIOBuffers();
+
+  const exitCode = await main({}, io);
+
+  assert.equal(exitCode, 1);
+  assert.deepEqual(errors, ["Missing CURSOR_API_KEY"]);
+});
+
+test("main configures Agent.create and returns 0 on successful runs", async (t) => {
+  const { io, logs, errors } = createIOBuffers();
+  const sentPrompts: string[] = [];
+  let disposed = false;
+
+  const createAgentMock = mock.method(Agent, "create", async (options: unknown) => {
+    assert.deepEqual(options, {
+      apiKey: "test-api-key",
+      model: { id: "composer-2.5" },
+      cloud: {
+        repos: [{ url: "https://github.com/acme/project", startingRef: "feature-branch" }],
+        autoCreatePR: true,
+      },
+    });
+
+    return {
+      send: async (prompt: string) => {
+        sentPrompts.push(prompt);
+        return createRun([], { status: "completed", result: null });
+      },
+      [Symbol.asyncDispose]: async () => {
+        disposed = true;
+      },
+    };
+  });
+
+  t.after(() => createAgentMock.mock.restore());
+
+  const exitCode = await main(
+    {
+      CURSOR_API_KEY: "test-api-key",
+      GITHUB_REPOSITORY: "acme/project",
+      GITHUB_REF_NAME: "feature-branch",
+    },
+    io,
+  );
+
+  assert.equal(exitCode, 0);
+  assert.equal(errors.length, 0);
+  assert.equal(sentPrompts.length, 2);
+  assert.equal(disposed, true);
+  assert.ok(logs.some((entry) => entry.includes("Repo: https://github.com/acme/project @ feature-branch")));
+  assert.ok(logs.some((entry) => entry.includes("Weekly tech-stack radar finished.")));
 });
