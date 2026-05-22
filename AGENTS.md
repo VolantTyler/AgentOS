@@ -36,6 +36,10 @@ This repository is a long-lived **Chief-of-Staff** system: planning, synthesis, 
 - `.cursor/agents/feature-evaluator.md` — **feature-evaluator** subagent; determines whether a just-built feature matches specification and is ready for regression testing.
 - `.cursor/agents/feature-testing-agent.md` — **feature-testing-agent** subagent; runs committed feature manifests and suites for one-feature, impacted-feature, or full regression coverage.
 - `.cursor/agents/lead-tracker.md` — **lead-tracker** subagent; structures lead/contact notes and syncs them to Google Sheets when local config is present.
+- `docs/WEEKLY_SYNTHESIS.md` — weekly Chief-of-Staff synthesis ritual (cadence, feeds, PM review).
+- `.cursor/skills/weekly-synthesis/` — **weekly-synthesis** skill; cross-domain brief template; see `SKILL.md`.
+- `.cursor/commands/weekly-synthesis.md` — slash command **`/weekly-synthesis`**; delegates to **cos-synthesizer**.
+- `.cursor/agents/cos-synthesizer.md` — **cos-synthesizer** subagent; writes `docs/research/cos-weekly-*.md`.
 - `.cursor/agents/` — other named subagent definitions (`research-brief`, `work-strategist`, etc.).
 
 ## When changing behavior
@@ -49,8 +53,8 @@ This is a **documentation-only repository** today — no `package.json`, no buil
 ### What "running" means here
 
 - **Git** is the only required tool. All continuity and agent context lives in committed markdown.
-- Subagent definitions in `.cursor/agents/` (including **`events-scout`**, **`lookahead-networker`**, **`stack-radar`**, **`feature-evaluator`**, **`feature-testing-agent`**, **`lead-tracker`**, `onboarding-guide`, `work-strategist`, `research-brief`, `household-coordinator`) are consumed by the Cursor agent runtime — they do not need to be "started" separately.
-- Project **skills** live under `.cursor/skills/`; **slash commands** under `.cursor/commands/` (for example **`/events-research`**, **`/lookahead-match`**, **`/evaluate-feature`**, **`/run-feature-tests`**, and **`/lead-tracker`**).
+- Subagent definitions in `.cursor/agents/` (including **`events-scout`**, **`lookahead-networker`**, **`stack-radar`**, **`cos-synthesizer`**, **`feature-evaluator`**, **`feature-testing-agent`**, **`lead-tracker`**, `onboarding-guide`, `work-strategist`, `research-brief`, `household-coordinator`) are consumed by the Cursor agent runtime — they do not need to be "started" separately.
+- Project **skills** live under `.cursor/skills/`; **slash commands** under `.cursor/commands/` (for example **`/events-research`**, **`/lookahead-match`**, **`/weekly-synthesis`**, **`/evaluate-feature`**, **`/run-feature-tests`**, and **`/lead-tracker`**).
 - `.env.example` includes `CURSOR_API_KEY` for future `@cursor/sdk` programmatic usage plus optional local config for the lead-tracker Google Sheet target; no committed code reads these vars directly today.
 
 ### No build/lint/test steps exist
@@ -75,5 +79,5 @@ response with a short **Try it out** section.
 
 To confirm the repo is healthy, check that:
 1. `git status` runs cleanly.
-2. All expected files exist: `AGENTS.md`, `README.md`, `docs/CONTINUITY.md`, `docs/RUNTIME_AND_AGENTS.md`, `docs/BOUNDARIES.md`, `docs/integrations/google-sheets-lead-tracker.md`, `docs/testing/README.md`, `docs/identity-brief.md`, `docs/ONBOARDING_OPEN_QUESTIONS.md`, `.cursor/commands/events-research.md`, `.cursor/commands/lookahead-match.md`, `.cursor/commands/tech-stack-updates.md`, `.cursor/commands/evaluate-feature.md`, `.cursor/commands/run-feature-tests.md`, `.cursor/commands/lead-tracker.md`, `.cursor/skills/events-research/SKILL.md`, `.cursor/skills/lookahead-networker/SKILL.md`, `.cursor/skills/tech-stack-pulse/SKILL.md`, and the `.cursor/agents/*.md` files (including `events-scout.md`, `lookahead-networker.md`, `stack-radar.md`, `feature-evaluator.md`, `feature-testing-agent.md`, and `lead-tracker.md`).
+2. All expected files exist: `AGENTS.md`, `README.md`, `docs/CONTINUITY.md`, `docs/WEEKLY_SYNTHESIS.md`, `docs/RUNTIME_AND_AGENTS.md`, `docs/BOUNDARIES.md`, `docs/integrations/google-sheets-lead-tracker.md`, `docs/testing/README.md`, `docs/identity-brief.md`, `docs/ONBOARDING_OPEN_QUESTIONS.md`, `.cursor/commands/events-research.md`, `.cursor/commands/lookahead-match.md`, `.cursor/commands/weekly-synthesis.md`, `.cursor/commands/tech-stack-updates.md`, `.cursor/commands/evaluate-feature.md`, `.cursor/commands/run-feature-tests.md`, `.cursor/commands/lead-tracker.md`, `.cursor/skills/events-research/SKILL.md`, `.cursor/skills/lookahead-networker/SKILL.md`, `.cursor/skills/weekly-synthesis/SKILL.md`, `.cursor/skills/tech-stack-pulse/SKILL.md`, and the `.cursor/agents/*.md` files (including `events-scout.md`, `lookahead-networker.md`, `cos-synthesizer.md`, `stack-radar.md`, `feature-evaluator.md`, `feature-testing-agent.md`, and `lead-tracker.md`).
 3. `.env` has been created from `.env.example` (never committed).
