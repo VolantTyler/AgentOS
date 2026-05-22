@@ -16,6 +16,7 @@ Include:
 
 - `feature-quality-system`
 - `lead-tracker`
+- `weekly-synthesis`
 
 ## Expected use
 
