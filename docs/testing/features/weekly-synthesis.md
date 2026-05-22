@@ -29,6 +29,7 @@ List the durable places where this feature shows up.
 - [ ] `/weekly-synthesis` delegates to `cos-synthesizer` when delegation is available and falls back to equivalent inline behavior otherwise.
 - [ ] The slash-command defaults remain explicit: mode `full`, anchor date in `America/New_York`, and a 7-day lookback.
 - [ ] The output artifact contract remains `docs/research/cos-weekly-YYYY-MM-DD.md` unless chat-only is requested.
+- [ ] The synthesizer keeps safety boundaries intact: synthesis-only behavior, no fabricated personal/work/health/contact facts, and explicit primary-evidence preference.
 - [ ] The feature remains discoverable from root docs and research index docs.
 
 ## Evaluation recipe
@@ -56,13 +57,20 @@ What should `feature-testing-agent` rerun later?
 - Confirm `.cursor/commands/weekly-synthesis.md` still specifies:
   - mandatory delegation to `cos-synthesizer`,
   - fallback behavior when delegation is unavailable,
+  - required goal/context handoff to the subagent,
   - explicit defaults for mode, anchor date timezone, lookback, and output path,
   - expected post-run response shape.
+- Confirm `.cursor/agents/cos-synthesizer.md` still includes:
+  - authority binding to `.cursor/skills/weekly-synthesis/SKILL.md`,
+  - required read of `docs/BOUNDARIES.md`,
+  - execution rules for synthesis-only behavior, no fabrication, and primary-evidence preference.
 - Confirm `.cursor/skills/weekly-synthesis/SKILL.md` still includes:
   - required inputs (`docs/CONTINUITY.md`, in-window `docs/research/`, git/PR scan),
+  - explicit preconditions including `docs/BOUNDARIES.md`,
   - mandatory `Connections & surprises` content,
-  - `Proposed continuity updates` and `Sources index` output sections.
-- Confirm `docs/WEEKLY_SYNTHESIS.md` still documents cadence, modes, prep feeds, and PM-thread ritual steps.
+  - `Proposed continuity updates` and `Sources index` output sections,
+  - hard output constraints (max 5 recommended actions and required owner field).
+- Confirm `docs/WEEKLY_SYNTHESIS.md` still documents cadence, modes, prep feeds, PM-thread ritual steps, and the "do not block synthesis on missing feeds" rule.
 
 ## Formatting / connection checks
 
@@ -94,6 +102,6 @@ Which newer or adjacent features commonly affect this one?
 What evidence should count as convincing?
 
 - Command output: file-existence checks, repo search results, and `git status`
-- File snippets: slash command, subagent prompt, skill template, and ritual doc sections
+- File snippets: slash command, subagent safety rules, skill template, and ritual doc sections
 - UI artifacts: not applicable
 - Human-check-only cases: none expected unless future versions require external calendars or sheet exports
