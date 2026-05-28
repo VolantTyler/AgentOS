@@ -16,7 +16,7 @@ disable-model-invocation: true
 
 **Tyler’s tech stack** in this workflow means **the inventory in [`docs/TECH_STACK.md`](../../../docs/TECH_STACK.md)** for AgentOS (plain-language “my tech stack,” versioned in Git). If Tyler names extra tools in chat, include them for this run only and suggest adding them to `TECH_STACK.md` if they recur.
 
-**Core stack** means the **default core set** named in `docs/TECH_STACK.md` under **“Core stack (priority in `/tech-stack-updates` digests)”** (currently **Cursor**, **Gemini**, **Hermes** (Hermes Agent framework), **OpenClaw**, **Antigravity** (Google IDE), with any **mapping notes** in that table treated as authoritative for what to research). Everything else in the full checklist is **non-core** for sectioning purposes.
+**Core stack** means the **default core set** named in `docs/TECH_STACK.md` under **“Core stack (priority in `/tech-stack-updates` digests)”** (currently **Cursor**, **Gemini**, **Hermes** (Hermes Agent framework), **OpenClaw**, **Antigravity** (Google IDE), **ChatGPT**, **Codex**, with any **mapping notes** in that table treated as authoritative for what to research). Everything else in the full checklist is **non-core** for sectioning purposes.
 
 ## Preconditions
 
