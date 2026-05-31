@@ -13,7 +13,9 @@ Use as a **starting checklist**, not exhaustive. Prefer **current** official pag
 
 | Institution | Where to look |
 |-------------|----------------|
-| **UPenn** | https://events.seas.upenn.edu/ · https://priml.upenn.edu/events-and-seminars/ · https://ai-analytics.wharton.upenn.edu/ · https://designing-agents-upenn.github.io/ |
+| **UPenn (SEAS / GRASP)** | https://events.seas.upenn.edu/ · https://priml.upenn.edu/events-and-seminars/ · https://www.grasp.upenn.edu/ · https://designing-agents-upenn.github.io/ |
+| **Wharton (UPenn)** | https://ai.wharton.upenn.edu/ · https://ai-analytics.wharton.upenn.edu/ · https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/areas-of-study/ai-analytics/ |
+| **Dartmouth** | https://osher.dartmouth.edu/events_programs/summer_lecture_series/ · https://aiconference.tuck.dartmouth.edu/ · https://home.dartmouth.edu/news |
 | **Princeton** | https://researchcomputing.princeton.edu/events · https://pli.princeton.edu/ · https://ai.princeton.edu/events · LLM Collective listserv |
 | **Rutgers** | https://mbs.rutgers.edu/summer-program · http://dimacs.rutgers.edu/events/ · https://cait.rutgers.edu/events/ |
 | **NJIT** | https://www.njit.edu/aibootcamp · https://exploreai.njit.edu/ |
