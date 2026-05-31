@@ -41,6 +41,7 @@ This repository is a long-lived **Chief-of-Staff** system: planning, synthesis, 
 - `.cursor/commands/weekly-synthesis.md` — slash command **`/weekly-synthesis`**; delegates to **cos-synthesizer**.
 - `.cursor/agents/cos-synthesizer.md` — **cos-synthesizer** subagent; writes `docs/research/cos-weekly-*.md`.
 - `.cursor/agents/` — other named subagent definitions (`research-brief`, `work-strategist`, etc.).
+- `docs/showcase/` — shareable capability map HTML; regenerate with `python3 scripts/build-capability-map.py` when adding commands, skills, agents, or feature manifests.
 
 ## When changing behavior
 

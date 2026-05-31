@@ -16,6 +16,10 @@ Start here on every new session:
 6. Read [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md) for honesty, capability limits, and when to cite sources.  
 7. Skim [`AGENTS.md`](AGENTS.md) for non-negotiables (privacy, autonomy boundaries).
 
+## Showcase
+
+- **Capability map** — [`docs/showcase/capability-map.html`](docs/showcase/capability-map.html): domain-grouped skills, slash commands, and subagents with eval/test coverage indicators (open in a browser; regenerate with `python3 scripts/build-capability-map.py`). See [`docs/showcase/README.md`](docs/showcase/README.md).
+
 ## Cursor skills (project)
 
 - **events-research** — [`.cursor/skills/events-research/SKILL.md`](.cursor/skills/events-research/SKILL.md): find **NYC / northern NJ** or **online AI agent orchestration** events; writes dated digests under [`docs/research/`](docs/research/README.md).  
