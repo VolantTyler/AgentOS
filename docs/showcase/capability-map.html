@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="AgentOS capability map — skills, slash commands, and subagents by domain."/>
+  <title>AgentOS — Capability Map</title>
+  <style>
+    :root {
+      --bg: #06080c;
+      --bg-grid: #0a1018;
+      --text: #c8d3f5;
+      --muted: #6b7a99;
+      --panel-bg: rgba(8, 12, 20, 0.92);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "SF Mono", "Fira Code", "Consolas", ui-monospace, monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.45;
+    }
+    .substrate {
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 1px 1px, var(--bg-grid) 1px, transparent 0);
+      background-size: 24px 24px;
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+    }
+    header.page-header {
+      border: 1px solid rgba(0, 229, 255, 0.35);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+      background: var(--panel-bg);
+      box-shadow: 0 0 24px rgba(0, 229, 255, 0.06);
+    }
+    header.page-header h1 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #e8ecff;
+    }
+    header.page-header .tagline {
+      margin-top: 0.35rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      margin-top: 0.85rem;
+      font-size: 0.72rem;
+      color: #8b9dc7;
+    }
+    .stats span {
+      border-left: 2px solid #00e5ff;
+      padding-left: 0.5rem;
+    }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 1rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.68rem;
+      color: var(--muted);
+    }
+    .legend-types {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+    .type-swatch {
+      padding: 0.15rem 0.45rem;
+      border: 1px solid color-mix(in srgb, var(--swatch) 55%, #1a2233);
+      color: var(--swatch);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .type-swatch.skill { --swatch: #39ff14; }
+    .type-swatch.command { --swatch: #4d9fff; }
+    .type-swatch.agent { --swatch: #ff8c42; }
+    .legend-coverage {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .legend .badge { font-size: 0.65rem; }
+    .map-stage {
+      position: relative;
+    }
+    .connectors {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .connectors .trace {
+      stroke: url(#traceGrad);
+      stroke-opacity: 0.5;
+    }
+    .panels {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    .panel {
+      min-width: 0;
+    }
+    .panel-frame {
+      position: relative;
+      border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+      background: var(--panel-bg);
+      padding: 1rem 1rem 1.1rem;
+      box-shadow:
+        0 0 12px color-mix(in srgb, var(--accent) 18%, transparent),
+        inset 0 0 20px rgba(0, 0, 0, 0.35);
+    }
+    .panel-corner {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-color: var(--accent);
+      border-style: solid;
+      opacity: 0.85;
+    }
+    .panel-corner.tl { top: 4px; left: 4px; border-width: 1px 0 0 1px; }
+    .panel-corner.tr { top: 4px; right: 4px; border-width: 1px 1px 0 0; }
+    .panel-corner.bl { bottom: 4px; left: 4px; border-width: 0 0 1px 1px; }
+    .panel-corner.br { bottom: 4px; right: 4px; border-width: 0 1px 1px 0; }
+    .panel-title {
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+    .panel-blurb {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .panel-blurb.solo { margin-bottom: 0; }
+    .chips {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .chip {
+      border: 1px solid color-mix(in srgb, var(--accent) 50%, #1a2233);
+      padding: 0.65rem 0.75rem;
+      background: rgba(4, 8, 14, 0.6);
+      box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 12%, transparent);
+    }
+    .chip-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+    .chip-type {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+    }
+    .chip-id {
+      font-size: 0.68rem;
+      color: #9aa5ce;
+    }
+    .chip-title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #e0e6ff;
+      margin-bottom: 0.2rem;
+    }
+    .chip-desc {
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+    .chip-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .chip-badges .badge {
+      padding: 0.12rem 0.4rem;
+      font-size: 0.6rem;
+      border: 1px solid #2a3348;
+      letter-spacing: 0.03em;
+    }
+    .chip-badges .badge.on {
+      color: #c5d0ef;
+      border-color: #6b7fae;
+      background: rgba(90, 120, 180, 0.12);
+    }
+    .chip-badges .badge.off {
+      color: #3a455c;
+      border-color: #1a2233;
+      background: transparent;
+    }
+    .legend-coverage .badge.on {
+      color: #c5d0ef;
+      border: 1px solid #6b7fae;
+      padding: 0.12rem 0.4rem;
+    }
+    .legend-coverage .badge.off {
+      color: #3a455c;
+      border: 1px solid #1a2233;
+      padding: 0.12rem 0.4rem;
+    }
+    footer.page-footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #1e2a3d;
+      font-size: 0.68rem;
+      color: var(--muted);
+    }
+    footer a { color: #00e5ff; }
+    @media (prefers-reduced-motion: reduce) {
+      .connectors .trace { stroke-opacity: 0.35; }
+    }
+    @media (max-width: 640px) {
+      .panels { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="substrate" aria-hidden="true"></div>
+  <div class="wrap">
+    <header class="page-header">
+      <h1>AgentOS — Capability Map</h1>
+      <p class="tagline">Chief-of-Staff system: planning, synthesis, delegation, and light execution across personal, household, and work.</p>
+      <div class="stats">
+        <span>3 skills</span>
+        <span>7 slash commands</span>
+        <span>11 subagents</span>
+        <span>2 features with saved test manifests</span>
+      </div>
+    </header>
+    <div class="legend" aria-label="Map legend">
+      <div class="legend-types" aria-label="Capability types">
+        <span class="type-swatch skill">Skill</span>
+        <span class="type-swatch command">Command</span>
+        <span class="type-swatch agent">Agent</span>
+      </div>
+      <div class="legend-coverage" aria-label="Test coverage">
+        <span>Coverage</span>
+        <span class="badge on">Eval</span>
+        <span class="badge off">Smoke</span>
+        <span>bright = linked manifest · dim = not linked</span>
+      </div>
+    </div>
+    <div class="map-stage">
+      
+    <svg class="connectors" viewBox="0 0 100 90" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="traceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.35"/>
+          <stop offset="50%" stop-color="#bf5af2" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#39ff14" stop-opacity="0.35"/>
+        </linearGradient>
+      </defs>
+      <path class="trace" d="M 50 10 L 32.0 10 L 32.0 34 L 14 34" fill="none" stroke-width="0.15"/><path class="trace" d="M 50 10 L 43.0 10 L 43.0 34 L 36 34" fill="none" stroke-width="0.15"/><path class="trace" d="M 50 10 L 54.0 10 L 54.0 34 L 58 34" fill="none" stroke-width="0.15"/><path class="trace" d="M 50 10 L 68.0 10 L 68.0 34 L 86 34" fill="none" stroke-width="0.15"/><path class="trace" d="M 14 34 L 18.0 34 L 18.0 72 L 22 72" fill="none" stroke-width="0.15"/><path class="trace" d="M 36 34 L 29.0 34 L 29.0 72 L 22 72" fill="none" stroke-width="0.15"/><path class="trace" d="M 58 34 L 54.0 34 L 54.0 76 L 50 76" fill="none" stroke-width="0.15"/><path class="trace" d="M 86 34 L 82.0 34 L 82.0 72 L 78 72" fill="none" stroke-width="0.15"/><path class="trace" d="M 22 72 L 36.0 72 L 36.0 76 L 50 76" fill="none" stroke-width="0.15"/><path class="trace" d="M 50 76 L 64.0 76 L 64.0 72 L 78 72" fill="none" stroke-width="0.15"/>
+    </svg>
+    
+      <div class="panels">
+        
+    <section class="panel" id="domain-core" data-panel="0"
+             style="--accent: #8b9dc7">
+      <div class="panel-frame">
+        <div class="panel-corner tl"></div>
+        <div class="panel-corner tr"></div>
+        <div class="panel-corner bl"></div>
+        <div class="panel-corner br"></div>
+        <h2 class="panel-title">Chief of Staff</h2>
+        <p class="panel-blurb solo">Durable planning and delegation across personal, household, and work. Continuity lives in committed markdown, not chat-only threads.</p>
+      </div>
+    </section>
+    
+    <section class="panel" id="domain-event_planning" data-panel="1"
+             style="--accent: #00e5ff">
+      <div class="panel-frame">
+        <div class="panel-corner tl"></div>
+        <div class="panel-corner tr"></div>
+        <div class="panel-corner bl"></div>
+        <div class="panel-corner br"></div>
+        <h2 class="panel-title">Event planning</h2>
+        <p class="panel-blurb">Find NYC / northern NJ and online AI agent-orchestration events; writes dated digests under docs/research/.</p><div class="chips">
+    <article class="chip chip-skill" style="--accent: #39ff14">
+      <header class="chip-head">
+        <span class="chip-type">Skill</span>
+        <code class="chip-id">events-research</code>
+      </header>
+      <h3 class="chip-title">events-research</h3>
+      <p class="chip-desc">Researches upcoming events Tyler can attend in the NYC metro and northern New Jersey, or online in the AI agent orchestration space (multi-agent systems, MCP, agent frameworks, AI engineering). Produces a dated markdown …</p>
+      <div class="chip-badges"><span class="badge off" title="Eval">Eval</span><span class="badge off" title="Test">Test</span><span class="badge off" title="Smoke">Smoke</span><span class="badge off" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-command" style="--accent: #4d9fff">
+      <header class="chip-head">
+        <span class="chip-type">Command</span>
+        <code class="chip-id">/events-research</code>
+      </header>
+      <h3 class="chip-title">/events-research — NYC / northern NJ + online agent events</h3>
+      <p class="chip-desc">NYC / northern NJ + online agent events</p>
+      <div class="chip-badges"><span class="badge off" title="Eval">Eval</span><span class="badge off" title="Test">Test</span><span class="badge off" title="Smoke">Smoke</span><span class="badge off" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-agent" style="--accent: #ff8c42">
+      <header class="chip-head">
+        <span class="chip-type">Agent</span>
+        <code class="chip-id">events-scout</code>
+      </header>
+      <h3 class="chip-title">events-scout</h3>
+      <p class="chip-desc">Researches attendable events: in-person or hybrid in NYC and northern New Jersey, or online in AI agent orchestration (multi-agent, MCP, frameworks, builder webinars). Writes a dated markdown digest under docs/research/.…</p>
+      <div class="chip-badges"><span class="badge off" title="Eval">Eval</span><span class="badge off" title="Test">Test</span><span class="badge off" title="Smoke">Smoke</span><span class="badge off" title="Full">Full</span></div>
+    </article>
+    </div>
+      </div>
+    </section>
+    
+    <section class="panel" id="domain-networking" data-panel="2"
+             style="--accent: #c77dff">
+      <div class="panel-frame">
+        <div class="panel-corner tl"></div>
+        <div class="panel-corner tr"></div>
+        <div class="panel-corner bl"></div>
+        <div class="panel-corner br"></div>
+        <h2 class="panel-title">Networking</h2>
+        <p class="panel-blurb">Turn a saved event digest into targets, icebreakers, and short outreach drafts before you attend.</p><div class="chips">
+    <article class="chip chip-skill" style="--accent: #39ff14">
+      <header class="chip-head">
+        <span class="chip-type">Skill</span>
+        <code class="chip-id">lookahead-networker</code>
+      </header>
+      <h3 class="chip-title">lookahead-networker</h3>
+      <p class="chip-desc">Converts an upcoming event digest into a targeted networking brief for Tyler: identifies high-value speakers, hosts, sponsors, and companies; maps them to his career-fit themes; and drafts specific conversation starters …</p>
+      <div class="chip-badges"><span class="badge off" title="Eval">Eval</span><span class="badge off" title="Test">Test</span><span class="badge off" title="Smoke">Smoke</span><span class="badge off" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-command" style="--accent: #4d9fff">
+      <header class="chip-head">
+        <span class="chip-type">Command</span>
+        <code class="chip-id">/lookahead-match</code>
+      </header>
+      <h3 class="chip-title">/lookahead-match — prep high-signal networking targets</h3>
+      <p class="chip-desc">prep high-signal networking targets</p>
+      <div class="chip-badges"><span class="badge off" title="Eval">Eval</span><span class="badge off" title="Test">Test</span><span class="badge off" title="Smoke">Smoke</span><span class="badge off" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-agent" style="--accent: #ff8c42">
+      <header class="chip-head">
+        <span class="chip-type">Agent</span>
+        <code class="chip-id">lookahead-networker</code>
+      </header>
+      <h3 class="chip-title">lookahead-networker</h3>
+      <p class="chip-desc">Prepares a pre-event networking brief from a saved AgentOS event digest: identifies the best speakers, hosts, sponsors, or companies to meet; maps them to Tyler&#x27;s career-fit themes; and drafts concrete conversation start…</p>
+      <div class="chip-badges"><span class="badge off" title="Eval">Eval</span><span class="badge off" title="Test">Test</span><span class="badge off" title="Smoke">Smoke</span><span class="badge off" title="Full">Full</span></div>
+    </article>
+    </div>
+      </div>
+    </section>
+    
+    <section class="panel" id="domain-tech_stack" data-panel="3"
+             style="--accent: #7ee787">
+      <div class="panel-frame">
+        <div class="panel-corner tl"></div>
+        <div class="panel-corner tr"></div>
+        <div class="panel-corner bl"></div>
+        <div class="panel-corner br"></div>
+        <h2 class="panel-title">Tech stack</h2>
+        <p class="panel-blurb">Weekly churn vs docs/TECH_STACK.md with upgrade, monitor, hold, and synergy notes.</p><div class="chips">
+    <article class="chip chip-skill" style="--accent: #39ff14">
+      <header class="chip-head">
+        <span class="chip-type">Skill</span>
+        <code class="chip-id">tech-stack-pulse</code>
+      </header>
+      <h3 class="chip-title">tech-stack-pulse</h3>
+      <p class="chip-desc">Surfaces changes in the last seven days affecting tools and languages listed in docs/TECH_STACK.md (Tyler’s tech stack as documented in this repo): release notes, security advisories, roadmap items, and cross-tool synerg…</p>
+      <div class="chip-badges"><span class="badge off" title="Eval">Eval</span><span class="badge off" title="Test">Test</span><span class="badge off" title="Smoke">Smoke</span><span class="badge off" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-command" style="--accent: #4d9fff">
+      <header class="chip-head">
+        <span class="chip-type">Command</span>
+        <code class="chip-id">/tech-stack-updates</code>
+      </header>
+      <h3 class="chip-title">/tech-stack-updates — weekly stack churn &amp; upgrade posture</h3>
+      <p class="chip-desc">weekly stack churn &amp; upgrade posture</p>
+      <div class="chip-badges"><span class="badge off" title="Eval">Eval</span><span class="badge off" title="Test">Test</span><span class="badge off" title="Smoke">Smoke</span><span class="badge off" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-agent" style="--accent: #ff8c42">
+      <header class="chip-head">
+        <span class="chip-type">Agent</span>
+        <code class="chip-id">stack-radar</code>
+      </header>
+      <h3 class="chip-title">stack-radar</h3>
+      <p class="chip-desc">Weekly scan of official changelogs and security notices for tools in docs/TECH_STACK.md (Tyler’s tech stack per `docs/TECH_STACK.md`): last-seven-days delta, upgrade/monitor/hold recommendations, synergies between stack …</p>
+      <div class="chip-badges"><span class="badge off" title="Eval">Eval</span><span class="badge off" title="Test">Test</span><span class="badge off" title="Smoke">Smoke</span><span class="badge off" title="Full">Full</span></div>
+    </article>
+    </div>
+      </div>
+    </section>
+    
+    <section class="panel" id="domain-career" data-panel="4"
+             style="--accent: #ffb347">
+      <div class="panel-frame">
+        <div class="panel-corner tl"></div>
+        <div class="panel-corner tr"></div>
+        <div class="panel-corner bl"></div>
+        <div class="panel-corner br"></div>
+        <h2 class="panel-title">Career</h2>
+        <p class="panel-blurb">Job fit analysis, work planning, and research briefs without inventing employer facts.</p><div class="chips">
+    <article class="chip chip-command" style="--accent: #4d9fff">
+      <header class="chip-head">
+        <span class="chip-type">Command</span>
+        <code class="chip-id">/job-fit</code>
+      </header>
+      <h3 class="chip-title">/job-fit — evaluate role and company fit</h3>
+      <p class="chip-desc">evaluate role and company fit</p>
+      <div class="chip-badges"><span class="badge off" title="Eval">Eval</span><span class="badge off" title="Test">Test</span><span class="badge off" title="Smoke">Smoke</span><span class="badge off" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-agent" style="--accent: #ff8c42">
+      <header class="chip-head">
+        <span class="chip-type">Agent</span>
+        <code class="chip-id">job-fit-analyst</code>
+      </header>
+      <h3 class="chip-title">job-fit-analyst</h3>
+      <p class="chip-desc">Compares a job description and company context against Tyler&#x27;s documented skills, interests, constraints, and preferred environments. Returns a candid fit brief, questions to validate, and positioning guidance; can write…</p>
+      <div class="chip-badges"><span class="badge off" title="Eval">Eval</span><span class="badge off" title="Test">Test</span><span class="badge off" title="Smoke">Smoke</span><span class="badge off" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-agent" style="--accent: #ff8c42">
+      <header class="chip-head">
+        <span class="chip-type">Agent</span>
+        <code class="chip-id">work-strategist</code>
+      </header>
+      <h3 class="chip-title">work-strategist</h3>
+      <p class="chip-desc">Breaks down professional goals into stakeholder maps, risks, and execution sequences. Use for work planning, reviews, and comms drafts (no sending on behalf of the user).</p>
+      <div class="chip-badges"><span class="badge off" title="Eval">Eval</span><span class="badge off" title="Test">Test</span><span class="badge off" title="Smoke">Smoke</span><span class="badge off" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-agent" style="--accent: #ff8c42">
+      <header class="chip-head">
+        <span class="chip-type">Agent</span>
+        <code class="chip-id">research-brief</code>
+      </header>
+      <h3 class="chip-title">research-brief</h3>
+      <p class="chip-desc">Gather and summarize external information (docs, releases, comparisons) in isolation. Use when the parent needs a clean context window or parallel fact-finding before synthesis.</p>
+      <div class="chip-badges"><span class="badge off" title="Eval">Eval</span><span class="badge off" title="Test">Test</span><span class="badge off" title="Smoke">Smoke</span><span class="badge off" title="Full">Full</span></div>
+    </article>
+    </div>
+      </div>
+    </section>
+    
+    <section class="panel" id="domain-lead_tracking" data-panel="5"
+             style="--accent: #ff7b72">
+      <div class="panel-frame">
+        <div class="panel-corner tl"></div>
+        <div class="panel-corner tr"></div>
+        <div class="panel-corner bl"></div>
+        <div class="panel-corner br"></div>
+        <h2 class="panel-title">Lead tracking</h2>
+        <p class="panel-blurb">Structure recent contacts and optional Google Sheets sync when local config is present.</p><div class="chips">
+    <article class="chip chip-command" style="--accent: #4d9fff">
+      <header class="chip-head">
+        <span class="chip-type">Command</span>
+        <code class="chip-id">/lead-tracker</code>
+      </header>
+      <h3 class="chip-title">/lead-tracker — capture leads and recent contact follow-ups</h3>
+      <p class="chip-desc">capture leads and recent contact follow-ups</p>
+      <div class="chip-badges"><span class="badge on" title="Eval">Eval</span><span class="badge on" title="Test">Test</span><span class="badge on" title="Smoke">Smoke</span><span class="badge on" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-agent" style="--accent: #ff8c42">
+      <header class="chip-head">
+        <span class="chip-type">Agent</span>
+        <code class="chip-id">lead-tracker</code>
+      </header>
+      <h3 class="chip-title">lead-tracker</h3>
+      <p class="chip-desc">Captures lead and recent-contact updates, normalizes them into a structured row, and syncs them to a Google Sheet through Google Workspace CLI when local configuration is present.</p>
+      <div class="chip-badges"><span class="badge on" title="Eval">Eval</span><span class="badge on" title="Test">Test</span><span class="badge on" title="Smoke">Smoke</span><span class="badge on" title="Full">Full</span></div>
+    </article>
+    </div>
+      </div>
+    </section>
+    
+    <section class="panel" id="domain-quality" data-panel="6"
+             style="--accent: #bf5af2">
+      <div class="panel-frame">
+        <div class="panel-corner tl"></div>
+        <div class="panel-corner tr"></div>
+        <div class="panel-corner bl"></div>
+        <div class="panel-corner br"></div>
+        <h2 class="panel-title">Quality &amp; testing</h2>
+        <p class="panel-blurb">Separate evaluation (spec conformance) from testing (saved regression manifests).</p><div class="chips">
+    <article class="chip chip-command" style="--accent: #4d9fff">
+      <header class="chip-head">
+        <span class="chip-type">Command</span>
+        <code class="chip-id">/evaluate-feature</code>
+      </header>
+      <h3 class="chip-title">/evaluate-feature — check a new feature against its spec</h3>
+      <p class="chip-desc">check a new feature against its spec</p>
+      <div class="chip-badges"><span class="badge on" title="Eval">Eval</span><span class="badge on" title="Test">Test</span><span class="badge on" title="Smoke">Smoke</span><span class="badge on" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-command" style="--accent: #4d9fff">
+      <header class="chip-head">
+        <span class="chip-type">Command</span>
+        <code class="chip-id">/run-feature-tests</code>
+      </header>
+      <h3 class="chip-title">/run-feature-tests — run saved feature manifests and suites</h3>
+      <p class="chip-desc">run saved feature manifests and suites</p>
+      <div class="chip-badges"><span class="badge on" title="Eval">Eval</span><span class="badge on" title="Test">Test</span><span class="badge on" title="Smoke">Smoke</span><span class="badge on" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-agent" style="--accent: #ff8c42">
+      <header class="chip-head">
+        <span class="chip-type">Agent</span>
+        <code class="chip-id">feature-evaluator</code>
+      </header>
+      <h3 class="chip-title">feature-evaluator</h3>
+      <p class="chip-desc">Evaluates a freshly built feature against its specification or acceptance criteria. Use right after implementation to confirm it behaves as intended before broader regression testing.</p>
+      <div class="chip-badges"><span class="badge on" title="Eval">Eval</span><span class="badge on" title="Test">Test</span><span class="badge on" title="Smoke">Smoke</span><span class="badge on" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-agent" style="--accent: #ff8c42">
+      <header class="chip-head">
+        <span class="chip-type">Agent</span>
+        <code class="chip-id">feature-testing-agent</code>
+      </header>
+      <h3 class="chip-title">feature-testing-agent</h3>
+      <p class="chip-desc">Runs reusable feature test manifests and suites. Use for targeted regression checks, impacted-feature runs, or full quality sweeps across committed test definitions.</p>
+      <div class="chip-badges"><span class="badge on" title="Eval">Eval</span><span class="badge on" title="Test">Test</span><span class="badge on" title="Smoke">Smoke</span><span class="badge on" title="Full">Full</span></div>
+    </article>
+    </div>
+      </div>
+    </section>
+    
+    <section class="panel" id="domain-household" data-panel="7"
+             style="--accent: #5ac8fa">
+      <div class="panel-frame">
+        <div class="panel-corner tl"></div>
+        <div class="panel-corner tr"></div>
+        <div class="panel-corner bl"></div>
+        <div class="panel-corner br"></div>
+        <h2 class="panel-title">Household &amp; onboarding</h2>
+        <p class="panel-blurb">Coordinated household context and deferred onboarding boundaries (parent-invoked agents).</p><div class="chips">
+    <article class="chip chip-agent" style="--accent: #ff8c42">
+      <header class="chip-head">
+        <span class="chip-type">Agent</span>
+        <code class="chip-id">household-coordinator</code>
+      </header>
+      <h3 class="chip-title">household-coordinator</h3>
+      <p class="chip-desc">Prepares household-relevant plans, checklists, and calendar-friendly summaries from goals the user states. Use for shared-life logistics (not medical/legal advice).</p>
+      <div class="chip-badges"><span class="badge off" title="Eval">Eval</span><span class="badge off" title="Test">Test</span><span class="badge off" title="Smoke">Smoke</span><span class="badge off" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-agent" style="--accent: #ff8c42">
+      <header class="chip-head">
+        <span class="chip-type">Agent</span>
+        <code class="chip-id">onboarding-guide</code>
+      </header>
+      <h3 class="chip-title">onboarding-guide</h3>
+      <p class="chip-desc">Continues Tyler&#x27;s deferred AgentOS onboarding: boundary questions, autonomy ladder, and folding answers into BOUNDARIES.md / AGENTS.md. One topic at a time; no commits without approval.</p>
+      <div class="chip-badges"><span class="badge off" title="Eval">Eval</span><span class="badge off" title="Test">Test</span><span class="badge off" title="Smoke">Smoke</span><span class="badge off" title="Full">Full</span></div>
+    </article>
+    </div>
+      </div>
+    </section>
+    
+      </div>
+    </div>
+    <footer class="page-footer">
+      <p>Evaluation checks spec conformance after a build; testing reruns saved manifests (<code>docs/testing/features/</code>).
+      See <a href="../testing/README.md">docs/testing/README.md</a>. Regenerate this page:
+      <code>python3 scripts/build-capability-map.py</code></p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -37,6 +37,7 @@ This repository is a long-lived **Chief-of-Staff** system: planning, synthesis, 
 - `.cursor/agents/feature-testing-agent.md` — **feature-testing-agent** subagent; runs committed feature manifests and suites for one-feature, impacted-feature, or full regression coverage.
 - `.cursor/agents/lead-tracker.md` — **lead-tracker** subagent; structures lead/contact notes and syncs them to Google Sheets when local config is present.
 - `.cursor/agents/` — other named subagent definitions (`research-brief`, `work-strategist`, etc.).
+- `docs/showcase/` — shareable capability map HTML; regenerate with `python3 scripts/build-capability-map.py` when adding commands, skills, agents, or feature manifests.
 
 ## When changing behavior
 
