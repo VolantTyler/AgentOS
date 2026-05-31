@@ -33,9 +33,10 @@ using **today’s date** in **America/New_York** unless the parent specified ano
 - **No fabrication:** events, dates, venues, prices, and URLs must come from verifiable sources or be marked **uncertain**. See [`docs/BOUNDARIES.md`](../../docs/BOUNDARIES.md).  
 - Prefer **primary** event pages and official agendas; dedupe across Meetup/Luma/Eventbrite mirrors.  
 - **Rank** toward Tyler’s career-fit: collaborative, structured, agent/orchestration substance over vague “future of AI” keynotes — see [`docs/career-fit-context.md`](../../docs/career-fit-context.md) when judging fit language.
+- **University-affiliated:** Always search **UPenn (including Wharton School), Princeton, Rutgers, NJIT, Stevens, and Dartmouth College** per SKILL.md; fill **University-affiliated (Penn, NJ & Dartmouth)** and list calendars checked even when empty.
 
 ## Done when
 
-The digest file exists (unless parent requested chat-only), the template sections from the skill are filled, and **Uncertain / needs human check** lists anything shaky.
+The digest file exists (unless parent requested chat-only), the template sections from the skill are filled (including **University-affiliated** when applicable), and **Uncertain / needs human check** lists anything shaky.
 
-Return to parent: **file path**, **3-line summary**, and **count** of local vs online rows.
+Return to parent: **file path**, **3-line summary**, and **counts** of local, university-affiliated, and online rows.

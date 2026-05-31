@@ -21,6 +21,22 @@ disable-model-invocation: true
 
 If Tyler gives a stricter radius (e.g. “within 30 minutes of …”), override defaults.
 
+**University-affiliated (always include when searching):**
+
+Tyler wants events **posted by or affiliated with** these schools — not only generic NYC meetups. Check official calendars, centers, and summer programs each run; many are student programs with application deadlines.
+
+| School | Primary calendars / centers to check |
+|--------|--------------------------------------|
+| **University of Pennsylvania** | [events.seas.upenn.edu](https://events.seas.upenn.edu/), [Penn Research in Machine Learning (PRIML)](https://priml.upenn.edu/events-and-seminars/), [GRASP](https://www.grasp.upenn.edu/), course hubs (e.g. [Designing LLM Agents CIS 1990](https://designing-agents-upenn.github.io/) for related public lectures) |
+| **Wharton School (UPenn)** | [Wharton Human-AI Research / GenAI Conference](https://ai.wharton.upenn.edu/), [Wharton AI & Analytics Initiative](https://ai-analytics.wharton.upenn.edu/), [Wharton Executive Education — AI & Analytics](https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/areas-of-study/ai-analytics/) — search explicitly; many listings are research conferences or executive programs, not open MCP meetups |
+| **Dartmouth College** | [Osher Summer Lecture Series](https://osher.dartmouth.edu/events_programs/summer_lecture_series/), [Tuck Dartmouth AI Conference](https://aiconference.tuck.dartmouth.edu/), [Dartmouth AI @ home](https://home.dartmouth.edu/news) and department calendars |
+| **Princeton University** | [Princeton Research Computing events](https://researchcomputing.princeton.edu/events), [Princeton Language and Intelligence (PLI)](https://pli.princeton.edu/), [AI at Princeton](https://ai.princeton.edu/), [LLM Collective](https://researchcomputing.princeton.edu/learn/user-groups/llm-collective) |
+| **Rutgers University** | [MBS summer programs](https://mbs.rutgers.edu/summer-program), [DIMACS workshops](http://dimacs.rutgers.edu/events/), [CAIT / Rail AI Academy](https://cait.rutgers.edu/), school-specific event pages |
+| **NJIT** | [AI + Entrepreneurship Bootcamp](https://www.njit.edu/aibootcamp), [AI Exploration Day](https://exploreai.njit.edu/) (annual; verify year), [Ying Wu College of Computing](https://www.njit.edu/computing) news/events |
+| **Stevens Institute of Technology** | [iCNS AI Symposium](https://www.stevens.edu/icns-center-for-innovative-computing-and-networked-systems/symposium), [CRAFT / School of Business](https://www.stevens.edu/) news and conferences (Hoboken, NJ) |
+
+Include a digest subsection **University-affiliated (Penn, NJ & Dartmouth)** when any rows qualify (Wharton rows belong here, not only under generic UPenn). If none in-window, say so explicitly and list calendars to watch.
+
 **Online:**
 
 - **AI agent orchestration** and adjacent topics: multi-agent systems, agent frameworks, tool-using agents, **MCP**, orchestration patterns, evaluations for agents, “AI engineer” style shipping with LLMs, Cursor-style agentic dev **when framed as industry events**, not product support.
@@ -69,6 +85,16 @@ Write **one** markdown digest using this template. Default path: `docs/research/
 | Event | When (ET) | Where | Cost | Why relevant | Link |
 |-------|-------------|--------|------|----------------|------|
 | … | … | … | … | … | … |
+
+## University-affiliated (Penn, NJ & Dartmouth)
+
+| Event | When (ET) | Where | Cost | Why relevant | Link |
+|-------|-------------|--------|------|----------------|------|
+| … | … | … | … | … | … |
+
+### Calendars to watch (if empty above)
+
+- [Bullet list of official URLs checked and any standing series, e.g. Princeton LLM Collective, Penn PRIML]
 
 ## Online (agent orchestration)
 
