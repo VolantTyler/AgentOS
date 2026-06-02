@@ -21,7 +21,7 @@ Use as a **starting checklist**, not exhaustive. Prefer **current** official pag
 | **NJIT** | https://www.njit.edu/aibootcamp · https://exploreai.njit.edu/ |
 | **Stevens** | https://www.stevens.edu/icns-center-for-innovative-computing-and-networked-systems/symposium · Stevens news (CRAFT, School of Business AI forums) |
 
-Many listings are **degree/summer programs** (application + fee), not open meetups — still report them when they teach agents, MCP, or multi-agent systems, and note eligibility.
+Many listings are **degree/summer programs** (application + fee), not open meetups — **do not** put student-only or age-restricted programs in digest tables; log under **Screened out (ineligible)** in `SKILL.md` if worth noting for audit.
 - **NJTRANSIT / PATH** — use only to sanity-check “reasonable commute” if Tyler names a home base; do not infer private address from repo.
 
 ## Online / hybrid (agent orchestration)

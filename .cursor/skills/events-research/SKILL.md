@@ -23,7 +23,7 @@ If Tyler gives a stricter radius (e.g. “within 30 minutes of …”), override
 
 **University-affiliated (always include when searching):**
 
-Tyler wants events **posted by or affiliated with** these schools — not only generic NYC meetups. Check official calendars, centers, and summer programs each run; many are student programs with application deadlines.
+Tyler wants events **posted by or affiliated with** these schools — not only generic NYC meetups. Check official calendars, centers, and summer programs each run. **Many listings are student-only summer programs** — note them only under **Screened out (ineligible)** or skip; do not fill university tables with programs Tyler cannot attend (see **Audience eligibility**).
 
 | School | Primary calendars / centers to check |
 |--------|--------------------------------------|
