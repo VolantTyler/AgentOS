@@ -43,6 +43,32 @@ Include a digest subsection **University-affiliated (Penn, NJ & Dartmouth)** whe
 
 Exclude generic “data/ML” conferences unless they have a **clear agent/orchestration track** Tyler could use.
 
+## Audience eligibility (default — apply every run)
+
+Tyler is an **adult professional (age 44), not currently enrolled as a student**. The digest is **attendable events only** — do not list programs Tyler cannot register for.
+
+**Exclude from all digest tables** (local, university-affiliated, online) when any of the following apply:
+
+| Signal | Examples |
+|--------|----------|
+| **Student-only audience** | “Students only,” “currently enrolled,” undergrad/grad-only, degree-seeking, campus ID or `.edu` email required, “university community” without public/alumni/professional path |
+| **Youth / campus cohort programs** | High-school programs, “rising junior/senior,” required minimum undergrad year (e.g. “≥1 year undergrad”), credit-bearing summer courses for enrolled students |
+| **Age cap below 44** | “Ages 18–25,” “under 30,” “Gen Z,” “early-career **students**,” any explicit max age **under 44** |
+| **Student hackathons / bootcamps** | Registration limited to students; “student-focused” **and** student verification on signup |
+
+**Include** (with a short note in **Why relevant** if useful):
+
+- Open to **public**, **professionals**, **alumni**, or **anyone** with no student/age gate
+- University **public lectures**, livestreams, or ticketed talks that do not require enrollment
+- **Executive / professional education** (paid OK) aimed at working adults
+- Meetups that *mention* students in marketing but allow general registration
+
+**If eligibility is unclear:** do **not** promote to main tables — put under **Uncertain / needs human check** with what to verify (student ID? age?).
+
+**Optional audit section:** When notable events were found but excluded, add **## Screened out (ineligible)** with `| Event | Reason |` (brief). Do not count these in scout return totals.
+
+Override only when Tyler states different age, student status, or “include student programs anyway” in the same message.
+
 ## Before searching
 
 Confirm (ask if missing):
@@ -62,7 +88,9 @@ Confirm (ask if missing):
 
 ## Ranking (brief)
 
-Boost: explicit agent/orchestration content; reputable organizers; Tyler’s **career-fit** (collaborative, structured learning, front-end–friendly hackathons OK).  
+**First:** drop anything that fails **Audience eligibility** — ineligible events must not appear in ranked tables.
+
+Boost: explicit agent/orchestration content; reputable organizers; Tyler’s **career-fit** (collaborative, structured learning, front-end–friendly hackathons OK when **open registration**).  
 Deprioritize: vague “AI future” keynotes with no builder content; events with no agenda and no named venue for “local.”
 
 ## Output
@@ -74,7 +102,7 @@ Write **one** markdown digest using this template. Default path: `docs/research/
 
 - **Researched:** [ISO date] (America/New_York)
 - **Window:** [start] → [end]
-- **Filters:** [local | online | both], [budget], [other]
+- **Filters:** [local | online | both], [budget], [eligibility: adult 44, not a student — student-only and age-capped excluded], [other]
 
 ## Summary
 
@@ -102,9 +130,17 @@ Write **one** markdown digest using this template. Default path: `docs/research/
 |-------|------------|--------|------|----------------|------|
 | … | … | … | … | … | … |
 
+## Screened out (ineligible)
+
+| Event | Reason |
+|-------|--------|
+| … | e.g. students only, max age 30, enrolled undergrad required |
+
+_Omit this section if nothing notable was excluded._
+
 ## Uncertain / needs human check
 
-- [Bullet list: broken pages, TBA dates, registration not open]
+- [Bullet list: broken pages, TBA dates, registration not open, eligibility not confirmed]
 
 ## Searches performed (for audit)
 

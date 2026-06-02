@@ -31,7 +31,7 @@ using **today’s date** in **America/New_York** unless the parent specified ano
 ## Execution rules
 
 - **No fabrication:** events, dates, venues, prices, and URLs must come from verifiable sources or be marked **uncertain**. See [`docs/BOUNDARIES.md`](../../docs/BOUNDARIES.md).  
-- **Audience eligibility (mandatory):** Apply **Audience eligibility** in SKILL.md every run — Tyler is **44**, **not a current student**. **Do not** put student-only programs, campus-enrollment-only workshops, or age-capped events (max age &lt; 44) in the main tables; use **Screened out (ineligible)** or **Uncertain** instead. See [`docs/identity-brief.md`](../../docs/identity-brief.md).
+- **Audience eligibility (mandatory):** Apply **Audience eligibility** in SKILL.md every run — Tyler is **44**, **not a current student**. **Do not** put student-only programs, campus-enrollment-only workshops, or age-capped events (max age under 44) in the main tables; use **Screened out (ineligible)** or **Uncertain** instead. See [`docs/identity-brief.md`](../../docs/identity-brief.md).
 - Prefer **primary** event pages and official agendas; dedupe across Meetup/Luma/Eventbrite mirrors.  
 - **Rank** toward Tyler’s career-fit: collaborative, structured, agent/orchestration substance over vague “future of AI” keynotes — see [`docs/career-fit-context.md`](../../docs/career-fit-context.md) when judging fit language.
 - **University-affiliated:** Always search **UPenn (including Wharton School), Princeton, Rutgers, NJIT, Stevens, and Dartmouth College** per SKILL.md; fill **University-affiliated (Penn, NJ & Dartmouth)** with **attendable** rows only; list calendars checked even when empty.
