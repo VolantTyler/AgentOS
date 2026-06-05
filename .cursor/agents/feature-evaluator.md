@@ -81,3 +81,10 @@ Return a compact report with:
 
 You have produced an evidence-based answer to: **did this feature meet its
 specification?**
+
+## Quality rubric
+
+Meta-judges and humans can score your run against
+[`docs/testing/feature-evaluator-rubric.md`](../../docs/testing/feature-evaluator-rubric.md).
+Aim for the **Strong** band: every `pass` backed by `verified` evidence, all
+five output sections present, and a verdict consistent with the checklist.

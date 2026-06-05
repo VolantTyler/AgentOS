@@ -21,7 +21,8 @@ Use immediately after implementation or revision.
 - **Subagent:** `feature-evaluator`  
 - **Slash command:** `/evaluate-feature`  
 - **Primary inputs:** acceptance criteria, changed files, user-visible expectations, known risks  
-- **Best for:** spec conformance, formatting/presentation review, missing wiring, "is this ready for broader testing?"
+- **Best for:** spec conformance, formatting/presentation review, missing wiring, "is this ready for broader testing?"  
+- **Quality rubric:** [`feature-evaluator-rubric.md`](feature-evaluator-rubric.md) — meta-judge whether an evaluator run was disciplined and trustworthy (grades the run, not the feature).
 
 ### 2) Feature testing
 
