@@ -90,9 +90,9 @@ Replace `Job Fit Agent Reviews` with your actual tab name.
 
 ## Append a new job-fit row
 
-Use the helper command because it is concise and works well for row inserts:
+After `source .env`, append with the Sheets API (pass `range` in `--params`):
 
-`gws sheets +append --spreadsheet "$JOB_FIT_TRACKER_SPREADSHEET_ID" --range "${JOB_FIT_TRACKER_SHEET_RANGE:-Job Fit Reviews!A:R}" --json-values '[["2026-06-09 14:30 ET","Acme Corp","Senior Engineer","3.8","conditional fit","medium","apply if clarified","Strong stack overlap; environment unclear.","https://company.example/jobs/123","chat-only","deciding","Ambiguous ownership model","4","3","3","3","4","Optimize for stability."]]'
+`gws sheets spreadsheets values append --params '{"spreadsheetId":"'"$JOB_FIT_TRACKER_SPREADSHEET_ID"'","range":"'"$JOB_FIT_TRACKER_SHEET_RANGE"'","valueInputOption":"RAW"}' --json '{"values":[["2026-06-09 14:30 ET","Acme Corp","Senior Engineer","3.8","conditional fit","medium","apply if clarified","Strong stack overlap; environment unclear.","https://company.example/jobs/123","chat-only","deciding","Ambiguous ownership model","4","3","3","3","4","Optimize for stability."]]}'`
 
 ## Read back recent rows
 
