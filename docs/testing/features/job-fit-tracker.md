@@ -17,7 +17,7 @@ present.
 
 List the durable places where this feature shows up.
 
-- Files: `.cursor/agents/job-fit-analyst.md`, `.cursor/commands/job-fit.md`, `docs/integrations/google-sheets-job-fit-tracker.md`, `docs/JOB_FIT_WORKFLOW.md`, `.env.example`
+- Files: `.cursor/skills/job-fit/SKILL.md`, `.cursor/agents/job-fit-analyst.md`, `.cursor/commands/job-fit.md`, `docs/integrations/google-sheets-job-fit-tracker.md`, `docs/JOB_FIT_WORKFLOW.md`, `.env.example`
 - Commands: `/job-fit`
 - Routes / entry points: slash-command invocation in Cursor chat
 - Docs / indexes: `README.md`, `AGENTS.md`, `docs/CONTINUITY.md`, `docs/RUNTIME_AND_AGENTS.md`
@@ -25,9 +25,11 @@ List the durable places where this feature shows up.
 
 ## Acceptance criteria snapshot
 
-- [ ] `/job-fit` defaults to appending a scorecard row on every run when `gws` and sheet config are available.  
-- [ ] `job-fit-analyst` defines the row shape, sync rules, and honest fallback when config or CLI is missing.  
-- [ ] The Google Sheets integration doc defines a concrete `gws`-based setup and append path for a separate Job Fit Tracker spreadsheet.  
+- [ ] `/job-fit` checks the tracker sheet (and saved briefs as fallback) for duplicate company + role or job URL **before** analysis, and surfaces prior **reviewed date**, **overall score**, and **verdict** when matched.  
+- [ ] `/job-fit` proceeds to analysis only when no duplicate is found or Tyler explicitly requests a **new entry** (or equivalent override).  
+- [ ] `/job-fit` defaults to appending a scorecard row on every **completed** run when `gws` and sheet config are available.  
+- [ ] `job-fit` skill and `job-fit-analyst` define duplicate rules, row shape, sync rules, and honest fallback when config or CLI is missing.  
+- [ ] The Google Sheets integration doc defines a concrete `gws`-based setup, read-back, duplicate-check, and append path for a separate Job Fit Tracker spreadsheet.  
 - [ ] Local configuration for the target spreadsheet is documented in `.env.example`.  
 - [ ] The workflow is discoverable from the repo docs.
 
@@ -46,12 +48,13 @@ specification?
 What should `feature-testing-agent` rerun later?
 
 - Verify the key files still exist:
+  - `.cursor/skills/job-fit/SKILL.md`
   - `.cursor/agents/job-fit-analyst.md`
   - `.cursor/commands/job-fit.md`
   - `docs/integrations/google-sheets-job-fit-tracker.md`
   - `docs/testing/features/job-fit-tracker.md`
   - `.env.example`
-- Search for `job-fit-tracker`, `/job-fit`, `JOB_FIT_TRACKER_SPREADSHEET_ID`, and `gws sheets +append` in the repo to confirm discoverability and integration wiring.
+- Search for `job-fit-tracker`, `/job-fit`, `duplicate`, `JOB_FIT_TRACKER_SPREADSHEET_ID`, and `gws sheets` in the repo to confirm discoverability and integration wiring.
 - Confirm `docs/integrations/google-sheets-job-fit-tracker.md` still documents:
   - the sheet column layout,
   - the local config variables,

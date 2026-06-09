@@ -47,8 +47,10 @@ domains:
   - id: career
     label: Career
     color: "#ffb347"
-    blurb: Job fit analysis, work planning, and research briefs without inventing employer facts.
+    blurb: Job fit analysis with duplicate prevention, work planning, and research briefs without inventing employer facts.
     capabilities:
+      - type: skill
+        id: job-fit
       - type: command
         id: job-fit
       - type: agent

@@ -101,6 +101,27 @@ contents before another append:
 
 `gws sheets +read --spreadsheet "$JOB_FIT_TRACKER_SPREADSHEET_ID" --range "${JOB_FIT_TRACKER_SHEET_RANGE:-Job Fit Reviews!A:R}"`
 
+## Duplicate check before analysis
+
+`/job-fit` runs a **duplicate prevention** step before scoring. Read the sheet
+(and fall back to `docs/research/job-fit-*.md` when the sheet is unavailable)
+to see whether the same role was already evaluated.
+
+**Match keys:**
+
+- normalized **company + role title**, or
+- the same **job posting URL** when one is supplied.
+
+**On match:** stop and show Tyler the existing row's **Reviewed At**, **Overall
+Score**, and **Verdict**. Do not analyze until he asks for a **new entry** (or
+`re-analyze`, `force new`, `analyze again`, `run anyway`).
+
+**On override:** append a new row as usual; note `intentional re-run` in
+**Notes** when helpful.
+
+See `.cursor/skills/job-fit/SKILL.md` for normalization rules and the full
+workflow.
+
 ## Auth and `.env` troubleshooting
 
 | Symptom | Likely cause | Fix |
@@ -118,8 +139,11 @@ explicitly want a portable export for headless/CI use.
 ## Operational rules
 
 - Treat the sheet as an **evaluation log**, not a deduplicated application CRM.  
-- Append a new row for **every** `/job-fit` run unless Tyler explicitly says
-  `chat-only` or `do not sync`.  
+- **Check for duplicates before analysis** — same company + role or same job URL
+  should surface the prior scorecard instead of re-running silently.  
+- Append a new row for **every completed** `/job-fit` analysis unless Tyler
+  explicitly says `chat-only` or `do not sync`. Intentional re-runs after
+  **new entry** still append.  
 - Analyze first, append second — the row must reflect the final scorecard.  
 - Put the numeric score in **Overall Score** and the artifact path in **Brief
   Path** (`chat-only` when no dated note was saved).  

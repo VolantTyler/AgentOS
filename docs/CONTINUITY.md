@@ -31,7 +31,7 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [ ] Decide whether the next integrations should be calendar, tasks, email, or a derived "open follow-ups" view from the lead tracker log.
 - [ ] Explore **first external comm integration** when useful (after trust model is clearer); calendar/tasks/email remain candidates.
 - [ ] Flesh out `.cursor/agents/` roles to match real recurring workflows.
-- [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles, then decide whether it deserves a dedicated skill or SDK automation.
+- [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles; **job-fit** skill now handles duplicate prevention — SDK automation remains optional later.
 - [ ] Configure local `.env` for the job-fit tracker sheet and run `/job-fit` on a live role to verify scorecard rows append correctly.
 - [x] Certification / coursework recommendations saved at [`docs/research/certification-recommendations-2026-05-20.md`](research/certification-recommendations-2026-05-20.md) (mapped to job-fit gaps; Apple customer/brand nuance added).
 - [ ] Run the new event-to-networking loop on a real event: `/events-research` first, then `/lookahead-match` on the event worth attending.
@@ -46,8 +46,13 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 ## Last session
 
 - **Date:** 2026-06-09
+- **What we did:** Added **duplicate prevention** to job-fit: new [`.cursor/skills/job-fit/SKILL.md`](../.cursor/skills/job-fit/SKILL.md) checks the tracker sheet (and saved briefs) before analysis; `/job-fit` surfaces existing **reviewed date**, **overall score**, and **verdict** when company + role or job URL already exists; Tyler can reply **new entry** to force a fresh run.
+- **Decisions:** Duplicate gate runs **before** `job-fit-analyst` delegation; intentional re-runs still append to the sheet log.
+- **Next:** Smoke-test duplicate detection on a role already in the tracker sheet.
+
+- **Date:** 2026-06-09
 - **What we did:** Extended **`/job-fit`** with Google Sheets logging: integration doc at [`docs/integrations/google-sheets-job-fit-tracker.md`](integrations/google-sheets-job-fit-tracker.md), local `JOB_FIT_TRACKER_*` config, updated `job-fit-analyst` sync rules, and a `job-fit-tracker` feature manifest.
-- **Decisions:** Use a **separate spreadsheet** from lead tracker; **append on every `/job-fit` run**; keep outcome columns (`Applied`, `Interviewed`, etc.) deferred until the learning loop needs them in-sheet.
+- **Decisions:** Use a **separate spreadsheet** from lead tracker; **append on every completed `/job-fit` run**; keep outcome columns (`Applied`, `Interviewed`, etc.) deferred until the learning loop needs them in-sheet.
 - **Next:** Create the Job Fit Tracker spreadsheet, set local `.env`, and smoke-test one live evaluation row.
 - **Date:** 2026-05-22
 - **What we did:** Tyler merged **#29** (weekly synthesis); ran **`/tech-stack-updates`** (digest on `main`: [`tech-stack-updates-2026-05-22.md`](research/tech-stack-updates-2026-05-22.md) via **#35**); started **DeepLearning.AI Agentic AI** (module 1 done); began **SDK + cron** setup via another agent (merge blocked on conflicts — see **#31** for scheduled stack radar).
@@ -94,3 +99,4 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - Which **external communication platform** is worth wiring first (if any)?
 - Should lead tracking remain append-only, or does it eventually need a second deduplicated view for active leads?
 - Should job-fit outcome columns (`Applied`, `Interviewed`, `Outcome`) move into the sheet, or stay in dated briefs only?
+- Should duplicate matching also consider **stage** changes (e.g. re-score after moving to interviewing), or is company + role / URL sufficient?

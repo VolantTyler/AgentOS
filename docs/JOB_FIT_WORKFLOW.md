@@ -4,13 +4,11 @@
 
 ## Recommendation
 
-Start with a **documented workflow + subagent**, not a custom skill.
+Use the **job-fit skill** + **job-fit-analyst** subagent together.
 
-- **Why not a skill first?** Skills work best when the procedure is stable and specialized. Job-fit evaluation is still part discovery: we need to learn what criteria actually predict good outcomes for Tyler before hardening the process.
-- **Why a subagent now?** A named subagent gives us a clean prompt shape, reusable evaluation rubric, and durable repo context without extra code.
-- **When to upgrade later:** If this becomes frequent, repetitive, and structured enough, we can add either:
-  - a **skill** for consistent evaluation steps, or
-  - a small **Cursor SDK** script that writes briefs automatically from pasted inputs.
+- **Skill** (`.cursor/skills/job-fit/SKILL.md`) — duplicate prevention, intake defaults, and when to delegate.
+- **Subagent** (`job-fit-analyst`) — scorecard-first analysis and sheet append after duplicate checks pass.
+- **Optional later:** a small **Cursor SDK** script that accepts pasted JD text, runs the same duplicate gate, and writes briefs automatically.
 
 ## Source-of-truth inputs
 
@@ -189,17 +187,16 @@ Over time, this turns "Do I match this job?" into "What patterns predict good ou
 ### Phase 1 — lightweight, now
 
 - Keep the durable profile in the existing docs.
-- Use the `job-fit-analyst` subagent for comparisons.
+- Use the **job-fit** skill for duplicate prevention, then the `job-fit-analyst` subagent for comparisons.
 - Save only high-value evaluations under `docs/research/` — not every random listing.
-- **Sheet logging:** append every `/job-fit` scorecard to the dedicated **Job Fit
+- **Duplicate gate:** before analysis, check the tracker sheet (and saved briefs as fallback) for the same company + role or job URL. Show the existing **reviewed date**, **overall score**, and **verdict**; wait for **new entry** if Tyler wants a fresh run.
+- **Sheet logging:** append every completed `/job-fit` scorecard to the dedicated **Job Fit
   Tracker** spreadsheet when local config and Google Workspace CLI (`gws`) are
   available. See [`docs/integrations/google-sheets-job-fit-tracker.md`](integrations/google-sheets-job-fit-tracker.md).
   Dated briefs remain optional; the sheet row is written even when the evaluation
   stays chat-only on disk (`Brief Path` = `chat-only`).
 
 ### Phase 2 — once patterns stabilize
-
-Add a skill if we see the same repeated procedure, output rubric, and file-writing behavior over enough examples.
 
 ### Phase 3 — if automation becomes valuable
 
@@ -223,8 +220,10 @@ Use **`/job-fit`** for the fastest path.
 
 - Example: `/job-fit https://company.example/job/123 save`
 - Example: `/job-fit compare this role for stability more than compensation`
+- Example: `/job-fit Acme Corp Staff Engineer` — if already in the sheet, returns the prior scorecard instead of re-analyzing
+- Example: `/job-fit Acme Corp Staff Engineer new entry` — forces a fresh evaluation and appends another row
 
-The slash command should delegate to the `job-fit-analyst` subagent, use the scorecard-first format, and save a dated note only when Tyler explicitly asks to save / archive the result or when the parent decides the role is clearly high-value enough to keep.
+The slash command reads the **job-fit** skill, checks for duplicates, then delegates to `job-fit-analyst` when allowed. It uses the scorecard-first format and saves a dated note only when Tyler explicitly asks to save / archive the result or when the parent decides the role is clearly high-value enough to keep.
 
 ## Current recommendation
 
