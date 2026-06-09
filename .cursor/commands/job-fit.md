@@ -6,15 +6,17 @@ You are executing the **AgentOS `/job-fit` slash command**.
 
 1. **Delegate** this entire request to the **`job-fit-analyst`** subagent (`.cursor/agents/job-fit-analyst.md`) using your **Task** / **subagent** / **Agent** delegation mechanism for **repo-defined** subagents.  
 2. Pass **goal** + **context** so the child receives:
-   - **Goal:** Evaluate the supplied role and company against Tyler's documented strengths, constraints, interests, and preferred environments using the scorecard-first format in `docs/JOB_FIT_WORKFLOW.md`.  
-   - **Context:** Any job URL, pasted JD text, company description, weighting preferences, stage, or "save/archive" instruction Tyler typed after the slash.
+   - **Goal:** Evaluate the supplied role and company against Tyler's documented strengths, constraints, interests, and preferred environments using the scorecard-first format in `docs/JOB_FIT_WORKFLOW.md`, then append the scorecard row to the job-fit Google Sheet when configured.  
+   - **Context:** Any job URL, pasted JD text, company description, weighting preferences, stage, `save`/`archive` instruction, or `chat-only` / `do not sync` override Tyler typed after the slash.
 
-**If delegation is unavailable**, say so once, then **you** perform the same workflow yourself by reading `docs/JOB_FIT_WORKFLOW.md` and grounding the analysis in the source-of-truth docs named there.
+**If delegation is unavailable**, say so once, then **you** perform the same workflow yourself by reading `docs/JOB_FIT_WORKFLOW.md`, `docs/integrations/google-sheets-job-fit-tracker.md`, and grounding the analysis in the source-of-truth docs named there.
 
 ## Defaults (unless user overrides in the same message)
 
 - **Output mode:** chat-first, using the **scorecard at the top**.  
 - **Persistence:** do **not** save a dated note unless Tyler explicitly asks to `save`, `archive`, or otherwise indicates the evaluation is worth keeping.  
+- **Sheet sync:** append a new row to the job-fit tracker sheet on **every** run when `gws` access and sheet config are available; otherwise return the prepared row in chat and note the setup gap.  
+- **Config source:** `JOB_FIT_TRACKER_SPREADSHEET_ID` and `JOB_FIT_TRACKER_SHEET_RANGE` from the local environment when present.  
 - **Context sources:** `docs/identity-brief.md`, `docs/career-fit-context.md`, `docs/TECH_STACK.md`, `docs/CONTINUITY.md`, plus any pasted job/company material or linked public job listing.  
 - **Decision style:** candid, fit-focused, and environment-aware — not resume-keyword optimism.
 
@@ -24,4 +26,5 @@ Reply with:
 
 1. **Scorecard first** — overall weighted score, verdict, confidence, one-line call, and all five dimension scores.  
 2. **Short recommendation section** — strongest reasons for fit, strongest concerns, unknowns to validate, and recommendation.  
-3. **Path** to the saved dated note, if one was requested and created.
+3. **Sheet sync** — synced, prepared-but-not-synced, or skipped; include blocker if sync did not run.  
+4. **Path** to the saved dated note, if one was requested and created.

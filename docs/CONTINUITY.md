@@ -32,6 +32,7 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [ ] Explore **first external comm integration** when useful (after trust model is clearer); calendar/tasks/email remain candidates.
 - [ ] Flesh out `.cursor/agents/` roles to match real recurring workflows.
 - [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles, then decide whether it deserves a dedicated skill or SDK automation.
+- [ ] Configure local `.env` for the job-fit tracker sheet and run `/job-fit` on a live role to verify scorecard rows append correctly.
 - [x] Certification / coursework recommendations saved at [`docs/research/certification-recommendations-2026-05-20.md`](research/certification-recommendations-2026-05-20.md) (mapped to job-fit gaps; Apple customer/brand nuance added).
 - [ ] Run the new event-to-networking loop on a real event: `/events-research` first, then `/lookahead-match` on the event worth attending.
 - [ ] **Employer watch — Jamf:** Re-check [careers](https://www.jamf.com/about/careers/jobs/) (~mid-June 2026) for AI Assistant / agent-engineering or US-remote web/docs roles. No strong fit as of 2026-05-22; append to lead tracker sheet when `gws` + `LEAD_TRACKER_SPREADSHEET_ID` are configured (row prepared in chat 2026-05-22).
@@ -44,6 +45,10 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 
 ## Last session
 
+- **Date:** 2026-06-09
+- **What we did:** Extended **`/job-fit`** with Google Sheets logging: integration doc at [`docs/integrations/google-sheets-job-fit-tracker.md`](integrations/google-sheets-job-fit-tracker.md), local `JOB_FIT_TRACKER_*` config, updated `job-fit-analyst` sync rules, and a `job-fit-tracker` feature manifest.
+- **Decisions:** Use a **separate spreadsheet** from lead tracker; **append on every `/job-fit` run**; keep outcome columns (`Applied`, `Interviewed`, etc.) deferred until the learning loop needs them in-sheet.
+- **Next:** Create the Job Fit Tracker spreadsheet, set local `.env`, and smoke-test one live evaluation row.
 - **Date:** 2026-05-22
 - **What we did:** Tyler merged **#29** (weekly synthesis); ran **`/tech-stack-updates`** (digest on `main`: [`tech-stack-updates-2026-05-22.md`](research/tech-stack-updates-2026-05-22.md) via **#35**); started **DeepLearning.AI Agentic AI** (module 1 done); began **SDK + cron** setup via another agent (merge blocked on conflicts — see **#31** for scheduled stack radar).
 - **Decisions:** Treat **Agentic AI** as the active “cert enrollment” from the recommendations brief; do not run duplicate stack digests in the same week unless the window materially changed.
@@ -88,3 +93,4 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - ~~What is the minimum **weekly synthesis** artifact format?~~ **Resolved:** markdown at `docs/research/cos-weekly-YYYY-MM-DD.md` per [`docs/WEEKLY_SYNTHESIS.md`](WEEKLY_SYNTHESIS.md).
 - Which **external communication platform** is worth wiring first (if any)?
 - Should lead tracking remain append-only, or does it eventually need a second deduplicated view for active leads?
+- Should job-fit outcome columns (`Applied`, `Interviewed`, `Outcome`) move into the sheet, or stay in dated briefs only?

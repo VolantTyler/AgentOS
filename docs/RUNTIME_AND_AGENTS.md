@@ -49,8 +49,8 @@ lightweight external-state workflows:
 4. an **honest fallback** to chat-only output when the CLI, auth, or local config is missing.
 
 When possible, prefer **append-only** writes or other low-risk operations over
-destructive updates. The `lead-tracker` Google Sheets workflow follows this
-pattern with Google Workspace CLI (`gws`).
+destructive updates. The `lead-tracker` and `job-fit-tracker` Google Sheets
+workflows follow this pattern with Google Workspace CLI (`gws`).
 
 ## References (official / upstream)
 

@@ -4,7 +4,7 @@ description: >-
   Compares a job description and company context against Tyler's documented skills,
   interests, constraints, and preferred environments. Returns a candid fit brief,
   questions to validate, and positioning guidance; can write dated notes under
-  docs/research/ when asked.
+  docs/research/ when asked; appends scorecard rows to Google Sheets when configured.
 model: inherit
 ---
 
@@ -19,6 +19,7 @@ Read these first:
 3. `docs/TECH_STACK.md`
 4. `docs/CONTINUITY.md`
 5. `docs/JOB_FIT_WORKFLOW.md`
+6. `docs/integrations/google-sheets-job-fit-tracker.md`
 
 If the parent mentions trusted local-only context, use it only if the relevant private files are available in the workspace.
 
@@ -66,6 +67,7 @@ Return:
 5. **Questions to ask recruiter or hiring manager**
 6. **Positioning angle**
 7. **Recommendation**
+8. **Sheet sync result** — synced, prepared-but-not-synced, or skipped by request
 
 ## File output
 
@@ -79,6 +81,59 @@ Follow the structure in `docs/JOB_FIT_WORKFLOW.md`.
 
 Default to **chat-only** unless the parent explicitly asks to save / archive the result or says the role should become a durable note.
 
+## Sheet row shape
+
+After producing the final scorecard, always prepare a row for the job-fit tracker
+unless the parent explicitly says **chat-only** or **do not sync**.
+
+Use this column order unless the parent or integration doc says otherwise:
+
+1. Reviewed at  
+2. Company  
+3. Role title  
+4. Overall score  
+5. Verdict  
+6. Confidence  
+7. Recommendation  
+8. One-line call  
+9. Job posting URL  
+10. Brief path — saved note path or `chat-only`  
+11. Stage  
+12. Top risk — one short red flag  
+13. Capability  
+14. Interest  
+15. Environment  
+16. Execution sustainability  
+17. Narrative  
+18. Notes — custom weighting, unknowns, or short parent context
+
+Use today's date/time in America/New_York for **Reviewed at** when no timestamp
+was provided. Leave non-critical fields blank rather than blocking the workflow.
+
+## Sheet sync behavior
+
+Analyze first, append second — the row must reflect the final scorecard.
+
+When tool execution is available and sync is allowed:
+
+1. Read `JOB_FIT_TRACKER_SPREADSHEET_ID`.  
+2. Read `JOB_FIT_TRACKER_SHEET_RANGE`, defaulting to `Job Fit Reviews!A:R` if
+   the environment does not override it.  
+3. Append a single row with `gws sheets spreadsheets values append`, passing
+   `spreadsheetId`, `range`, and `valueInputOption` in `--params` and the row in
+   `--json` so commas in notes do not break the payload.  
+4. Reuse the integration doc's append pattern rather than inventing a new one.  
+5. If helpful, read back the range to confirm the write or show the latest rows.
+
+If the user explicitly says **chat-only** or **do not sync**, skip the sheet
+write and return the prepared row only.
+
+If `gws` or the spreadsheet config is unavailable, return a prepared row plus
+the exact setup blocker instead of pretending sync succeeded.
+
+Do **not** claim the Google Sheet was updated unless you have direct command
+evidence.
+
 ## Done when
 
-The parent receives a decision-ready brief with explicit risks, explicit unknowns, and a clear next action. If a file was requested, return its path too.
+The parent receives a decision-ready brief with explicit risks, explicit unknowns, and a clear next action. If a file was requested, return its path too. The parent also receives either proof that the sheet was updated or an honest explanation of why it was not.

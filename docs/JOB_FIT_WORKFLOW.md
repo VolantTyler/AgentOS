@@ -191,6 +191,11 @@ Over time, this turns "Do I match this job?" into "What patterns predict good ou
 - Keep the durable profile in the existing docs.
 - Use the `job-fit-analyst` subagent for comparisons.
 - Save only high-value evaluations under `docs/research/` — not every random listing.
+- **Sheet logging:** append every `/job-fit` scorecard to the dedicated **Job Fit
+  Tracker** spreadsheet when local config and Google Workspace CLI (`gws`) are
+  available. See [`docs/integrations/google-sheets-job-fit-tracker.md`](integrations/google-sheets-job-fit-tracker.md).
+  Dated briefs remain optional; the sheet row is written even when the evaluation
+  stays chat-only on disk (`Brief Path` = `chat-only`).
 
 ### Phase 2 — once patterns stabilize
 

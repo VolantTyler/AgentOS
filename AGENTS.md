@@ -17,6 +17,7 @@ This repository is a long-lived **Chief-of-Staff** system: planning, synthesis, 
 - `docs/BOUNDARIES.md` — honesty, capability limits, anti-exaggeration, and sourcing norms for agents.
 - `docs/TECH_STACK.md` — languages, tools, and per-project stacks (professional; keep current).
 - `docs/integrations/google-sheets-lead-tracker.md` — lead/contact logging workflow backed by Google Sheets + Google Workspace CLI.
+- `docs/integrations/google-sheets-job-fit-tracker.md` — job-fit scorecard logging workflow backed by Google Sheets + Google Workspace CLI.
 - `docs/testing/README.md` — evaluation vs testing workflow, manifest contract, and suite semantics for durable quality checks.
 - `docs/career-fit-context.md` — work anxieties, fit profile, and how agents should support career/job tasks (portable).
 - `docs/ONBOARDING_OPEN_QUESTIONS.md` — **deferred** boundary / onboarding checklist; resume in a new chat when ready.
@@ -33,9 +34,11 @@ This repository is a long-lived **Chief-of-Staff** system: planning, synthesis, 
 - `.cursor/commands/evaluate-feature.md` — slash command **`/evaluate-feature`**; delegates to **feature-evaluator** for post-build spec checks.
 - `.cursor/commands/run-feature-tests.md` — slash command **`/run-feature-tests`**; delegates to **feature-testing-agent** for manifest-driven regression runs.
 - `.cursor/commands/lead-tracker.md` — slash command **`/lead-tracker`**; delegates to **lead-tracker** for recent-contact capture and follow-up logging.
+- `.cursor/commands/job-fit.md` — slash command **`/job-fit`**; delegates to **job-fit-analyst** for role/company fit evaluation and optional sheet logging.
 - `.cursor/agents/feature-evaluator.md` — **feature-evaluator** subagent; determines whether a just-built feature matches specification and is ready for regression testing.
 - `.cursor/agents/feature-testing-agent.md` — **feature-testing-agent** subagent; runs committed feature manifests and suites for one-feature, impacted-feature, or full regression coverage.
 - `.cursor/agents/lead-tracker.md` — **lead-tracker** subagent; structures lead/contact notes and syncs them to Google Sheets when local config is present.
+- `.cursor/agents/job-fit-analyst.md` — **job-fit-analyst** subagent; evaluates job fit and appends scorecard rows to Google Sheets when local config is present.
 - `docs/WEEKLY_SYNTHESIS.md` — weekly Chief-of-Staff synthesis ritual (cadence, feeds, PM review).
 - `.cursor/skills/weekly-synthesis/` — **weekly-synthesis** skill; cross-domain brief template; see `SKILL.md`.
 - `.cursor/commands/weekly-synthesis.md` — slash command **`/weekly-synthesis`**; delegates to **cos-synthesizer**.
@@ -54,9 +57,9 @@ The core "application" is Cursor subagent definitions in `.cursor/agents/` plus 
 ### What "running" means here
 
 - **Git** is the only required tool for docs-only work. Scheduled automation also needs **Node 20+** and `CURSOR_API_KEY` for SDK scripts.
-- Subagent definitions in `.cursor/agents/` (including **`events-scout`**, **`lookahead-networker`**, **`stack-radar`**, **`cos-synthesizer`**, **`feature-evaluator`**, **`feature-testing-agent`**, **`lead-tracker`**, `onboarding-guide`, `work-strategist`, `research-brief`, `household-coordinator`) are consumed by the Cursor agent runtime — they do not need to be "started" separately.
-- Project **skills** live under `.cursor/skills/`; **slash commands** under `.cursor/commands/` (for example **`/events-research`**, **`/lookahead-match`**, **`/weekly-synthesis`**, **`/tech-stack-updates`**, **`/evaluate-feature`**, **`/run-feature-tests`**, and **`/lead-tracker`**).
-- `.env.example` includes `CURSOR_API_KEY` for `@cursor/sdk` (scheduled workflows and local scripts under `scripts/scheduled/`) plus optional local config for the lead-tracker Google Sheet target.
+- Subagent definitions in `.cursor/agents/` (including **`events-scout`**, **`lookahead-networker`**, **`stack-radar`**, **`cos-synthesizer`**, **`feature-evaluator`**, **`feature-testing-agent`**, **`lead-tracker`**, **`job-fit-analyst`**, `onboarding-guide`, `work-strategist`, `research-brief`, `household-coordinator`) are consumed by the Cursor agent runtime — they do not need to be "started" separately.
+- Project **skills** live under `.cursor/skills/`; **slash commands** under `.cursor/commands/` (for example **`/events-research`**, **`/lookahead-match`**, **`/weekly-synthesis`**, **`/tech-stack-updates`**, **`/evaluate-feature`**, **`/run-feature-tests`**, **`/lead-tracker`**, and **`/job-fit`**).
+- `.env.example` includes `CURSOR_API_KEY` for `@cursor/sdk` (scheduled workflows and local scripts under `scripts/scheduled/`) plus optional local config for lead-tracker and job-fit-tracker Google Sheet targets.
 
 ### Build / scheduled automation
 
@@ -82,5 +85,5 @@ response with a short **Try it out** section.
 
 To confirm the repo is healthy, check that:
 1. `git status` runs cleanly.
-2. All expected files exist: `AGENTS.md`, `README.md`, `docs/CONTINUITY.md`, `docs/WEEKLY_SYNTHESIS.md`, `docs/RUNTIME_AND_AGENTS.md`, `docs/BOUNDARIES.md`, `docs/integrations/google-sheets-lead-tracker.md`, `docs/integrations/scheduled-tech-stack-radar.md`, `docs/testing/README.md`, `docs/identity-brief.md`, `docs/ONBOARDING_OPEN_QUESTIONS.md`, `.github/workflows/weekly-tech-stack-radar.yml`, `.cursor/commands/events-research.md`, `.cursor/commands/lookahead-match.md`, `.cursor/commands/weekly-synthesis.md`, `.cursor/commands/tech-stack-updates.md`, `.cursor/commands/evaluate-feature.md`, `.cursor/commands/run-feature-tests.md`, `.cursor/commands/lead-tracker.md`, `.cursor/skills/events-research/SKILL.md`, `.cursor/skills/lookahead-networker/SKILL.md`, `.cursor/skills/weekly-synthesis/SKILL.md`, `.cursor/skills/tech-stack-pulse/SKILL.md`, and the `.cursor/agents/*.md` files (including `events-scout.md`, `lookahead-networker.md`, `cos-synthesizer.md`, `stack-radar.md`, `feature-evaluator.md`, `feature-testing-agent.md`, and `lead-tracker.md`).
+2. All expected files exist: `AGENTS.md`, `README.md`, `docs/CONTINUITY.md`, `docs/WEEKLY_SYNTHESIS.md`, `docs/RUNTIME_AND_AGENTS.md`, `docs/BOUNDARIES.md`, `docs/integrations/google-sheets-lead-tracker.md`, `docs/integrations/google-sheets-job-fit-tracker.md`, `docs/integrations/scheduled-tech-stack-radar.md`, `docs/testing/README.md`, `docs/identity-brief.md`, `docs/ONBOARDING_OPEN_QUESTIONS.md`, `.github/workflows/weekly-tech-stack-radar.yml`, `.cursor/commands/events-research.md`, `.cursor/commands/lookahead-match.md`, `.cursor/commands/weekly-synthesis.md`, `.cursor/commands/tech-stack-updates.md`, `.cursor/commands/evaluate-feature.md`, `.cursor/commands/run-feature-tests.md`, `.cursor/commands/lead-tracker.md`, `.cursor/commands/job-fit.md`, `.cursor/skills/events-research/SKILL.md`, `.cursor/skills/lookahead-networker/SKILL.md`, `.cursor/skills/weekly-synthesis/SKILL.md`, `.cursor/skills/tech-stack-pulse/SKILL.md`, and the `.cursor/agents/*.md` files (including `events-scout.md`, `lookahead-networker.md`, `cos-synthesizer.md`, `stack-radar.md`, `feature-evaluator.md`, `feature-testing-agent.md`, `lead-tracker.md`, and `job-fit-analyst.md`).
 3. `.env` has been created from `.env.example` (never committed).
