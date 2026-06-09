@@ -5,6 +5,7 @@ node_modules/
 .env
 .env.*
 !.env.example
+credentials.json
 
 # Logs and local state
 *.log

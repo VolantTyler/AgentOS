@@ -26,10 +26,15 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [ ] Explore **first external comm integration** when useful (after trust model is clearer); calendar/tasks/email remain candidates.
 - [ ] Flesh out `.cursor/agents/` roles to match real recurring workflows.
 - [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles, then decide whether it deserves a dedicated skill or SDK automation.
+- [ ] Configure local `.env` for the job-fit tracker sheet and run `/job-fit` on a live role to verify scorecard rows append correctly.
 - [ ] Run the new event-to-networking loop on a real event: `/events-research` first, then `/lookahead-match` on the event worth attending.
 
 ## Last session
 
+- **Date:** 2026-06-09
+- **What we did:** Extended **`/job-fit`** with Google Sheets logging: integration doc at [`docs/integrations/google-sheets-job-fit-tracker.md`](integrations/google-sheets-job-fit-tracker.md), local `JOB_FIT_TRACKER_*` config, updated `job-fit-analyst` sync rules, and a `job-fit-tracker` feature manifest.
+- **Decisions:** Use a **separate spreadsheet** from lead tracker; **append on every `/job-fit` run**; keep outcome columns (`Applied`, `Interviewed`, etc.) deferred until the learning loop needs them in-sheet.
+- **Next:** Create the Job Fit Tracker spreadsheet, set local `.env`, and smoke-test one live evaluation row.
 - **Date:** 2026-05-17
 - **What we did:** Added a new **`lead-tracker`** workflow with `/lead-tracker`, a dedicated subagent prompt, a Google Sheets integration note under `docs/integrations/`, local `.env` config examples, and a saved feature manifest for regression checks.
 - **Decisions:** Start with an **append-only recent-contacts log** in Google Sheets rather than row-mutation CRM logic, use **Google Workspace CLI** (`gws`) as the low-friction write path, and fall back to chat-only structured rows whenever local config or CLI access is missing.
@@ -58,3 +63,4 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - What is the minimum **weekly synthesis** artifact format (markdown digest, canvas, email draft)?
 - Which **external communication platform** is worth wiring first (if any)?
 - Should lead tracking remain append-only, or does it eventually need a second deduplicated view for active leads?
+- Should job-fit outcome columns (`Applied`, `Interviewed`, `Outcome`) move into the sheet, or stay in dated briefs only?

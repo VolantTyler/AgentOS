@@ -16,6 +16,7 @@ Include:
 
 - `feature-quality-system`
 - `lead-tracker`
+- `job-fit-tracker`
 
 ## Expected use
 
