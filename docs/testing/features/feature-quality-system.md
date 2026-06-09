@@ -30,7 +30,8 @@ List the durable places where this feature shows up.
 - [ ] A dedicated `feature-evaluator` workflow exists for spec-conformance checks after implementation.  
 - [ ] A dedicated `feature-testing-agent` workflow exists for stable manifest-driven regression checks.  
 - [ ] The testing workflow supports one-feature, impacted-feature, and suite-based runs.  
-- [ ] The new quality workflows are discoverable from the repo documentation.
+- [ ] The new quality workflows are discoverable from the repo documentation.  
+- [ ] A durable evaluator quality rubric exists at `docs/testing/feature-evaluator-rubric.md`.
 
 ## Evaluation recipe
 
@@ -40,7 +41,7 @@ specification?
 - Inputs needed: the requested quality-system behavior, changed files, and expected workflow split  
 - Commands to run: inspect the relevant files and confirm the described split exists  
 - Manual interactions: none required for this documentation-only repo  
-- Expected outcomes: separate evaluator/testing workflows, saved manifests/suites, and discoverability wiring
+- Expected outcomes: separate evaluator/testing workflows, saved manifests/suites, discoverability wiring, and a meta-rubric for scoring evaluator run quality
 
 ## Regression checks
 
@@ -55,6 +56,7 @@ What should `feature-testing-agent` rerun later?
   - `docs/testing/features/TEMPLATE.md`
   - `docs/testing/suites/smoke.md`
   - `docs/testing/suites/full.md`
+  - `docs/testing/feature-evaluator-rubric.md`
 - Search for `feature-evaluator`, `feature-testing-agent`, `/evaluate-feature`, and `/run-feature-tests` in the repo to confirm discoverability wiring remains.
 - Confirm `docs/testing/README.md` still documents:
   - evaluation vs testing,
