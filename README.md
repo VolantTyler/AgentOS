@@ -16,6 +16,10 @@ Start here on every new session:
 6. Read [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md) for honesty, capability limits, and when to cite sources.  
 7. Skim [`AGENTS.md`](AGENTS.md) for non-negotiables (privacy, autonomy boundaries).
 
+## Showcase
+
+- **Capability map** — [`docs/showcase/capability-map.html`](docs/showcase/capability-map.html): domain-grouped skills, slash commands, and subagents with eval/test coverage indicators (open in a browser; regenerate with `python3 scripts/build-capability-map.py`). See [`docs/showcase/README.md`](docs/showcase/README.md).
+
 ## Cursor skills (project)
 
 - **events-research** — [`.cursor/skills/events-research/SKILL.md`](.cursor/skills/events-research/SKILL.md): find **NYC / northern NJ** or **online AI agent orchestration** events; writes dated digests under [`docs/research/`](docs/research/README.md).  
@@ -31,7 +35,11 @@ Start here on every new session:
 - **lead tracking** — [`docs/integrations/google-sheets-lead-tracker.md`](docs/integrations/google-sheets-lead-tracker.md): append-only recent-contact logging to Google Sheets through Google Workspace CLI when local config is present.  
 - **Slash:** **`/lead-tracker`** → [`.cursor/commands/lead-tracker.md`](.cursor/commands/lead-tracker.md) → delegates **`lead-tracker`** ([`.cursor/agents/lead-tracker.md`](.cursor/agents/lead-tracker.md)).  
 - **Agent:** **`lead-tracker`** → [`.cursor/agents/lead-tracker.md`](.cursor/agents/lead-tracker.md): normalizes lead or contact notes into structured rows and syncs them when the Google Sheets target is configured locally.  
-- **Cron / SDK later:** prompt an agent to run **events-scout**, **lookahead-networker**, or **stack-radar** with the matching skill path in context.
+- **weekly synthesis** — [`docs/WEEKLY_SYNTHESIS.md`](docs/WEEKLY_SYNTHESIS.md): end-of-week Chief-of-Staff brief that connects digests, continuity, and repo activity.  
+- **Slash:** **`/weekly-synthesis`** → [`.cursor/commands/weekly-synthesis.md`](.cursor/commands/weekly-synthesis.md) → delegates **`cos-synthesizer`** ([`.cursor/agents/cos-synthesizer.md`](.cursor/agents/cos-synthesizer.md)).  
+- **Agent:** **`cos-synthesizer`** → [`.cursor/agents/cos-synthesizer.md`](.cursor/agents/cos-synthesizer.md): writes `docs/research/cos-weekly-YYYY-MM-DD.md` with cross-domain links and sequenced next actions.  
+- **Scheduled tech-stack radar:** GitHub Actions every **Monday 11:00 America/New_York** runs `/tech-stack-updates` then quality checks — see [`docs/integrations/scheduled-tech-stack-radar.md`](docs/integrations/scheduled-tech-stack-radar.md). Requires repo secret `CURSOR_API_KEY`.
+- **Cron / SDK later:** add similar schedules for **events-scout**, **lookahead-networker**, or **cos-synthesizer** when needed.
 
 ## Quality workflows
 

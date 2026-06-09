@@ -62,6 +62,10 @@ workflows follow this pattern with Google Workspace CLI (`gws`).
 | Hermes releases (feature timeline) | https://github.com/NousResearch/hermes-agent/releases |
 | Google Workspace CLI Sheets commands | https://googleworkspace-cli.mintlify.app/commands/sheets |
 
+## Scheduled runs (GitHub Actions)
+
+- **Weekly tech-stack radar:** [`.github/workflows/weekly-tech-stack-radar.yml`](../.github/workflows/weekly-tech-stack-radar.yml) calls `@cursor/sdk` via `scripts/scheduled/weekly-tech-stack-radar.ts`. Setup: [`docs/integrations/scheduled-tech-stack-radar.md`](integrations/scheduled-tech-stack-radar.md).
+
 ## Security note
 
 Any runtime that can call tools (shell, MCP, network) is only as safe as its policy, secrets handling, and review gates. Keep `.env` out of git; document required env vars in `.env.example` when scripts exist.

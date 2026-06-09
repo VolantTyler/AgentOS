@@ -15,6 +15,7 @@ You are executing the **AgentOS `/events-research` slash command**.
 
 - **Date window:** next **45 days**, anchored **today** in **America/New_York**.  
 - **Coverage:** **both** — local (NYC + northern NJ per skill) **and** online (AI agent orchestration scope per skill).  
+- **Audience eligibility:** Tyler is **age 44** and **not currently a student** — exclude **student-only** events and any event with an **age limit** that excludes him; per `SKILL.md` **Audience eligibility** (pass this in **Context** to **events-scout** even if the user does not repeat it).  
 - **Output file:** `docs/research/events-YYYY-MM-DD.md` using **today’s** calendar date in America/New_York.  
 - **Budget / max results:** per `SKILL.md` defaults if not specified.
 

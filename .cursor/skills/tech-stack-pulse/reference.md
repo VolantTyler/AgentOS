@@ -19,6 +19,8 @@ Use only as **starting URLs**; always confirm the latest path on the vendor site
 | SQLite | `https://sqlite.org/changes.html` |
 | Docker | Docker official blog + Engine release notes |
 | Hermes (Hermes Agent framework) | `https://github.com/NousResearch/hermes-agent/releases` |
+| ChatGPT | `https://help.openai.com/en/articles/6825453-chatgptrelease-notes` ; model shifts: `https://help.openai.com/en/articles/9624314-model-release-notes` |
+| Codex (OpenAI) | `https://developers.openai.com/codex/changelog` ; GitHub: `https://github.com/openai/codex/releases` |
 | Cursor SDK | `https://cursor.com/docs/api/sdk/typescript` |
 
 Security: **GitHub Advisory Database**, **NVD**, vendor security bulletins — only when tied to a dependency Tyler actually uses.

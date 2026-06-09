@@ -17,7 +17,8 @@
 ## Snapshot
 
 - **Phase:** Career transition — actively studying **AI engineering and agent systems**, building real projects (not tutorial-only).  
-- **Background:** ~6 years professional **front-end web** (React/TypeScript at scale; Laravel/Livewire in a nonprofit setting). Prior paths include counseling (MA-level training and practice), Apple retail/B2B, and anthropology (BA). Describes a **non-linear** career path and a “late bloomer” framing for traditional tech milestones.  
+- **Events / programs:** **Age 44**; **not** currently enrolled as a student. When researching meetups, conferences, or university listings, **exclude student-only** events and programs with **age caps** that exclude him (see `.cursor/skills/events-research/SKILL.md` **Audience eligibility**).  
+- **Background:** ~6 years professional **front-end web** (React/TypeScript at scale; Laravel/Livewire in a nonprofit setting). Prior paths include counseling (MA-level training and practice), **Apple retail and B2B business team** (customer focus, brand representation, business customer relationships — not the same as enterprise solution architecture), and anthropology (BA). Describes a **non-linear** career path and a “late bloomer” framing for traditional tech milestones.  
 - **Sole proprietorship:** Occasional **web design / build** work for small clients (stack skews PHP/JS/classic web).  
 - **Daily rhythm (typical):** About **3–4 hours** of deep work on AI/building; remainder split across learning media, tooling experiments, and coordination with an **AI coach** used as a long-running teammate for memory and prioritization.  
 - **ADHD:** Formal diagnosis — comfortable stating in this repo; work and productivity context in [`career-fit-context.md`](career-fit-context.md).

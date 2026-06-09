@@ -17,6 +17,8 @@ These tools are the **default core set** for weekly tech-stack research: agents 
 | **Hermes** | **Hermes Agent** (Nous Research) — open-source agent framework; portfolio line is exploratory. `/tech-stack-updates` research target: [`NousResearch/hermes-agent`](https://github.com/NousResearch/hermes-agent) releases and security notices. |
 | **OpenClaw** | Active project — multi-agent WoW auction analytics. |
 | **Antigravity** | Google’s **Antigravity** IDE (agent-first development). In this doc: AI-assisted development and OpenClaw orchestration (HITL, gateway allowlists) — see **Antigravity** under [AI-assisted development](#ai-assisted-development-today). |
+| **ChatGPT** | OpenAI **ChatGPT** (web/app, models-in-product, account features). `/tech-stack-updates` research target: [ChatGPT release notes](https://help.openai.com/en/articles/6825453-chatgptrelease-notes) (Help Center); pair with [Model release notes](https://help.openai.com/en/articles/9624314-model-release-notes) when model defaults shift. |
+| **Codex** | OpenAI **Codex** coding agent (CLI, app, harness bumps in **OpenClaw**). `/tech-stack-updates` research target: [Codex changelog](https://developers.openai.com/codex/changelog) and [`openai/codex` releases](https://github.com/openai/codex/releases). |
 
 Tyler may **override** the set for a single run by naming tools in chat; recurring changes belong in this table (git).
 
@@ -60,6 +62,8 @@ Strongest depth in **front-end** and **UI delivery**; back-end treated as suppor
 | **Claude Code** | AI coding tool used on commodity reporting system. |
 | **Antigravity** | Multi-agent **framework + IDE** (OpenClaw); HITL terminal approvals; subagent gateway whitelisting. |
 | **Google AI Studio** | Small experiments / prototypes. |
+| **ChatGPT** | General OpenAI chat / reasoning surface (core stack for weekly monitoring). |
+| **Codex** | OpenAI terminal coding agent; also integrated via **OpenClaw** auth profiles and version pins. |
 
 ---
 
@@ -146,6 +150,7 @@ Hybrid routing by task complexity (exact tiers evolve — confirm in Google’s 
 
 ## Changelog
 
+- **2026-05-28:** Added **ChatGPT** and **Codex** to the **core stack** table for `/tech-stack-updates` priority monitoring; aligned **tech-stack-pulse** skill prose and reference entry points.
 - **2026-05-14:** Corrected **core stack** names in this table: **Hermes** (was a typo *Hermez*) for the Hermes Agent framework, and **Antigravity** (was a typo *Anti-Gravity*) for Google’s IDE; aligned `.cursor/skills/tech-stack-pulse/SKILL.md` and the `2026-05-14` stack digest wording.
 - **2026-05-13:** Documented **core stack** (Cursor, Gemini, Hermes, OpenClaw, Antigravity) for `/tech-stack-updates` digest priority and core vs non-core sectioning in the pulse skill.
 - **2026-05-13:** Initial consolidation from `identity-brief.md` + `_private/context-portfolio` (03, 05, 09).

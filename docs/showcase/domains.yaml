@@ -1,0 +1,99 @@
+# Topic/category grouping for the capability map showcase.
+# Regenerate HTML after edits: python3 scripts/build-capability-map.py
+
+domains:
+  - id: core
+    label: Chief of Staff
+    color: "#8b9dc7"
+    blurb: Durable planning and delegation across personal, household, and work. Continuity lives in committed markdown, not chat-only threads.
+    capabilities: []
+
+  - id: event_planning
+    label: Event planning
+    color: "#00e5ff"
+    blurb: Find NYC / northern NJ and online AI agent-orchestration events; writes dated digests under docs/research/.
+    capabilities:
+      - type: skill
+        id: events-research
+      - type: command
+        id: events-research
+      - type: agent
+        id: events-scout
+
+  - id: networking
+    label: Networking
+    color: "#c77dff"
+    blurb: Turn a saved event digest into targets, icebreakers, and short outreach drafts before you attend.
+    capabilities:
+      - type: skill
+        id: lookahead-networker
+      - type: command
+        id: lookahead-match
+      - type: agent
+        id: lookahead-networker
+
+  - id: tech_stack
+    label: Tech stack
+    color: "#7ee787"
+    blurb: Weekly churn vs docs/TECH_STACK.md with upgrade, monitor, hold, and synergy notes.
+    capabilities:
+      - type: skill
+        id: tech-stack-pulse
+      - type: command
+        id: tech-stack-updates
+      - type: agent
+        id: stack-radar
+
+  - id: career
+    label: Career
+    color: "#ffb347"
+    blurb: Job fit analysis, work planning, and research briefs without inventing employer facts.
+    capabilities:
+      - type: command
+        id: job-fit
+      - type: agent
+        id: job-fit-analyst
+      - type: agent
+        id: work-strategist
+      - type: agent
+        id: research-brief
+
+  - id: lead_tracking
+    label: Lead tracking
+    color: "#ff7b72"
+    blurb: Structure recent contacts and optional Google Sheets sync when local config is present.
+    capabilities:
+      - type: command
+        id: lead-tracker
+        manifest_slug: lead-tracker
+      - type: agent
+        id: lead-tracker
+        manifest_slug: lead-tracker
+
+  - id: quality
+    label: Quality & testing
+    color: "#bf5af2"
+    blurb: Separate evaluation (spec conformance) from testing (saved regression manifests).
+    capabilities:
+      - type: command
+        id: evaluate-feature
+        manifest_slug: feature-quality-system
+      - type: command
+        id: run-feature-tests
+        manifest_slug: feature-quality-system
+      - type: agent
+        id: feature-evaluator
+        manifest_slug: feature-quality-system
+      - type: agent
+        id: feature-testing-agent
+        manifest_slug: feature-quality-system
+
+  - id: household
+    label: Household & onboarding
+    color: "#5ac8fa"
+    blurb: Coordinated household context and deferred onboarding boundaries (parent-invoked agents).
+    capabilities:
+      - type: agent
+        id: household-coordinator
+      - type: agent
+        id: onboarding-guide
