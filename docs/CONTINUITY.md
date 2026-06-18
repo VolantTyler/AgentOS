@@ -36,6 +36,7 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles; **job-fit** skill now handles duplicate prevention — SDK automation remains optional later.
 - [ ] Use **`/requirement-map`** on a role worth applying to after **`/job-fit`** (or directly when skipping fit scoring); maps every JD bullet to paste-ready lines via context-portfolio or [tylerstahl.dev](https://tylerstahl.dev).
 - [ ] Configure local `.env` for the job-fit tracker sheet and run `/job-fit` on a live role to verify scorecard rows append correctly.
+- [ ] Run the new job-fit bias audit benchmark after Kaggle Benchmarks auth is configured: `job_fit_bias_audit.py` with fixtures under `evals/fixtures/job-fit/`; use remote task slug `audit-job-fit-bias-v3`.
 - [x] Certification / coursework recommendations saved at [`docs/research/certification-recommendations-2026-05-20.md`](research/certification-recommendations-2026-05-20.md) (mapped to job-fit gaps; Apple customer/brand nuance added).
 - [ ] Run the new event-to-networking loop on a real event: `/events-research` first, then `/lookahead-match` on the event worth attending.
 - [ ] **Employer watch — Jamf:** Re-check [careers](https://www.jamf.com/about/careers/jobs/) (~mid-June 2026) for AI Assistant / agent-engineering or US-remote web/docs roles. No strong fit as of 2026-05-22; append to lead tracker sheet when `gws` + `LEAD_TRACKER_SPREADSHEET_ID` are configured (row prepared in chat 2026-05-22).
@@ -57,6 +58,11 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - **What we did:** Added **`/requirement-map`** application-prep workflow: [`.cursor/skills/requirement-mapping/SKILL.md`](../.cursor/skills/requirement-mapping/SKILL.md), **`requirement-mapper`** subagent, maps every JD bullet to third-person paste-ready lines with direct/adjacent/stretch/gap labels; local `docs/_private/context-portfolio/` or [tylerstahl.dev](https://tylerstahl.dev) for cloud; `requirement-map` feature manifest and capability map update.
 - **Decisions:** Separate from **`/job-fit`** (decide vs apply); counseling/anthropology/Apple customer background always eligible for stretch mappings; auto-save to `docs/research/requirement-map-*.md`.
 - **Next:** Smoke-test `/requirement-map` on a live JD paste.
+
+- **Date:** 2026-06-16
+- **What we did:** Added a `kaggle-benchmarks` job-fit calibration audit scaffold: [`job_fit_bias_audit.py`](../job_fit_bias_audit.py), fixtures at [`evals/fixtures/job-fit/bias_cases.json`](../evals/fixtures/job-fit/bias_cases.json), and a saved test manifest at [`docs/testing/features/job-fit-bias-audit.md`](testing/features/job-fit-bias-audit.md).
+- **Decisions:** Keep benchmark cases outside the Python task file; use structured verdict output, explicit score/verdict boundary assertions, and an LLM-as-judge neutrality check.
+- **Next:** Push `audit-job-fit-bias-v3` and run it against targeted model endpoints before treating the results as evidence. The original `audit-job-fit-bias` remote slug may remain unusable because the server currently does not support deleting the malformed task record; v2 also exists as an errored compatibility attempt.
 
 - **Date:** 2026-06-09
 - **What we did:** Added **duplicate prevention** to job-fit: new [`.cursor/skills/job-fit/SKILL.md`](../.cursor/skills/job-fit/SKILL.md) checks the tracker sheet (and saved briefs) before analysis; `/job-fit` surfaces existing **reviewed date**, **overall score**, and **verdict** when company + role or job URL already exists; Tyler can reply **new entry** to force a fresh run.
