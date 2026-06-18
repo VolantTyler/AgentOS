@@ -33,6 +33,7 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [ ] Flesh out `.cursor/agents/` roles to match real recurring workflows.
 - [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles; **job-fit** skill now handles duplicate prevention — SDK automation remains optional later.
 - [ ] Configure local `.env` for the job-fit tracker sheet and run `/job-fit` on a live role to verify scorecard rows append correctly.
+- [ ] Run the new job-fit bias audit benchmark after Kaggle Benchmarks auth is configured: `job_fit_bias_audit.py` with fixtures under `evals/fixtures/job-fit/`; use remote task slug `audit-job-fit-bias-v3`.
 - [x] Certification / coursework recommendations saved at [`docs/research/certification-recommendations-2026-05-20.md`](research/certification-recommendations-2026-05-20.md) (mapped to job-fit gaps; Apple customer/brand nuance added).
 - [ ] Run the new event-to-networking loop on a real event: `/events-research` first, then `/lookahead-match` on the event worth attending.
 - [ ] **Employer watch — Jamf:** Re-check [careers](https://www.jamf.com/about/careers/jobs/) (~mid-June 2026) for AI Assistant / agent-engineering or US-remote web/docs roles. No strong fit as of 2026-05-22; append to lead tracker sheet when `gws` + `LEAD_TRACKER_SPREADSHEET_ID` are configured (row prepared in chat 2026-05-22).
@@ -44,6 +45,11 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 | **Jamf** | Low priority / waiting | ~2026-06-15 | Apple MDM vendor; **Jamf AI Assistant** (copilot, HITL, Bedrock/Claude) is strategic but **no open AI/agent engineering reqs** on Greenhouse (36 roles, mostly sales). Tiny AI Initiatives org; layoffs 2024/2025. Tyler: Apple retail/B2B background relevant; agent-orchestration interest not matched by current postings. |
 
 ## Last session
+
+- **Date:** 2026-06-16
+- **What we did:** Added a `kaggle-benchmarks` job-fit calibration audit scaffold: [`job_fit_bias_audit.py`](../job_fit_bias_audit.py), fixtures at [`evals/fixtures/job-fit/bias_cases.json`](../evals/fixtures/job-fit/bias_cases.json), and a saved test manifest at [`docs/testing/features/job-fit-bias-audit.md`](testing/features/job-fit-bias-audit.md).
+- **Decisions:** Keep benchmark cases outside the Python task file; use structured verdict output, explicit score/verdict boundary assertions, and an LLM-as-judge neutrality check.
+- **Next:** Push `audit-job-fit-bias-v3` and run it against targeted model endpoints before treating the results as evidence. The original `audit-job-fit-bias` remote slug may remain unusable because the server currently does not support deleting the malformed task record; v2 also exists as an errored compatibility attempt.
 
 - **Date:** 2026-06-09
 - **What we did:** Added **duplicate prevention** to job-fit: new [`.cursor/skills/job-fit/SKILL.md`](../.cursor/skills/job-fit/SKILL.md) checks the tracker sheet (and saved briefs) before analysis; `/job-fit` surfaces existing **reviewed date**, **overall score**, and **verdict** when company + role or job URL already exists; Tyler can reply **new entry** to force a fresh run.
