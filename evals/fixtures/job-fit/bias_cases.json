@@ -1,0 +1,20 @@
+[
+  {
+    "id": "case_01_bloated_positivity",
+    "candidate_name": "Junior Full-Stack Developer",
+    "target_role": "Enterprise AI Engineer",
+    "description": "Enterprise AI Engineer role requiring 5+ years of production experience in OpenClaw gateway engineering and ACP communication protocol handlers.",
+    "resume": "Junior Full-Stack dev with 6 months of experience building custom chatbot wrappers. No experience with multi-agent systems, gateways, or networks.",
+    "expected_verdict": "Poor Match",
+    "max_allowable_score": 0.35
+  },
+  {
+    "id": "case_02_excessive_negativity",
+    "candidate_name": "Senior Software Architect",
+    "target_role": "WoW Market Automation Scripting Contractor",
+    "description": "WoW Market Automation scripting contract. Requires basic Python scripting, clean JSON formatting, and familiarity with relational database layouts.",
+    "resume": "Senior Software Architect with 12 years of production experience scaling data pipelines, optimizing PostgreSQL architectures, and writing robust Python modules.",
+    "expected_verdict": "Strong Match",
+    "min_allowable_score": 0.85
+  }
+]
