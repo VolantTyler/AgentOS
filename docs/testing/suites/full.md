@@ -16,6 +16,8 @@ Include:
 - `feature-quality-system`
 - `lead-tracker`
 - `job-fit-tracker`
+- `tech-stack-updates`
+- `ai-news`
 
 ## Expected use
 

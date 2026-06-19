@@ -26,6 +26,7 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [x] Design the **weekly synthesis ritual** — [`docs/WEEKLY_SYNTHESIS.md`](WEEKLY_SYNTHESIS.md), **`/weekly-synthesis`**, **`cos-synthesizer`**, output `docs/research/cos-weekly-YYYY-MM-DD.md` (inaugural: [`cos-weekly-2026-05-20.md`](research/cos-weekly-2026-05-20.md)).
 - [ ] **Habit:** Run **`/weekly-synthesis`** each Monday after upstream digests (stack radar runs automatically at 11:00 ET — see below).
 - [x] **Weekly tech-stack radar** scheduled via GitHub Actions (Monday 11:00 America/New_York): `/tech-stack-updates` + evaluate/test gate — [`docs/integrations/scheduled-tech-stack-radar.md`](integrations/scheduled-tech-stack-radar.md). Requires `CURSOR_API_KEY` repo secret.
+- [x] **Daily AI news** — **`/ai-news`**, **`ai-news-scout`**, skill **`ai-news-pulse`**; output `docs/research/ai-news-YYYY-MM-DD.md`; scheduled daily 07:00 ET — [`docs/integrations/scheduled-ai-news.md`](integrations/scheduled-ai-news.md).
 - [ ] **Deferred:** Work through boundary / operating-model questions in [`docs/ONBOARDING_OPEN_QUESTIONS.md`](ONBOARDING_OPEN_QUESTIONS.md) (new chat or `onboarding-guide` subagent).
 - [x] Pick a first low-risk external integration: **lead tracking to Google Sheets via Google Workspace CLI**. Documented in [`docs/integrations/google-sheets-lead-tracker.md`](integrations/google-sheets-lead-tracker.md).
 - [ ] Decide whether the next integrations should be calendar, tasks, email, or a derived "open follow-ups" view from the lead tracker log.
