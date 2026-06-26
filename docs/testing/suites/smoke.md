@@ -19,6 +19,7 @@ Include:
 - `job-fit-tracker`
 - `requirement-map`
 - `tech-stack-updates`
+- `ai-news`
 
 ## Expected use
 

@@ -44,6 +44,20 @@ domains:
       - type: agent
         id: stack-radar
 
+  - id: ai_news
+    label: AI news
+    color: "#ff6b9d"
+    blurb: Daily top-10 AI developments across agentic, applied, generative, research, science, and consumer AI.
+    capabilities:
+      - type: skill
+        id: ai-news-pulse
+      - type: command
+        id: ai-news
+        manifest_slug: ai-news
+      - type: agent
+        id: ai-news-scout
+        manifest_slug: ai-news
+
   - id: career
     label: Career
     color: "#ffb347"
