@@ -51,14 +51,30 @@ Optional overrides:
 | Path | Role |
 |------|------|
 | `.github/workflows/daily-ai-news.yml` | Cron + `workflow_dispatch` |
+| `.github/workflows/auto-merge-ai-news-digest.yml` | Squash-merge digest PRs when only `docs/research/ai-news-*.md` changes |
 | `scripts/scheduled/daily-ai-news.ts` | SDK orchestration |
 | `package.json` | `npm run scheduled:daily-ai-news` |
 | `docs/testing/features/ai-news.md` | Regression manifest for step 2 |
 
+## Auto-merge
+
+After the cloud agent opens a PR on a `cursor/daily-ai-news-*` (or
+`cursor/ai-news-daily-*`) branch, **Auto-merge AI news digest** squash-merges it
+when every changed file matches `docs/research/ai-news-YYYY-MM-DD.md`. Draft PRs
+are marked ready first.
+
+**Backlog sweep:** Actions → *Auto-merge AI news digest* → *Run workflow* (merges
+all eligible open digest PRs).
+
+Repo setting **Allow auto-merge** is **not** required — this workflow merges
+directly via the Actions token.
+
 ## Billing and safety
 
 - SDK runs bill like other Cursor agent usage.
-- The cloud agent may commit digests and open **draft PRs** (`autoCreatePR: true`). Review before merge.
+- The cloud agent opens PRs via `autoCreatePR: true`; eligible digest-only PRs
+  merge automatically (see above). Unexpected file changes in the same PR are
+  skipped.
 - Digests should contain only **public** links — no private employer or household data.
 
 ## Related
