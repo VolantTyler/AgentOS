@@ -33,6 +33,9 @@ Start here on every new session:
 - **Slash:** **`/job-fit`** → [`.cursor/commands/job-fit.md`](.cursor/commands/job-fit.md) → reads the job-fit skill, then delegates **`job-fit-analyst`** ([`.cursor/agents/job-fit-analyst.md`](.cursor/agents/job-fit-analyst.md)).
 - **Agent:** **`job-fit-analyst`** → [`.cursor/agents/job-fit-analyst.md`](.cursor/agents/job-fit-analyst.md): evaluates fit, red flags, unknowns, and application positioning; appends scorecard rows to Google Sheets when configured; can write dated briefs under [`docs/research/`](docs/research/README.md).  
 - **Integration:** [`docs/integrations/google-sheets-job-fit-tracker.md`](docs/integrations/google-sheets-job-fit-tracker.md): append-only job-fit review log in a dedicated Google Sheet through Google Workspace CLI when local config is present.  
+- **requirement-mapping** — [`.cursor/skills/requirement-mapping/SKILL.md`](.cursor/skills/requirement-mapping/SKILL.md): maps **every JD bullet** to resume/portfolio evidence with direct / adjacent / stretch / gap labels and third-person paste-ready cover/resume lines; separate from job-fit (decide vs apply). Evidence: local [`docs/_private/context-portfolio/`](docs/identity-brief.md) when present, otherwise [tylerstahl.dev](https://tylerstahl.dev).
+- **Slash:** **`/requirement-map`** → [`.cursor/commands/requirement-map.md`](.cursor/commands/requirement-map.md) → delegates **`requirement-mapper`** ([`.cursor/agents/requirement-mapper.md`](.cursor/agents/requirement-mapper.md)).
+- **Agent:** **`requirement-mapper`** → [`.cursor/agents/requirement-mapper.md`](.cursor/agents/requirement-mapper.md): writes alignment tables to `docs/research/requirement-map-YYYY-MM-DD-<company>-<role>.md`. See [`docs/JOB_FIT_WORKFLOW.md`](docs/JOB_FIT_WORKFLOW.md) (application prep section) for when to use **`/job-fit`** vs **`/requirement-map`**.
 - **lead tracking** — [`docs/integrations/google-sheets-lead-tracker.md`](docs/integrations/google-sheets-lead-tracker.md): append-only recent-contact logging to Google Sheets through Google Workspace CLI when local config is present.  
 - **Slash:** **`/lead-tracker`** → [`.cursor/commands/lead-tracker.md`](.cursor/commands/lead-tracker.md) → delegates **`lead-tracker`** ([`.cursor/agents/lead-tracker.md`](.cursor/agents/lead-tracker.md)).  
 - **Agent:** **`lead-tracker`** → [`.cursor/agents/lead-tracker.md`](.cursor/agents/lead-tracker.md): normalizes lead or contact notes into structured rows and syncs them when the Google Sheets target is configured locally.  
@@ -53,6 +56,8 @@ Start here on every new session:
 - **feature-evaluator** — [`.cursor/agents/feature-evaluator.md`](.cursor/agents/feature-evaluator.md): evaluates a newly built feature against explicit acceptance criteria before broader regression runs.
 - **feature-testing-agent** — [`.cursor/agents/feature-testing-agent.md`](.cursor/agents/feature-testing-agent.md): runs committed feature manifests and suites for targeted or broad regression coverage.
 - **lead-tracker** — [`.cursor/agents/lead-tracker.md`](.cursor/agents/lead-tracker.md): captures recent contacts and follow-ups, then appends them to the configured Google Sheet when allowed.
+- **job-fit-analyst** — [`.cursor/agents/job-fit-analyst.md`](.cursor/agents/job-fit-analyst.md): scorecard-first role/company fit evaluation; optional Google Sheets logging when configured.
+- **requirement-mapper** — [`.cursor/agents/requirement-mapper.md`](.cursor/agents/requirement-mapper.md): JD-to-background alignment tables with labeled stretch mappings for application materials.
 
 ## GitHub
 

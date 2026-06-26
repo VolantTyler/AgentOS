@@ -32,6 +32,7 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [ ] Explore **first external comm integration** when useful (after trust model is clearer); calendar/tasks/email remain candidates.
 - [ ] Flesh out `.cursor/agents/` roles to match real recurring workflows.
 - [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles; **job-fit** skill now handles duplicate prevention — SDK automation remains optional later.
+- [ ] Use **`/requirement-map`** on a role worth applying to after **`/job-fit`** (or directly when skipping fit scoring); maps every JD bullet to paste-ready lines via context-portfolio or [tylerstahl.dev](https://tylerstahl.dev).
 - [ ] Configure local `.env` for the job-fit tracker sheet and run `/job-fit` on a live role to verify scorecard rows append correctly.
 - [x] Certification / coursework recommendations saved at [`docs/research/certification-recommendations-2026-05-20.md`](research/certification-recommendations-2026-05-20.md) (mapped to job-fit gaps; Apple customer/brand nuance added).
 - [ ] Run the new event-to-networking loop on a real event: `/events-research` first, then `/lookahead-match` on the event worth attending.
@@ -44,6 +45,11 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 | **Jamf** | Low priority / waiting | ~2026-06-15 | Apple MDM vendor; **Jamf AI Assistant** (copilot, HITL, Bedrock/Claude) is strategic but **no open AI/agent engineering reqs** on Greenhouse (36 roles, mostly sales). Tiny AI Initiatives org; layoffs 2024/2025. Tyler: Apple retail/B2B background relevant; agent-orchestration interest not matched by current postings. |
 
 ## Last session
+
+- **Date:** 2026-06-26
+- **What we did:** Added **`/requirement-map`** application-prep workflow: [`.cursor/skills/requirement-mapping/SKILL.md`](../.cursor/skills/requirement-mapping/SKILL.md), **`requirement-mapper`** subagent, maps every JD bullet to third-person paste-ready lines with direct/adjacent/stretch/gap labels; local `docs/_private/context-portfolio/` or [tylerstahl.dev](https://tylerstahl.dev) for cloud; `requirement-map` feature manifest and capability map update.
+- **Decisions:** Separate from **`/job-fit`** (decide vs apply); counseling/anthropology/Apple customer background always eligible for stretch mappings; auto-save to `docs/research/requirement-map-*.md`.
+- **Next:** Smoke-test `/requirement-map` on a live JD paste.
 
 - **Date:** 2026-06-09
 - **What we did:** Added **duplicate prevention** to job-fit: new [`.cursor/skills/job-fit/SKILL.md`](../.cursor/skills/job-fit/SKILL.md) checks the tracker sheet (and saved briefs) before analysis; `/job-fit` surfaces existing **reviewed date**, **overall score**, and **verdict** when company + role or job URL already exists; Tyler can reply **new entry** to force a fresh run.

@@ -214,6 +214,22 @@ Add a small `@cursor/sdk` script that:
 - "Use my prior job-fit notes too and tell me whether this resembles roles that seem energizing or draining."
 - "Update the dated job-fit note with what I learned from this recruiter call."
 
+## Application prep (separate from fit scoring)
+
+Use **`/requirement-map`** when Tyler is preparing materials for a role — not when deciding whether to pursue it.
+
+- **Job-fit (`/job-fit`):** Should I pursue this? Scorecard, environment risk, recommendation.
+- **Requirement map (`/requirement-map`):** How does each JD bullet map to my background? Paste-ready third-person resume/cover lines with direct / adjacent / stretch / gap labels.
+
+Evidence for requirement maps:
+
+- **Local:** `docs/_private/context-portfolio/` files `01`–`10`
+- **Cloud / no private context:** [https://tylerstahl.dev](https://tylerstahl.dev) (always current digital resume/portfolio)
+
+Saved maps: `docs/research/requirement-map-YYYY-MM-DD-company-role.md`
+
+See `.cursor/skills/requirement-mapping/SKILL.md` and **`/requirement-map`**.
+
 ## Slash command
 
 Use **`/job-fit`** for the fastest path.
