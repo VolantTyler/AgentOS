@@ -61,7 +61,7 @@ domains:
   - id: career
     label: Career
     color: "#ffb347"
-    blurb: Job fit analysis with duplicate prevention, work planning, and research briefs without inventing employer facts.
+    blurb: Job fit scoring, JD-to-resume requirement maps, work planning, and research briefs without inventing employer facts.
     capabilities:
       - type: skill
         id: job-fit
@@ -69,6 +69,15 @@ domains:
         id: job-fit
       - type: agent
         id: job-fit-analyst
+        manifest_slug: job-fit-tracker
+      - type: skill
+        id: requirement-mapping
+      - type: command
+        id: requirement-map
+        manifest_slug: requirement-map
+      - type: agent
+        id: requirement-mapper
+        manifest_slug: requirement-map
       - type: agent
         id: work-strategist
       - type: agent

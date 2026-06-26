@@ -4,6 +4,8 @@
 
 **How to use:** Treat this file as the default “who am I working for?” layer. When tasks need richer personal detail, ask the human to paste or work on a machine that has `_private` checked out (still not in remote Git).
 
+**Digital resume / portfolio (always current):** [https://tylerstahl.dev](https://tylerstahl.dev) — use for cloud agents and any workflow without local `_private` access (including **`/requirement-map`**). Local detail still lives in `docs/_private/context-portfolio/` (`01-identity.md` through `10-decision-log.md`).
+
 ---
 
 ## Addressing and logistics

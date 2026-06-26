@@ -252,10 +252,10 @@
       <h1>AgentOS — Capability Map</h1>
       <p class="tagline">Chief-of-Staff system: planning, synthesis, delegation, and light execution across personal, household, and work.</p>
       <div class="stats">
-        <span>6 skills</span>
-        <span>9 slash commands</span>
-        <span>13 subagents</span>
-        <span>5 features with saved test manifests</span>
+        <span>7 skills</span>
+        <span>10 slash commands</span>
+        <span>14 subagents</span>
+        <span>6 features with saved test manifests</span>
       </div>
     </header>
     <div class="legend" aria-label="Map legend">
@@ -474,7 +474,7 @@
         <div class="panel-corner bl"></div>
         <div class="panel-corner br"></div>
         <h2 class="panel-title">Career</h2>
-        <p class="panel-blurb">Job fit analysis with duplicate prevention, work planning, and research briefs without inventing employer facts.</p><div class="chips">
+        <p class="panel-blurb">Job fit scoring, JD-to-resume requirement maps, work planning, and research briefs without inventing employer facts.</p><div class="chips">
     <article class="chip chip-skill" style="--accent: #39ff14">
       <header class="chip-head">
         <span class="chip-type">Skill</span>
@@ -502,6 +502,36 @@
       </header>
       <h3 class="chip-title">job-fit-analyst</h3>
       <p class="chip-desc">Compares a job description and company context against Tyler&#x27;s documented skills, interests, constraints, and preferred environments. Returns a candid fit brief, questions to validate, and positioning guidance; can write…</p>
+      <div class="chip-badges"><span class="badge on" title="Eval">Eval</span><span class="badge on" title="Test">Test</span><span class="badge on" title="Smoke">Smoke</span><span class="badge on" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-skill" style="--accent: #39ff14">
+      <header class="chip-head">
+        <span class="chip-type">Skill</span>
+        <code class="chip-id">requirement-mapping</code>
+      </header>
+      <h3 class="chip-title">requirement-mapping</h3>
+      <p class="chip-desc">Maps every bullet in a job description to Tyler&#x27;s resume and portfolio evidence, producing paste-ready third-person resume or cover-letter lines with labeled mapping types (direct, adjacent, stretch, gap) and confidence …</p>
+      <div class="chip-badges"><span class="badge on" title="Eval">Eval</span><span class="badge on" title="Test">Test</span><span class="badge on" title="Smoke">Smoke</span><span class="badge on" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-command" style="--accent: #4d9fff">
+      <header class="chip-head">
+        <span class="chip-type">Command</span>
+        <code class="chip-id">/requirement-map</code>
+      </header>
+      <h3 class="chip-title">/requirement-map — JD requirements to resume/cover lines</h3>
+      <p class="chip-desc">JD requirements to resume/cover lines</p>
+      <div class="chip-badges"><span class="badge on" title="Eval">Eval</span><span class="badge on" title="Test">Test</span><span class="badge on" title="Smoke">Smoke</span><span class="badge on" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-agent" style="--accent: #ff8c42">
+      <header class="chip-head">
+        <span class="chip-type">Agent</span>
+        <code class="chip-id">requirement-mapper</code>
+      </header>
+      <h3 class="chip-title">requirement-mapper</h3>
+      <p class="chip-desc">Maps every job-description bullet to Tyler&#x27;s resume and portfolio evidence, producing third-person paste-ready lines with direct/adjacent/stretch/gap labels and confidence scores. Reads local context-portfolio or tylerst…</p>
       <div class="chip-badges"><span class="badge on" title="Eval">Eval</span><span class="badge on" title="Test">Test</span><span class="badge on" title="Smoke">Smoke</span><span class="badge on" title="Full">Full</span></div>
     </article>
     
