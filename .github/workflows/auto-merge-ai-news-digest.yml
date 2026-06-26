@@ -4,7 +4,8 @@
 #   cursor/daily-ai-news-*
 #   cursor/ai-news-daily-*
 #
-# Only merges when every changed file is under docs/research/ai-news-*.md.
+# Only merges when the PR changes exactly one file:
+#   docs/research/ai-news-YYYY-MM-DD.md
 # Draft PRs are marked ready, then merged (squash).
 #
 # Manual backlog sweep: Actions → Auto-merge AI news digest → Run workflow.
@@ -52,27 +53,32 @@ jobs:
               ;;
           esac
 
-          mapfile -t files < <(
-            gh pr view "$PR_NUMBER" --json files --jq '.files[].path'
-          )
-          if [ "${#files[@]}" -eq 0 ]; then
-            echo "No changed files; skipping."
+          payload="$(gh pr view "$PR_NUMBER" --json changedFiles,files)"
+          changed_files="$(jq '.changedFiles' <<< "$payload")"
+          returned_count="$(jq '.files | length' <<< "$payload")"
+          file="$(jq -r '.files[0].path // ""' <<< "$payload")"
+
+          if [ "$changed_files" -ne 1 ]; then
+            echo "Expected 1 changed file, got $changed_files; skipping."
             exit 0
           fi
 
-          for file in "${files[@]}"; do
-            if [[ ! "$file" =~ ^docs/research/ai-news-[0-9]{4}-[0-9]{2}-[0-9]{2}\.md$ ]]; then
-              echo "Unexpected file in PR: $file"
-              exit 0
-            fi
-          done
+          if [ "$returned_count" -ne "$changed_files" ]; then
+            echo "File list truncated (gh returns at most 100 paths); skipping."
+            exit 0
+          fi
+
+          if [[ ! "$file" =~ ^docs/research/ai-news-[0-9]{4}-[0-9]{2}-[0-9]{2}\.md$ ]]; then
+            echo "Unexpected file in PR: $file"
+            exit 0
+          fi
 
           if gh pr view "$PR_NUMBER" --json isDraft --jq '.isDraft' | grep -q true; then
             echo "Marking draft PR #$PR_NUMBER ready for review."
             gh pr ready "$PR_NUMBER"
           fi
 
-          echo "Merging PR #$PR_NUMBER (squash)."
+          echo "Merging PR #$PR_NUMBER (squash): $file"
           gh pr merge "$PR_NUMBER" --squash --delete-branch
 
       - name: Sweep open digest PRs
@@ -101,18 +107,23 @@ jobs:
           echo "Found ${#prs[@]} open digest PR(s): ${prs[*]}"
 
           for pr in "${prs[@]}"; do
-            mapfile -t files < <(
-              gh pr view "$pr" --repo "$GH_REPO" --json files --jq '.files[].path'
-            )
-            eligible=true
-            for file in "${files[@]}"; do
-              if [[ ! "$file" =~ ^docs/research/ai-news-[0-9]{4}-[0-9]{2}-[0-9]{2}\.md$ ]]; then
-                echo "PR #$pr skipped — unexpected file: $file"
-                eligible=false
-                break
-              fi
-            done
-            if [ "$eligible" = false ] || [ "${#files[@]}" -eq 0 ]; then
+            payload="$(gh pr view "$pr" --repo "$GH_REPO" --json changedFiles,files)"
+            changed_files="$(jq '.changedFiles' <<< "$payload")"
+            returned_count="$(jq '.files | length' <<< "$payload")"
+            file="$(jq -r '.files[0].path // ""' <<< "$payload")"
+
+            if [ "$changed_files" -ne 1 ]; then
+              echo "PR #$pr skipped — expected 1 changed file, got $changed_files."
+              continue
+            fi
+
+            if [ "$returned_count" -ne "$changed_files" ]; then
+              echo "PR #$pr skipped — file list truncated (gh returns at most 100 paths)."
+              continue
+            fi
+
+            if [[ ! "$file" =~ ^docs/research/ai-news-[0-9]{4}-[0-9]{2}-[0-9]{2}\.md$ ]]; then
+              echo "PR #$pr skipped — unexpected file: $file"
               continue
             fi
 
@@ -120,6 +131,6 @@ jobs:
               gh pr ready "$pr" --repo "$GH_REPO"
             fi
 
-            echo "Merging PR #$pr (squash)."
+            echo "Merging PR #$pr (squash): $file"
             gh pr merge "$pr" --repo "$GH_REPO" --squash --delete-branch || echo "PR #$pr could not be merged (conflict or checks); skipping."
           done
