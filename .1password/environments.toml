@@ -1,0 +1,3 @@
+# 1Password Environments: validate these mounts before any agent shell command runs.
+# See https://developer.1password.com/docs/environments/local-env-file
+mount_paths = [".env"]
