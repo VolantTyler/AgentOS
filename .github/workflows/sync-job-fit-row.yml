@@ -1,0 +1,84 @@
+# Append a prepared /job-fit scorecard row to the Job Fit Tracker sheet.
+#
+# Use when cloud or chat-only /job-fit runs cannot reach local gws + .env.
+#
+# Required repo secrets:
+#   GWS_CREDENTIALS — output of `gws auth export --unmasked` (OAuth JSON)
+#   JOB_FIT_TRACKER_SPREADSHEET_ID — target workbook ID
+#
+# Optional repo variable (or secret):
+#   JOB_FIT_TRACKER_SHEET_RANGE — default: Job Fit Agent Reviews!A:R
+
+name: Sync job-fit row to sheet
+
+on:
+  workflow_dispatch:
+    inputs:
+      row_json:
+        description: >-
+          JSON array of 18 strings (Reviewed At through Notes). Ignored when verify_only is true. Example:
+          ["2026-06-30","Accenture","Google Agentic AI Delivery Specialist","2.7","weak fit","medium-high","archive for later","One-line call","https://...","chat-only","interested","Top risk","2.5","4.5","2.5","2.0","3.0","Notes"]
+        required: false
+        type: string
+        default: "[]"
+      verify_only:
+        description: Read back the sheet range without appending (connectivity check)
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: sync-job-fit-row
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install gws
+        run: npm install -g @googleworkspace/cli
+
+      - name: Configure gws credentials
+        run: |
+          mkdir -p "$HOME/.config/gws"
+          printf '%s' "$GWS_CREDENTIALS" > "$HOME/.config/gws/credentials.json"
+        env:
+          GWS_CREDENTIALS: ${{ secrets.GWS_CREDENTIALS }}
+
+      - name: Verify sheet connectivity
+        if: inputs.verify_only
+        env:
+          GOOGLE_WORKSPACE_CLI_CREDENTIALS_FILE: ${{ runner.temp }}/gws-credentials.json
+          JOB_FIT_TRACKER_SPREADSHEET_ID: ${{ secrets.JOB_FIT_TRACKER_SPREADSHEET_ID }}
+          JOB_FIT_TRACKER_SHEET_RANGE: ${{ vars.JOB_FIT_TRACKER_SHEET_RANGE || 'Job Fit Agent Reviews!A:R' }}
+          VERIFY_ONLY: "1"
+        run: |
+          cp "$HOME/.config/gws/credentials.json" "$GOOGLE_WORKSPACE_CLI_CREDENTIALS_FILE"
+          npm run sync:job-fit-row
+
+      - name: Append job-fit row
+        if: ${{ !inputs.verify_only }}
+        env:
+          GOOGLE_WORKSPACE_CLI_CREDENTIALS_FILE: ${{ runner.temp }}/gws-credentials.json
+          JOB_FIT_TRACKER_SPREADSHEET_ID: ${{ secrets.JOB_FIT_TRACKER_SPREADSHEET_ID }}
+          JOB_FIT_TRACKER_SHEET_RANGE: ${{ vars.JOB_FIT_TRACKER_SHEET_RANGE || 'Job Fit Agent Reviews!A:R' }}
+          ROW_JSON: ${{ inputs.row_json }}
+        run: |
+          cp "$HOME/.config/gws/credentials.json" "$GOOGLE_WORKSPACE_CLI_CREDENTIALS_FILE"
+          npm run sync:job-fit-row
