@@ -153,6 +153,17 @@ explicitly want a portable export for headless/CI use.
   in chat and say the sync did not happen.  
 - Do not claim success without direct CLI output.
 
+## GitHub Actions fallback (cloud / chat-only sync)
+
+When `/job-fit` runs in Cursor cloud and local `.env` / `gws` are unavailable,
+append the prepared row via the manual workflow instead:
+
+- Workflow: [`.github/workflows/sync-job-fit-row.yml`](../../.github/workflows/sync-job-fit-row.yml)
+- Setup and usage: [`scheduled-job-fit-sheet-sync.md`](scheduled-job-fit-sheet-sync.md)
+
+Required GitHub secrets: `GWS_CREDENTIALS` (from `gws auth export --unmasked`) and
+`JOB_FIT_TRACKER_SPREADSHEET_ID`.
+
 ## Future expansion
 
 If this proves useful, the next low-risk expansion is outcome columns such as

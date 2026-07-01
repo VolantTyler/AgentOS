@@ -138,6 +138,12 @@ write and return the prepared row only.
 If `gws` or the spreadsheet config is unavailable, return a prepared row plus
 the exact setup blocker instead of pretending sync succeeded.
 
+When sync fails in cloud or chat-only runs, tell Tyler he can append the same
+row via GitHub Actions (**Sync job-fit row to sheet**) after setting repo secrets
+`GWS_CREDENTIALS` and `JOB_FIT_TRACKER_SPREADSHEET_ID` — see
+`docs/integrations/scheduled-job-fit-sheet-sync.md`. Include a copy-paste-ready
+`ROW_JSON` array of 18 strings in your output.
+
 Do **not** claim the Google Sheet was updated unless you have direct command
 evidence.
 
