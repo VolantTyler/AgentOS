@@ -29,8 +29,10 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [x] **Daily AI news** — **`/ai-news`**, **`ai-news-scout`**, skill **`ai-news-pulse`**; output `docs/research/ai-news-YYYY-MM-DD.md`; scheduled daily 07:00 ET — [`docs/integrations/scheduled-ai-news.md`](integrations/scheduled-ai-news.md).
 - [ ] **Deferred:** Work through boundary / operating-model questions in [`docs/ONBOARDING_OPEN_QUESTIONS.md`](ONBOARDING_OPEN_QUESTIONS.md) (new chat or `onboarding-guide` subagent).
 - [x] Pick a first low-risk external integration: **lead tracking to Google Sheets via Google Workspace CLI**. Documented in [`docs/integrations/google-sheets-lead-tracker.md`](integrations/google-sheets-lead-tracker.md).
-- [ ] Decide whether the next integrations should be calendar, tasks, email, or a derived "open follow-ups" view from the lead tracker log.
-- [ ] Explore **first external comm integration** when useful (after trust model is clearer); calendar/tasks/email remain candidates.
+- [x] **Email intake (AgentMail):** **`/email-ingest`**, **`email-ingester`**, skill **`email-ingest`**, scripts `npm run email:list-inboxes` / `npm run email:ingest` — [`docs/integrations/agentmail-email-ingest.md`](integrations/agentmail-email-ingest.md). Needs local `AGENTMAIL_API_KEY` + `AGENTMAIL_INBOX_ID`. Raw digests stay under `docs/_private/`; no auto-replies.
+- [ ] Decide whether the next integrations should be calendar, tasks, or a derived "open follow-ups" view from the lead tracker log.
+- [ ] Smoke-test `/email-ingest` with a live AgentMail inbox after local `.env` is set; later: scheduled poll and/or commodity analyst report generation from private digests.
+- [ ] Explore deeper external comm (outbound HITL drafts, webhooks) after inbound trust is proven.
 - [ ] Flesh out `.cursor/agents/` roles to match real recurring workflows.
 - [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles; **job-fit** skill now handles duplicate prevention — SDK automation remains optional later.
 - [ ] Use **`/requirement-map`** on a role worth applying to after **`/job-fit`** (or directly when skipping fit scoring); maps every JD bullet to paste-ready lines via context-portfolio or [tylerstahl.dev](https://tylerstahl.dev).
@@ -46,6 +48,11 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 | **Jamf** | Low priority / waiting | ~2026-06-15 | Apple MDM vendor; **Jamf AI Assistant** (copilot, HITL, Bedrock/Claude) is strategic but **no open AI/agent engineering reqs** on Greenhouse (36 roles, mostly sales). Tiny AI Initiatives org; layoffs 2024/2025. Tyler: Apple retail/B2B background relevant; agent-orchestration interest not matched by current postings. |
 
 ## Last session
+
+- **Date:** 2026-07-10
+- **What we did:** Added **AgentMail email ingestion**: integration doc [`docs/integrations/agentmail-email-ingest.md`](integrations/agentmail-email-ingest.md), skill **`email-ingest`**, slash **`/email-ingest`**, subagent **`email-ingester`**, and local scripts `npm run email:list-inboxes` / `npm run email:ingest` using the `agentmail` SDK. Processed messages get label `agentos/ingested`; raw digests stay under gitignored `docs/_private/email-ingest/`.
+- **Decisions:** Polling-first (no public webhook URL in AgentOS yet); inbound-only by default; no auto-replies; chat triage is redacted.
+- **Next:** Tyler sets `AGENTMAIL_API_KEY` + `AGENTMAIL_INBOX_ID` locally and smoke-tests `/email-ingest` (or the npm scripts) with a real forward.
 
 - **Date:** 2026-06-26
 - **What we did:** Added **`/requirement-map`** application-prep workflow: [`.cursor/skills/requirement-mapping/SKILL.md`](../.cursor/skills/requirement-mapping/SKILL.md), **`requirement-mapper`** subagent, maps every JD bullet to third-person paste-ready lines with direct/adjacent/stretch/gap labels; local `docs/_private/context-portfolio/` or [tylerstahl.dev](https://tylerstahl.dev) for cloud; `requirement-map` feature manifest and capability map update.

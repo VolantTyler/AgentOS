@@ -107,8 +107,8 @@ Hybrid routing by task complexity (exact tiers evolve — confirm in Google’s 
 ### Commodity reporting — email → analyst reports
 
 - **Build tools:** Claude Code + Cursor.
-- **Intake:** AgentMail (stakeholder forwards business email).
-- **Goal shape:** Scheduled analyst summaries (e.g. weekly); requirements still evolving.
+- **Intake:** AgentMail (stakeholder forwards business email) via AgentOS **`/email-ingest`** — see [`docs/integrations/agentmail-email-ingest.md`](integrations/agentmail-email-ingest.md).
+- **Goal shape:** Scheduled analyst summaries (e.g. weekly); requirements still evolving. Ingest + triage is wired; report generation is next.
 
 ### Volant Web Design (sole prop, resumed)
 

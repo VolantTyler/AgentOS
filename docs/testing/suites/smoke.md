@@ -20,6 +20,7 @@ Include:
 - `requirement-map`
 - `tech-stack-updates`
 - `ai-news`
+- `email-ingest`
 
 ## Expected use
 
