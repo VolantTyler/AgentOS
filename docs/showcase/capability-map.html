@@ -252,10 +252,10 @@
       <h1>AgentOS — Capability Map</h1>
       <p class="tagline">Chief-of-Staff system: planning, synthesis, delegation, and light execution across personal, household, and work.</p>
       <div class="stats">
-        <span>7 skills</span>
-        <span>10 slash commands</span>
-        <span>14 subagents</span>
-        <span>6 features with saved test manifests</span>
+        <span>8 skills</span>
+        <span>11 slash commands</span>
+        <span>15 subagents</span>
+        <span>7 features with saved test manifests</span>
       </div>
     </header>
     <div class="legend" aria-label="Map legend">
@@ -590,7 +590,49 @@
       </div>
     </section>
     
-    <section class="panel" id="domain-quality" data-panel="7"
+    <section class="panel" id="domain-email" data-panel="7"
+             style="--accent: #64d2ff">
+      <div class="panel-frame">
+        <div class="panel-corner tl"></div>
+        <div class="panel-corner tr"></div>
+        <div class="panel-corner bl"></div>
+        <div class="panel-corner br"></div>
+        <h2 class="panel-title">Email intake</h2>
+        <p class="panel-blurb">Poll AgentMail for inbound messages, triage in chat, keep raw digests local-only under docs/_private/.</p><div class="chips">
+    <article class="chip chip-skill" style="--accent: #39ff14">
+      <header class="chip-head">
+        <span class="chip-type">Skill</span>
+        <code class="chip-id">email-ingest</code>
+      </header>
+      <h3 class="chip-title">email-ingest</h3>
+      <p class="chip-desc">Pull inbound AgentMail messages into AgentOS for triage. Polls a configured inbox, writes a local-only digest under docs/_private/email-ingest/, marks processed messages with agentos/ingested, and returns a redacted chat…</p>
+      <div class="chip-badges"><span class="badge on" title="Eval">Eval</span><span class="badge on" title="Test">Test</span><span class="badge on" title="Smoke">Smoke</span><span class="badge on" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-command" style="--accent: #4d9fff">
+      <header class="chip-head">
+        <span class="chip-type">Command</span>
+        <code class="chip-id">/email-ingest</code>
+      </header>
+      <h3 class="chip-title">/email-ingest — pull inbound AgentMail into AgentOS</h3>
+      <p class="chip-desc">pull inbound AgentMail into AgentOS</p>
+      <div class="chip-badges"><span class="badge on" title="Eval">Eval</span><span class="badge on" title="Test">Test</span><span class="badge on" title="Smoke">Smoke</span><span class="badge on" title="Full">Full</span></div>
+    </article>
+    
+    <article class="chip chip-agent" style="--accent: #ff8c42">
+      <header class="chip-head">
+        <span class="chip-type">Agent</span>
+        <code class="chip-id">email-ingester</code>
+      </header>
+      <h3 class="chip-title">email-ingester</h3>
+      <p class="chip-desc">Polls AgentMail for inbound messages, writes a local-only ingest digest, marks processed mail with agentos/ingested, and returns a redacted triage summary. Spawn when the user runs /email-ingest or asks to check AgentMai…</p>
+      <div class="chip-badges"><span class="badge on" title="Eval">Eval</span><span class="badge on" title="Test">Test</span><span class="badge on" title="Smoke">Smoke</span><span class="badge on" title="Full">Full</span></div>
+    </article>
+    </div>
+      </div>
+    </section>
+    
+    <section class="panel" id="domain-quality" data-panel="8"
              style="--accent: #bf5af2">
       <div class="panel-frame">
         <div class="panel-corner tl"></div>
@@ -642,7 +684,7 @@
       </div>
     </section>
     
-    <section class="panel" id="domain-household" data-panel="8"
+    <section class="panel" id="domain-household" data-panel="9"
              style="--accent: #5ac8fa">
       <div class="panel-frame">
         <div class="panel-corner tl"></div>

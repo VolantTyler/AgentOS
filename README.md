@@ -46,7 +46,10 @@ Start here on every new session:
 - **ai-news-pulse** — [`.cursor/skills/ai-news-pulse/SKILL.md`](.cursor/skills/ai-news-pulse/SKILL.md): daily **top 10** AI stories (agentic, applied, generative, research, science, consumer) with headline, summary, and source link; writes `docs/research/ai-news-YYYY-MM-DD.md`.
 - **Slash:** **`/ai-news`** → [`.cursor/commands/ai-news.md`](.cursor/commands/ai-news.md) → delegates **`ai-news-scout`** ([`.cursor/agents/ai-news-scout.md`](.cursor/agents/ai-news-scout.md)).
 - **Scheduled daily AI news:** GitHub Actions every day **07:00 America/New_York** — see [`docs/integrations/scheduled-ai-news.md`](docs/integrations/scheduled-ai-news.md). Requires repo secret `CURSOR_API_KEY`.
-- **Cron / SDK later:** add similar schedules for **events-scout**, **lookahead-networker**, or **cos-synthesizer** when needed.
+- **email-ingest** — [`.cursor/skills/email-ingest/SKILL.md`](.cursor/skills/email-ingest/SKILL.md): poll AgentMail for inbound messages; write local-only digests under `docs/_private/email-ingest/`; mark processed mail with `agentos/ingested`.
+- **Slash:** **`/email-ingest`** → [`.cursor/commands/email-ingest.md`](.cursor/commands/email-ingest.md) → delegates **`email-ingester`** ([`.cursor/agents/email-ingester.md`](.cursor/agents/email-ingester.md)).
+- **Integration:** [`docs/integrations/agentmail-email-ingest.md`](docs/integrations/agentmail-email-ingest.md): setup, scripts, privacy rules. Requires local `AGENTMAIL_API_KEY` and `AGENTMAIL_INBOX_ID`.
+- **Cron / SDK later:** add similar schedules for **events-scout**, **lookahead-networker**, **email-ingester**, or **cos-synthesizer** when needed.
 
 ## Quality workflows
 
@@ -61,6 +64,7 @@ Start here on every new session:
 - **lead-tracker** — [`.cursor/agents/lead-tracker.md`](.cursor/agents/lead-tracker.md): captures recent contacts and follow-ups, then appends them to the configured Google Sheet when allowed.
 - **job-fit-analyst** — [`.cursor/agents/job-fit-analyst.md`](.cursor/agents/job-fit-analyst.md): scorecard-first role/company fit evaluation; optional Google Sheets logging when configured.
 - **requirement-mapper** — [`.cursor/agents/requirement-mapper.md`](.cursor/agents/requirement-mapper.md): JD-to-background alignment tables with labeled stretch mappings for application materials.
+- **email-ingester** — [`.cursor/agents/email-ingester.md`](.cursor/agents/email-ingester.md): polls AgentMail, writes local-only digests, returns redacted triage (no auto-replies).
 
 ## GitHub
 

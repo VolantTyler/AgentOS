@@ -95,6 +95,21 @@ domains:
         id: lead-tracker
         manifest_slug: lead-tracker
 
+  - id: email
+    label: Email intake
+    color: "#64d2ff"
+    blurb: Poll AgentMail for inbound messages, triage in chat, keep raw digests local-only under docs/_private/.
+    capabilities:
+      - type: skill
+        id: email-ingest
+        manifest_slug: email-ingest
+      - type: command
+        id: email-ingest
+        manifest_slug: email-ingest
+      - type: agent
+        id: email-ingester
+        manifest_slug: email-ingest
+
   - id: quality
     label: Quality & testing
     color: "#bf5af2"
