@@ -26,7 +26,7 @@ verified source links and a dated digest under `docs/research/`.
 - [ ] `/ai-news` delegates to **ai-news-scout** or follows the same workflow when delegation is unavailable.
 - [ ] **ai-news-scout** follows **ai-news-pulse** skill defaults (24h window, America/New_York dating, 10 stories).
 - [ ] Digests are written to `docs/research/ai-news-YYYY-MM-DD.md` unless chat-only is requested.
-- [ ] Each story has headline, 1–3 sentence summary, and source link.
+- [ ] Each story uses the mobile-first single-column card layout (headline, category, source link, 1–3 sentence summary); no wide top-10 table.
 - [ ] Sourcing follows `docs/BOUNDARIES.md` (no invented stories or URLs).
 - [ ] Scheduled automation is documented and wired to `@cursor/sdk` with `CURSOR_API_KEY`.
 
@@ -69,5 +69,5 @@ verified source links and a dated digest under `docs/research/`.
 ## Evidence expectations
 
 - Command output: file-existence checks, repo search results
-- File snippets: digest with 10 rows and primary links
+- File snippets: digest with 10 single-column story cards and primary links
 - Human-check-only: verifying live news accuracy on any given day

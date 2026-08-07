@@ -22,6 +22,6 @@ You are executing the **AgentOS `/ai-news` slash command**.
 
 Reply to Tyler with:
 
-1. **The full top 10 table** (or equivalent numbered list) — headline, summary, link for each story.  
+1. **The full top 10 in single-column format** — each story as a card: headline, category, source link, summary (mirror the digest file layout; no wide tables).  
 2. **Path** to the saved digest (or say if chat-only).  
 3. **One sentence** on what to watch next (optional follow-up thread).

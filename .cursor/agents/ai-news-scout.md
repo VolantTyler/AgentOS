@@ -31,7 +31,8 @@ using **today’s date** in **America/New_York** unless the parent specified ano
 ## Execution rules
 
 - **No fabrication:** headlines, summaries, and URLs must come from verifiable sources. See [`docs/BOUNDARIES.md`](../../docs/BOUNDARIES.md).  
-- **Exactly 10 stories** in the main table (unless parent overrides count).  
+- **Exactly 10 stories** in the main list (unless parent overrides count).  
+- **Layout:** **single-column story cards** — no wide tables; optimized for phone reading in Cursor/chat (see skill template).  
 - **Summary length:** 1–3 sentences per story.  
 - **Balance categories** when the news cycle allows (agentic, applied, generative, research, science, consumer).  
 - Prefer **primary** links; dedupe multi-outlet coverage.
