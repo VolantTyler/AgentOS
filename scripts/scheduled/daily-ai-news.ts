@@ -31,7 +31,7 @@ Execute the **/ai-news** slash command exactly as defined in \`.cursor/commands/
 3. Defaults: last 24 hours ending today in **America/New_York** (extend to 48h if thin); exactly **10** stories with headline, 1–3 sentence summary, and source link each.
 4. Write \`docs/research/ai-news-YYYY-MM-DD.md\` (today's date in America/New_York).
 5. Commit the digest on your working branch with a clear message (e.g. "Add daily AI news digest for YYYY-MM-DD").
-6. Reply with the full top 10 table per the slash command.
+6. Reply with the full single-column top 10 per the slash command (no wide tables).
 
 Do not skip web research. Observe \`docs/BOUNDARIES.md\` — no invented stories or URLs.`;
 
