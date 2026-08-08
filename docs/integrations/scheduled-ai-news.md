@@ -52,9 +52,19 @@ Optional overrides:
 |------|------|
 | `.github/workflows/daily-ai-news.yml` | Cron + `workflow_dispatch` |
 | `.github/workflows/auto-merge-ai-news-digest.yml` | Squash-merge digest PRs when only `docs/research/ai-news-*.md` changes |
+| `.github/workflows/notify-ai-news-slack.yml` | Post merged digests to Slack `#news` |
 | `scripts/scheduled/daily-ai-news.ts` | SDK orchestration |
+| `scripts/notify-ai-news-slack.ts` | Incoming Webhook poster (`npm run notify:ai-news`) |
 | `package.json` | `npm run scheduled:daily-ai-news` |
 | `docs/testing/features/ai-news.md` | Regression manifest for step 2 |
+| `docs/integrations/slack-ai-news.md` | Slack webhook setup |
+
+## Slack delivery
+
+When a digest merges to `main`, **Notify AI news Slack** posts it to
+**Glen Rock AI Club `#news`** via Incoming Webhook. Requires repo secret
+`SLACK_AI_NEWS_WEBHOOK_URL`. Interactive `/ai-news` also posts when that env var
+is present locally. See [`slack-ai-news.md`](slack-ai-news.md).
 
 ## Auto-merge
 

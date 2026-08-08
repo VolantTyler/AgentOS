@@ -65,6 +65,7 @@ workflows follow this pattern with Google Workspace CLI (`gws`).
 ## Scheduled runs (GitHub Actions)
 
 - **Weekly tech-stack radar:** [`.github/workflows/weekly-tech-stack-radar.yml`](../.github/workflows/weekly-tech-stack-radar.yml) calls `@cursor/sdk` via `scripts/scheduled/weekly-tech-stack-radar.ts`. Setup: [`docs/integrations/scheduled-tech-stack-radar.md`](integrations/scheduled-tech-stack-radar.md).
+- **Daily AI news → Slack:** Digests on `main` are posted to Slack `#news` by [`.github/workflows/notify-ai-news-slack.yml`](../.github/workflows/notify-ai-news-slack.yml) using `scripts/notify-ai-news-slack.ts`. Setup: [`docs/integrations/slack-ai-news.md`](integrations/slack-ai-news.md).
 
 ## Security note
 
