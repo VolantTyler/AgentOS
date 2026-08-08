@@ -56,6 +56,21 @@ Write **`docs/research/ai-news-YYYY-MM-DD.md`** (today in America/New_York) unle
 
 Default delivery is **markdown text** (file + chat). Do **not** generate PDF unless Tyler explicitly asks.
 
+### Slack delivery (optional)
+
+When a digest file is written (not chat-only), also notify Slack **#news** if
+`SLACK_AI_NEWS_WEBHOOK_URL` is available:
+
+```bash
+npm run notify:ai-news -- docs/research/ai-news-YYYY-MM-DD.md
+```
+
+- Soft-skip when the env var is missing (say so once; do not fail the digest).
+- Never print, commit, or paste the webhook URL.
+- Pass `--skip-slack` only if Tyler asked to skip, or to avoid a known double-post
+  with the merge-to-`main` GitHub Action.
+- Details: [`docs/integrations/slack-ai-news.md`](../../../docs/integrations/slack-ai-news.md).
+
 ```markdown
 # AI news — daily top 10
 
@@ -104,7 +119,7 @@ Invoke an agent with a prompt like:
 
 `Apply the AgentOS skill ai-news-pulse. Write docs/research/ai-news-<today>.md and reply with the full single-column top 10.`
 
-See [`docs/integrations/scheduled-ai-news.md`](../../../docs/integrations/scheduled-ai-news.md) for GitHub Actions scheduling.
+See [`docs/integrations/scheduled-ai-news.md`](../../../docs/integrations/scheduled-ai-news.md) for GitHub Actions scheduling, and [`docs/integrations/slack-ai-news.md`](../../../docs/integrations/slack-ai-news.md) for Slack `#news` delivery.
 
 ## Invocation
 

@@ -37,8 +37,19 @@ using **today’s date** in **America/New_York** unless the parent specified ano
 - **Balance categories** when the news cycle allows (agentic, applied, generative, research, science, consumer).  
 - Prefer **primary** links; dedupe multi-outlet coverage.
 
+## Slack notify
+
+After writing the digest file (skip for chat-only), run:
+
+```bash
+npm run notify:ai-news -- docs/research/ai-news-YYYY-MM-DD.md
+```
+
+Soft-skip if `SLACK_AI_NEWS_WEBHOOK_URL` is unset. Never log the webhook URL.
+See [`docs/integrations/slack-ai-news.md`](../../docs/integrations/slack-ai-news.md).
+
 ## Done when
 
-The digest file exists (unless chat-only), the template sections from the skill are filled, and **Gaps** lists anything skipped or unverified.
+The digest file exists (unless chat-only), the template sections from the skill are filled, **Gaps** lists anything skipped or unverified, and Slack was notified or explicitly skipped.
 
-Return to parent: **file path**, **3-line summary of the day's themes**, and **category counts** represented in the top 10.
+Return to parent: **file path**, **3-line summary of the day's themes**, **category counts** represented in the top 10, and **Slack status** (posted / skipped).

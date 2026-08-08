@@ -5,6 +5,7 @@
   "scripts": {
     "scheduled:weekly-tech-stack": "tsx scripts/scheduled/weekly-tech-stack-radar.ts",
     "scheduled:daily-ai-news": "tsx scripts/scheduled/daily-ai-news.ts",
+    "notify:ai-news": "tsx scripts/notify-ai-news-slack.ts",
     "sync:job-fit-row": "tsx scripts/sync-job-fit-row.ts"
   },
   "engines": {

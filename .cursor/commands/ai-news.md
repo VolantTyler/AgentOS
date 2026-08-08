@@ -20,8 +20,25 @@ You are executing the **AgentOS `/ai-news` slash command**.
 
 ## After the subagent finishes
 
-Reply to Tyler with:
+### Slack notify (when a digest file was written)
+
+If the run was **not** chat-only, try posting to Slack `#news`:
+
+```bash
+npm run notify:ai-news -- docs/research/ai-news-YYYY-MM-DD.md
+```
+
+- Loads `SLACK_AI_NEWS_WEBHOOK_URL` from the environment / local `.env`.
+- If the webhook is missing, skip with one line in your reply — do **not** fail the command.
+- Never print or commit the webhook URL.
+- Use `--skip-slack` only when Tyler asked to skip Slack.
+- Scheduled digests that merge to `main` are also posted by
+  `.github/workflows/notify-ai-news-slack.yml` (see
+  [`docs/integrations/slack-ai-news.md`](../../docs/integrations/slack-ai-news.md)).
+
+### Reply to Tyler with
 
 1. **The full top 10 in single-column format** — each story as a card: headline, category, source link, summary (mirror the digest file layout; no wide tables).  
 2. **Path** to the saved digest (or say if chat-only).  
-3. **One sentence** on what to watch next (optional follow-up thread).
+3. **Slack status** — posted, skipped (no webhook), or skipped by request.  
+4. **One sentence** on what to watch next (optional follow-up thread).

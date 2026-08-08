@@ -14,7 +14,7 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - **PR awareness:** PM can **read PRs independently** on `github.com/VolantTyler/AgentOS` via `gh` (list, diff, comments). A PR URL from Tyler or the implementer speeds matching a delegation to its PR; it is not required if the branch follows `cursor/` naming or the PR title references the task.
 - **Continuity:** PM **proposes** updates to this file when major decisions land. Tyler may also say **“remember this”** (or similar) to force a log entry.
 - **Near-term “done” signal:** Run the **weekly synthesis** ritual on cadence ([`docs/WEEKLY_SYNTHESIS.md`](WEEKLY_SYNTHESIS.md), **`/weekly-synthesis`**) so outputs from multiple subagents/workflows surface **unexpected wins** and **cross-cutting connections** — ritual merged (#29); **Monday habit** and **automation merge** (SDK + scheduled stack radar) are the remaining bar.
-- **Comms:** Primary UI remains **Cursor chat** for now. A reliable hook to an **external communication platform** is a future option — not chosen yet.
+- **Comms:** Primary UI remains **Cursor chat**. **AI news digests** also post to Slack **Glen Rock AI Club `#news`** via Incoming Webhook ([`docs/integrations/slack-ai-news.md`](integrations/slack-ai-news.md)).
 - **Priorities:** No fixed stack rank from Tyler yet; PM may recommend sequencing when delegating.
 
 ## Current focus (edit freely)
@@ -27,10 +27,11 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 - [ ] **Habit:** Run **`/weekly-synthesis`** each Monday after upstream digests (stack radar runs automatically at 11:00 ET — see below).
 - [x] **Weekly tech-stack radar** scheduled via GitHub Actions (Monday 11:00 America/New_York): `/tech-stack-updates` + evaluate/test gate — [`docs/integrations/scheduled-tech-stack-radar.md`](integrations/scheduled-tech-stack-radar.md). Requires `CURSOR_API_KEY` repo secret.
 - [x] **Daily AI news** — **`/ai-news`**, **`ai-news-scout`**, skill **`ai-news-pulse`**; output `docs/research/ai-news-YYYY-MM-DD.md`; scheduled daily 07:00 ET — [`docs/integrations/scheduled-ai-news.md`](integrations/scheduled-ai-news.md).
+- [x] **Slack `#news` for AI digests** — Incoming Webhook to **Glen Rock AI Club**; chat + merge-to-`main` triggers — [`docs/integrations/slack-ai-news.md`](integrations/slack-ai-news.md). Needs repo secret `SLACK_AI_NEWS_WEBHOOK_URL`.
 - [ ] **Deferred:** Work through boundary / operating-model questions in [`docs/ONBOARDING_OPEN_QUESTIONS.md`](ONBOARDING_OPEN_QUESTIONS.md) (new chat or `onboarding-guide` subagent).
 - [x] Pick a first low-risk external integration: **lead tracking to Google Sheets via Google Workspace CLI**. Documented in [`docs/integrations/google-sheets-lead-tracker.md`](integrations/google-sheets-lead-tracker.md).
 - [ ] Decide whether the next integrations should be calendar, tasks, email, or a derived "open follow-ups" view from the lead tracker log.
-- [ ] Explore **first external comm integration** when useful (after trust model is clearer); calendar/tasks/email remain candidates.
+- [x] **First external comm integration:** Slack Incoming Webhook for AI news → `#news` (Glen Rock AI Club). Calendar/tasks/email remain later candidates.
 - [ ] Flesh out `.cursor/agents/` roles to match real recurring workflows.
 - [ ] Start using the job-fit loop in [`docs/JOB_FIT_WORKFLOW.md`](JOB_FIT_WORKFLOW.md) for real roles; **job-fit** skill now handles duplicate prevention — SDK automation remains optional later.
 - [ ] Use **`/requirement-map`** on a role worth applying to after **`/job-fit`** (or directly when skipping fit scoring); maps every JD bullet to paste-ready lines via context-portfolio or [tylerstahl.dev](https://tylerstahl.dev).
@@ -46,6 +47,11 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 | **Jamf** | Low priority / waiting | ~2026-06-15 | Apple MDM vendor; **Jamf AI Assistant** (copilot, HITL, Bedrock/Claude) is strategic but **no open AI/agent engineering reqs** on Greenhouse (36 roles, mostly sales). Tiny AI Initiatives org; layoffs 2024/2025. Tyler: Apple retail/B2B background relevant; agent-orchestration interest not matched by current postings. |
 
 ## Last session
+
+- **Date:** 2026-08-08
+- **What we did:** Wired **Slack Incoming Webhook** delivery for AI news digests to **Glen Rock AI Club `#news`**: `scripts/notify-ai-news-slack.ts`, `.github/workflows/notify-ai-news-slack.yml`, skill/command/scout hooks, [`docs/integrations/slack-ai-news.md`](integrations/slack-ai-news.md).
+- **Decisions:** Trigger **both** interactive `/ai-news` (when webhook in env) and merge-to-`main` (scheduled path after auto-merge). Webhook stays in `.env` + GitHub secret `SLACK_AI_NEWS_WEBHOOK_URL` only.
+- **Next:** Add the GitHub Actions secret; optional webhook rotate because the URL was shared in chat; smoke-test with `npm run notify:ai-news` or Actions → *Notify AI news Slack*.
 
 - **Date:** 2026-06-26
 - **What we did:** Added **`/requirement-map`** application-prep workflow: [`.cursor/skills/requirement-mapping/SKILL.md`](../.cursor/skills/requirement-mapping/SKILL.md), **`requirement-mapper`** subagent, maps every JD bullet to third-person paste-ready lines with direct/adjacent/stretch/gap labels; local `docs/_private/context-portfolio/` or [tylerstahl.dev](https://tylerstahl.dev) for cloud; `requirement-map` feature manifest and capability map update.

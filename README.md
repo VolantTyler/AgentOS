@@ -46,6 +46,7 @@ Start here on every new session:
 - **ai-news-pulse** — [`.cursor/skills/ai-news-pulse/SKILL.md`](.cursor/skills/ai-news-pulse/SKILL.md): daily **top 10** AI stories (agentic, applied, generative, research, science, consumer) with headline, summary, and source link; writes `docs/research/ai-news-YYYY-MM-DD.md`.
 - **Slash:** **`/ai-news`** → [`.cursor/commands/ai-news.md`](.cursor/commands/ai-news.md) → delegates **`ai-news-scout`** ([`.cursor/agents/ai-news-scout.md`](.cursor/agents/ai-news-scout.md)).
 - **Scheduled daily AI news:** GitHub Actions every day **07:00 America/New_York** — see [`docs/integrations/scheduled-ai-news.md`](docs/integrations/scheduled-ai-news.md). Requires repo secret `CURSOR_API_KEY`.
+- **Slack `#news` delivery:** Incoming Webhook posts digests after `/ai-news` (when configured) and when digests merge to `main` — see [`docs/integrations/slack-ai-news.md`](docs/integrations/slack-ai-news.md). Requires `SLACK_AI_NEWS_WEBHOOK_URL` (local `.env` and/or GitHub Actions secret).
 - **Cron / SDK later:** add similar schedules for **events-scout**, **lookahead-networker**, or **cos-synthesizer** when needed.
 
 ## Quality workflows
