@@ -5,13 +5,16 @@
   "scripts": {
     "scheduled:weekly-tech-stack": "tsx scripts/scheduled/weekly-tech-stack-radar.ts",
     "scheduled:daily-ai-news": "tsx scripts/scheduled/daily-ai-news.ts",
-    "sync:job-fit-row": "tsx scripts/sync-job-fit-row.ts"
+    "sync:job-fit-row": "tsx scripts/sync-job-fit-row.ts",
+    "email:ingest": "tsx scripts/email-ingest.ts",
+    "email:list-inboxes": "tsx scripts/email-list-inboxes.ts"
   },
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
-    "@cursor/sdk": "^1.0.13"
+    "@cursor/sdk": "^1.0.13",
+    "agentmail": "^0.5.14"
   },
   "devDependencies": {
     "@types/node": "^22.15.0",

@@ -50,7 +50,10 @@ lightweight external-state workflows:
 
 When possible, prefer **append-only** writes or other low-risk operations over
 destructive updates. The `lead-tracker` and `job-fit-tracker` Google Sheets
-workflows follow this pattern with Google Workspace CLI (`gws`).
+workflows follow this pattern with Google Workspace CLI (`gws`). The
+`email-ingest` workflow follows the same shape with the AgentMail TypeScript
+SDK (`npm run email:ingest`): poll inbound mail, write local-only digests, and
+label processed messages instead of mutating history.
 
 ## References (official / upstream)
 
@@ -61,6 +64,8 @@ workflows follow this pattern with Google Workspace CLI (`gws`).
 | Hermes delegation | https://hermes-agent.nousresearch.com/docs/user-guide/features/delegation |
 | Hermes releases (feature timeline) | https://github.com/NousResearch/hermes-agent/releases |
 | Google Workspace CLI Sheets commands | https://googleworkspace-cli.mintlify.app/commands/sheets |
+| AgentMail docs (llms.txt) | https://docs.agentmail.to/llms.txt |
+| AgentMail inbound handling | https://docs.agentmail.to/knowledge-base/handling-inbound-emails |
 
 ## Scheduled runs (GitHub Actions)
 

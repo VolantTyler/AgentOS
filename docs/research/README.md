@@ -9,6 +9,7 @@ Some digests are produced by subagents following project skills; others are dura
 | **`/tech-stack-updates`** | `stack-radar` | `tech-stack-pulse` | `docs/research/tech-stack-updates-YYYY-MM-DD.md` (also **Monday 11:00 ET** via [scheduled workflow](../integrations/scheduled-tech-stack-radar.md)) |
 | **`/weekly-synthesis`** | `cos-synthesizer` | `weekly-synthesis` | `docs/research/cos-weekly-YYYY-MM-DD.md` |
 | **`/ai-news`** | `ai-news-scout` | `ai-news-pulse` | `docs/research/ai-news-YYYY-MM-DD.md` (also **daily 07:00 ET** via [scheduled workflow](../integrations/scheduled-ai-news.md)) |
+| **`/email-ingest`** | `email-ingester` | `email-ingest` | Local-only `docs/_private/email-ingest/email-ingest-YYYY-MM-DD.md` (gitignored; not a committed research digest) |
 
 Trigger from **`/`** menu or by asking the parent agent to run the subagent by name.
 
