@@ -195,6 +195,7 @@ Over time, this turns "Do I match this job?" into "What patterns predict good ou
   available. See [`docs/integrations/google-sheets-job-fit-tracker.md`](integrations/google-sheets-job-fit-tracker.md).
   Dated briefs remain optional; the sheet row is written even when the evaluation
   stays chat-only on disk (`Brief Path` = `chat-only`).
+- **Jev score preview (not the default):** TypeSafe Jev can rate the five dimensions as typed scores. It cannot be fine-tuned on this profile, and it does not write the brief. Research and the local preview script: [`docs/research/jev-job-fit-2026-09-26.md`](research/jev-job-fit-2026-09-26.md), [`docs/integrations/typesafe-jev-job-fit.md`](integrations/typesafe-jev-job-fit.md).
 
 ### Phase 2 — once patterns stabilize
 

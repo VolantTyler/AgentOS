@@ -49,6 +49,11 @@ Build a **Chief-of-Staff** layer that helps Tyler (and coordinated household/wor
 
 ## Last session
 
+- **Date:** 2026-09-26
+- **What we did:** Researched TypeSafe **Jev** (`jev-1.13.0`) as a job-fit scorer. Installed `@typesafe-ai/sdk@0.6.0` and added a local preview at `scripts/job-fit-jev-preview.ts` (self-check and dry-run; live call only with `TYPESAFE_API_KEY`). Notes: [`docs/research/jev-job-fit-2026-09-26.md`](research/jev-job-fit-2026-09-26.md), [`docs/integrations/typesafe-jev-job-fit.md`](integrations/typesafe-jev-job-fit.md).
+- **Decisions:** Do not replace `/job-fit` or `job-fit-analyst`. Jev cannot be installed as weights or fine-tuned on the career profile. It can only return typed scores; the written brief stays with the analyst. Blocker probabilities are not applied until labeled outcomes calibrate them.
+- **Next:** After more real scorecards exist, compare a `--live` Jev pass to the analyst on the same JDs before using it as a numeric check.
+
 - **Date:** 2026-08-08
 - **What we did:** Wired **Slack Incoming Webhook** delivery for AI news digests to **Glen Rock AI Club `#news`**: `scripts/notify-ai-news-slack.ts`, `.github/workflows/notify-ai-news-slack.yml`, skill/command/scout hooks, [`docs/integrations/slack-ai-news.md`](integrations/slack-ai-news.md).
 - **Decisions:** Trigger **both** interactive `/ai-news` (when webhook in env) and merge-to-`main` (scheduled path after auto-merge). Webhook stays in `.env` + GitHub secret `SLACK_AI_NEWS_WEBHOOK_URL` only.
