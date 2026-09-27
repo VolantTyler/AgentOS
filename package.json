@@ -7,7 +7,8 @@
     "scheduled:daily-ai-news": "tsx scripts/scheduled/daily-ai-news.ts",
     "notify:ai-news": "tsx scripts/notify-ai-news-slack.ts",
     "sync:job-fit-row": "tsx scripts/sync-job-fit-row.ts",
-    "job-fit:jev-preview": "tsx scripts/job-fit-jev-preview.ts"
+    "job-fit:jev-preview": "tsx scripts/job-fit-jev-preview.ts",
+    "job-fit:benchmark": "tsx scripts/job-fit-benchmark.ts"
   },
   "engines": {
     "node": ">=20"

@@ -40,6 +40,21 @@ TYPESAFE_API_KEY=... npm run job-fit:jev-preview -- --live --jd path/to-jd.md
 
 `--dry-run` and `--self-check` do not call the network. `--live` sends the career context and the job description to `https://api.typesafe.ai`.
 
+## Benchmark (LLM call off by default)
+
+`/job-fit` still uses `job-fit-analyst`. That Cursor subagent does not return provider token counts. The benchmark script is a separate opt-in call. It does not replace the analyst, and it does not run during `/job-fit`.
+
+Set `JOB_FIT_LLM_BENCHMARK=1` and `GEMINI_API_KEY` to turn the metered call on. The model is `gemini-2.5-flash` (`POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`). The request sends the same career docs the analyst reads, plus the job file, and asks for the workflow scorecard. Thinking is requested off (`thinkingBudget: 0`). Token counts are copied from Gemini `usageMetadata` (`promptTokenCount` outbound, `candidatesTokenCount` inbound). `thoughtsTokenCount` is recorded only when the provider sends it, and it is not added into inbound tokens. Elapsed time is wall clock around the HTTP call. Missing usage fails the run. Nothing is estimated.
+
+```bash
+npm run job-fit:benchmark -- --self-check
+npm run job-fit:benchmark -- --jd path/to-jd.md --jev
+JOB_FIT_LLM_BENCHMARK=1 GEMINI_API_KEY=... npm run job-fit:benchmark -- --jd path/to-jd.md --llm
+JOB_FIT_LLM_BENCHMARK=1 npm run job-fit:benchmark -- --jd path/to-jd.md --jev --llm
+```
+
+`--jev` also needs `TYPESAFE_API_KEY`. Each record has `outbound_tokens`, `inbound_tokens`, and `elapsed_ms`. Jev’s own `--live` JSON includes `usage` and `elapsed_ms` as well. Without `JOB_FIT_LLM_BENCHMARK=1`, `--llm` exits and does not call Gemini.
+
 ## Why it is not the `/job-fit` scorer yet
 
 `/job-fit` also needs evidence for and against, unknowns, recruiter questions, and a positioning angle. Jev cannot write those. A numeric score without that brief would drop the parts Tyler uses to decide.

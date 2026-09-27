@@ -388,10 +388,9 @@ async function main(): Promise<void> {
   const jobDescription = readFileSync(resolve(jdPath!), "utf8");
   if (!jobDescription.trim()) fail("Job description file is empty.");
 
-  const state = buildState(jobDescription);
-  const questions = jobFitQuestions();
-
   if (mode === "dry-run") {
+    const state = buildState(jobDescription);
+    const questions = jobFitQuestions();
     console.log(
       JSON.stringify(
         {
@@ -420,12 +419,34 @@ async function main(): Promise<void> {
     fail("TYPESAFE_API_KEY is not set. Use --dry-run to build the request without calling TypeSafe.");
   }
 
+  const scored = await scoreWithJev(jobDescription, apiKey);
+  console.log(
+    JSON.stringify(
+      {
+        mode: "live",
+        resolved_model: scored.model,
+        usage: scored.usage,
+        elapsed_ms: scored.elapsed_ms,
+        scorecard: scored.scorecard,
+      },
+      null,
+      2,
+    ),
+  );
+}
+
+/** Live System One call. `elapsed_ms` is wall time around the request, not an estimate. */
+export async function scoreWithJev(jobDescription: string, apiKey: string) {
   const client = new TypeSafeClient({ apiKey, defaultModel: JEV_MODEL });
+  const state = buildState(jobDescription);
+  const questions = jobFitQuestions();
+  const started = Date.now();
   const result = await client.systemOne({
     model: JEV_MODEL,
     state,
     questions,
   });
+  const elapsed_ms = Date.now() - started;
 
   const answers: JobFitJevAnswers = {
     capability: result.answers.capability,
@@ -437,18 +458,12 @@ async function main(): Promise<void> {
     execution_blocker: result.answers.execution_blocker,
   };
 
-  console.log(
-    JSON.stringify(
-      {
-        mode: "live",
-        resolved_model: result.model,
-        usage: result.usage,
-        scorecard: composeScorecard(answers),
-      },
-      null,
-      2,
-    ),
-  );
+  return {
+    model: result.model,
+    usage: result.usage,
+    elapsed_ms,
+    scorecard: composeScorecard(answers),
+  };
 }
 
 const isDirectRun = process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1]);
