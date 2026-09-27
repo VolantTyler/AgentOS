@@ -19,6 +19,7 @@ Include:
 - `requirement-map`
 - `tech-stack-updates`
 - `ai-news`
+- `jev-job-fit-preview`
 
 ## Expected use
 

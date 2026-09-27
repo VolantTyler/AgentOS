@@ -109,6 +109,7 @@ On override, delegate to `job-fit-analyst` and append a new sheet row as usual. 
 
 ## Defaults
 
+- **Scorer:** `job-fit-analyst` writes the scorecard and the brief. TypeSafe Jev is a separate numeric preview (`npm run job-fit:jev-preview`); it is not trained on this profile and is not part of this command. See `docs/research/jev-job-fit-2026-09-26.md`.
 - **Output:** chat-first, scorecard at top.
 - **Persistence:** save dated note only when Tyler asks to `save`, `archive`, or keep the evaluation.
 - **Sheet sync:** append on every completed analysis when `gws` and config are available. When cloud/local sync is unavailable, include a copy-paste `ROW_JSON` and point Tyler to **Sync job-fit row to sheet** (GitHub Actions) — see `docs/integrations/scheduled-job-fit-sheet-sync.md`.

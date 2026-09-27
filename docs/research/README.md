@@ -17,6 +17,7 @@ Trigger from **`/`** menu or by asking the parent agent to run the subagent by n
 ## Other durable briefs
 
 - `job-fit-*.md` or `job-fit-*-gaps-*.md` — job-fit comparisons, role-pattern summaries, and handoffs for follow-on agents (for example certification-program research).
+- `jev-job-fit-2026-09-26.md` — whether TypeSafe Jev can score the job-fit rubric. Preview only; `/job-fit` stays with `job-fit-analyst`.
 - `certification-recommendations-YYYY-MM-DD.md` — program picks and learning sequence mapped to job-fit trainable gaps (see [`certification-recommendations-2026-05-20.md`](certification-recommendations-2026-05-20.md)).
 
 **Naming:** `events-YYYY-MM-DD.md` for event discovery runs, `networking-targets-YYYY-MM-DD-<eventslug>.md` for pre-event networking briefs, `tech-stack-updates-YYYY-MM-DD.md` for stack scans, `ai-news-YYYY-MM-DD.md` for daily AI news, `cos-weekly-YYYY-MM-DD.md` for Chief-of-Staff weekly synthesis, and dated filenames for standalone handoff briefs or snapshots.
